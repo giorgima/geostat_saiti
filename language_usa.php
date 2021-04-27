@@ -13,7 +13,7 @@
 			//satauri ----------------
 			"title" => "Welcome, please log in",
 
-			"title1" => "Hello",
+			"title1" => "Hello world",
 			"titles_texsti" => "This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.",
 
 			"titles_gilakis_texsti" => "Add an article",
