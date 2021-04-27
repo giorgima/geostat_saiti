@@ -1,0 +1,40 @@
+body {
+    background-color: #bfbfbf !important;
+}
+
+.texts {
+    color: #000000;
+    text-indent: 10px;
+}
+
+#borders {
+    border-radius: 45px;
+    border: 5px solid #e6e6e6;
+}
+
+#satauri {
+    text-shadow: 1px 1px #FF0000;
+    font-size: 35px;
+}
+
+
+/* #username,
+#passwd,
+#button {
+    border-radius: 30px;
+} */
+
+.checkbox {
+    margin-left: 10px;
+}
+
+.btn {
+    margin-top: 12px;
+}
+
+.showpwd {
+    position: relative;
+    left: 22em;
+    bottom: 3em;
+    cursor: pointer;
+}
