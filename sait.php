@@ -1,3 +1,5 @@
+
+
 <?php
 
 include 'skript_php.php';
@@ -7,19 +9,19 @@ if(isset($_GET['lang'])){
   $_SESSION['lang'] = $lang;
 }
 else{
-  $_SESSION['lang'] = 'geo';
-  $lang = 'geo';
+  $_SESSION['lang'] = 'ka';
+  $lang = 'ka';
 }
 
 switch ($lang) {
-  case 'geo':
-    include 'language_geo.php';
+  case 'ka':
+    include 'ka.php';
     break;
-  case 'usa':
-    include 'language_usa.php';
+  case 'en':
+    include 'en.php';
     break;
   default:
-    include 'language_geo.php';
+    include 'ka.php';
 }
 
 ?>
@@ -92,10 +94,10 @@ switch ($lang) {
             }
       ?>
           <li>
-            <a href='sait.php?lang=geo'> <img src='FOTO/geo.png' width='20px'> </a>
+            <a href='sait.php?lang=ka'> <img src='FOTO/ka.png' width='20px'> </a>
           </li>
           <li>
-            <a href='sait.php?lang=usa'> <img src='FOTO/usa.png' width='30px'> </a>
+            <a href='sait.php?lang=en'> <img src='FOTO/en.png' width='30px'> </a>
           </li>
     </ul>
   </nav>
@@ -209,7 +211,25 @@ switch ($lang) {
 
                 </div>
 
-                  <input type="hidden" name="lang" value="<?php echo $_SESSION['lang']; ?>">
+                <div class="form-group">
+                  <label for="title"> <?php echo $lang['statiis_satauri']; ?> </label>
+
+                  <input class="form-control mb-3" type="text" placeholder="<?php echo $lang['statiis_satauri']; ?>" id="title" name="title_en" title="<?php echo $lang['statiis_satauri']; ?>" autofocus="title" required>
+
+                  <div class="valid-feedback"> <?php echo $lang['swori']; ?> </div>
+                  <div class="invalid-feedback"> <?php echo $lang['araswori']; ?> </div>
+
+                </div>
+
+                <div class="form-group">
+                  <label for="texts"> <?php echo $lang['statiis_texsti']; ?> </label>
+
+                  <textarea class="form-control mb-3" type="text" placeholder="<?php echo $lang['statiis_texsti']; ?>" id="texts" name="texts_en" title="<?php echo $lang['statiis_texsti']; ?>" required></textarea>
+
+                  <div class="valid-feedback"> <?php echo $lang['swori']; ?> </div>
+                  <div class="invalid-feedback"> <?php echo $lang['araswori']; ?> </div>
+
+                </div>
 
                   <input class="btn btn-success btn-block" type="submit" name= "button" value="<?php echo $lang['damateba']; ?>">
 

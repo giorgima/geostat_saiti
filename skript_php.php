@@ -56,6 +56,7 @@ function connect_sql(){
 function registracion($username, $email, $password)
 {
 	$con = connect_sql();
+	$password=md5($password);
 
 		$stmt = $con->prepare("select * from registracion where `username` = ? or `email`= ?");
 		$stmt->bind_param("ss", $username, $email);
@@ -87,6 +88,7 @@ function registracion($username, $email, $password)
 function avtorizacia($username, $password)
 {
 	$con = connect_sql();
+	$password=md5($password);
 
 		$stmt = $con->prepare("select * from registracion where `username` = ? and `pass`= ?");
 		$stmt->bind_param("ss", $username, $password);
@@ -147,7 +149,7 @@ if(!empty($_POST["remember"])) {
 }
 
 
-function statia($title, $texts, $foto_name, $lang)
+function statia($title_ka, $texts_ka, $title_en, $texts_en, $foto_name)
 {
 	$con = connect_sql();
 
@@ -155,10 +157,10 @@ function statia($title, $texts, $foto_name, $lang)
 		$target_dir = "FOTO/";
 		$target_file = $target_dir . basename($foto_name["name"]);
 
-		$sql = "INSERT INTO article(title, texts, foto_name, lang) VALUES(?, ?, ?, ?)";
+		$sql = "INSERT INTO article(title_ka, texts_ka, title_en, texts_en, foto_name) VALUES(?, ?, ?, ?, ?)";
 
 		$stmt = $con->prepare($sql);
-		$stmt->bind_param("ssss",$title, $texts, $image, $lang);
+		$stmt->bind_param("sssss",$title_ka, $texts_ka, $title_en, $texts_en, $image);
 		$stmt->execute();
 
 		if (move_uploaded_file($foto_name['tmp_name'], $target_dir.$image)) {
@@ -194,10 +196,6 @@ function statia($title, $texts, $foto_name, $lang)
 
 // }
 
-
-
-
-
 function pagination(){
 
 
@@ -219,7 +217,7 @@ function pagination(){
 
 	$first_page = ($page-1)*$results_per_page;
 
-	$sql2 = 'SELECT * from article WHERE lang = "'.$_SESSION['lang'].'" ORDER BY title ASC LIMIT '.$first_page. ','.$results_per_page;
+	$sql2 = 'SELECT  id, title_'.$_SESSION['lang'].' as title, texts_'.$_SESSION['lang'].' as texts from article ORDER BY title ASC LIMIT '.$first_page. ','.$results_per_page;
  	$result2 = $con-> query($sql2);
 
 	$res = array($result2,$number_of_page);
@@ -249,15 +247,16 @@ function pagination(){
 	}
 
 
-	if (isset($_POST['title']) && isset($_POST['texts']) && (isset($_POST['button'])) && !empty($_FILES["foto_name"]["name"]) && isset($_POST['lang']))
+	if (isset($_POST['title']) && isset($_POST['texts']) && isset($_POST['texts_en']) && isset($_POST['texts_en']) && (isset($_POST['button'])) && !empty($_FILES["foto_name"]["name"]))
 	{
 
-			$title = $_POST['title'];
-			$texts = $_POST['texts'];
+			$title_ka = $_POST['title'];
+			$texts_ka = $_POST['texts'];
+			$title_en = $_POST['title_en'];
+			$texts_en = $_POST['texts_en'];
 			$foto_name = $_FILES["foto_name"];
-			$lang = $_POST['lang'];
 
-			statia($title, $texts, $_FILES["foto_name"], $lang);
+			statia($title_ka, $texts_ka, $title_en, $texts_en, $_FILES["foto_name"]);
 	}
 
 

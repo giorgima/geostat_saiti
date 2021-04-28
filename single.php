@@ -7,19 +7,19 @@ if(isset($_GET['lang'])){
   $_SESSION['lang'] = $lang;
 }
 else{
-  $_SESSION['lang'] = 'geo';
-  $lang = 'geo';
+  $_SESSION['lang'] = 'ka';
+  $lang = 'ka';
 }
 
 switch ($lang) {
-  case 'geo':
-    include 'language_geo.php';
+  case 'ka':
+    include 'ka.php';
     break;
-  case 'usa':
-    include 'language_usa.php';
+  case 'en':
+    include 'en.php';
     break;
   default:
-    include 'language_geo.php';
+    include 'ka.php';
 }
 
 ?>
@@ -44,7 +44,7 @@ switch ($lang) {
 
 <div>
   <nav class="navbar navbar-inverse navbar-expand-sm bg-dark navbar-dark">
-      <a class="navbar-brand mr-5 ml-2" title="Websaite Name" href="single.php"><h4>Websaite Name</h4></a>
+      <a class="navbar-brand mr-5 ml-2" title="Websaite Name" href="sait.php"><h4>Websaite Name</h4></a>
 
       <!-- Links -->
       <ul id="navbar_left" class="nav navbar-nav">
@@ -70,10 +70,10 @@ switch ($lang) {
           <a href="#" title="rss"><i class="fas fa-rss fa-lg"></i></a>
         </li>
         <li>
-          <a href='single.php?id= <?php echo $_SESSION['id']; ?> &lang=geo'> <img src='FOTO/geo.png' width='20px'> </a>
+          <a href='single.php?id= <?php echo $_SESSION['id']; ?> &lang=ka'> <img src='FOTO/ka.png' width='20px'> </a>
         </li>
         <li>
-          <a href='single.php?id= <?php echo $_SESSION['id']; ?> &lang=usa'> <img src='FOTO/usa.png' width='30px'> </a>
+          <a href='single.php?id= <?php echo $_SESSION['id']; ?> &lang=en'> <img src='FOTO/en.png' width='30px'> </a>
         </li>
 
       </ul>
@@ -94,7 +94,7 @@ $con = connect_sql();
 
 }
 
-$stmt = $con->prepare("select * from article where `id` = ? ");
+$stmt = $con->prepare("select `foto_name`,`title_".$_SESSION['lang']."` as title, `texts_".$_SESSION['lang']."` as texts from article where `id` = ? ");
 $stmt->bind_param("s", $id);
 $stmt->execute();
 $stmt_result = $stmt->get_result();
