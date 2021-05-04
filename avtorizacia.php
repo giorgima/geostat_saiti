@@ -31,28 +31,25 @@ include 'skript_php.php';
             <form action="skript_php.php" method="POST" autocomplete="off" class="needs-validation" novalidate>
 
                 <div class="input-group mb-3">
-                    <label class="texts" for="username"></label>
+                    <label class="texts" for="usernam"></label>
                     <div class="input-group-prepend">
-                        <span class="input-group-text">@</span>
+                        <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
                     </div>
 
-                    <input class="form-control" type="text" placeholder="მომხმარებლის სახელი" id="username" name="username" title="შეიყვანეთ თქვენი ნიკი" autofocus="username"
-
-                    value="<?php if(isset($_COOKIE["username"])) { echo $_COOKIE["username"]; } ?>" required>
+                    <input class="form-control" type="text" placeholder="მომხმარებლის სახელი" id="usernam" name="username" title="შეიყვანეთ თქვენი ნიკი" autofocus="username" value="<?php if(isset($_COOKIE["username"])) { echo $_COOKIE["username"]; } ?>" required>
 
                     <div class="valid-feedback">სწორი.</div>
                     <div class="invalid-feedback">არასწორი.</div>
                 </div>
 
                 <div class="input-group mb-3">
-                    <label class="texts" for="paswsord"></label>
+                    <label class="texts" for="passwd"></label>
                     <div class="input-group-prepend">
-                        <span class="input-group-text">@</span>
+                        <span class="input-group-text"><i class="fa fa-key" aria-hidden="true"></i></span>
                     </div>
 
                     <input class="form-control" type="password" placeholder="პაროლი"  id="passwd" name="pass" title="შეიყვანეთ თქვენი პაროლი"
-
-                    value="<?php if(isset($_COOKIE["pass"])) { echo $_COOKIE["pass"]; } ?>" required><br>
+                    value="<?php if(isset($_COOKIE["pass"])) { echo $_COOKIE["pass"]; } ?>" required>
 
                     <div class="valid-feedback">სწორი.</div>
                     <div class="invalid-feedback">არასწორი.</div><br>
