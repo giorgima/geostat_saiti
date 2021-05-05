@@ -2,6 +2,26 @@
 
 include 'skript_php.php';
 
+if(isset($_GET['lang'])){
+  $lang = $_GET['lang'];
+  $_SESSION['lang'] = $lang;
+}
+else{
+  $_SESSION['lang'] = 'ka';
+  $lang = 'ka';
+}
+
+switch ($lang) {
+  case 'ka':
+    include 'ka.php';
+    break;
+  case 'en':
+    include 'en.php';
+    break;
+  default:
+    include 'ka.php';
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en" style="height: 100%;">
@@ -24,30 +44,33 @@ include 'skript_php.php';
 
 <body>
     <div class="container">
-        <h1 id="satauri" class="text-center p-3">რეგისტრაცია</h1>
+        <h1 id="satauri" class="text-center p-3"><?php echo $lang['registracia']; ?></h1>
 
         <div id="borders" class="container p-4" style="width:40%">
             <form action="skript_php.php" method="POST" autocomplete="off" class="needs-validation" novalidate>
 
                 <div class="form-group">
-                    <label class="texts" for="username">მომხმარებლის სახელი</label>
-                    <input class="form-control" type="text" placeholder="მომხმარებლის სახელი" id="username" name="username" title="შეიყვანეთ თქვენი ნიკი" autofocus="username" required>
-                    <div class="valid-feedback">სწორი.</div>
-                    <div class="invalid-feedback">არასწორი.</div>
+                    <label class="texts" for="username"><?php echo $lang['momxmareblis_sazeli']; ?></label>
+                    <input class="form-control" type="text" placeholder="<?php echo $lang['momxmareblis_sazeli']; ?>" id="username" name="username" title="<?php echo $lang['momxmareblis_sazeli_title']; ?>" autofocus="username" required>
+
+                    <div class="valid-feedback"><?php echo $lang['swori']; ?></div>
+                    <div class="invalid-feedback"><?php echo $lang['araswori']; ?></div>
                 </div>
 
                 <div class="form-group">
-                    <label class="texts" for="elfosta">ელ-ფოსტა</label>
-                    <input class="form-control" type="email" placeholder="ელ-ფოსტა" id="email" name="email" title="შეიყვანეთ თქვენი ელ-ფოსტა" required>
-                    <div class="valid-feedback">სწორი.</div>
-                    <div class="invalid-feedback">არასწორი.</div>
+                    <label class="texts" for="elfosta"><?php echo $lang['email']; ?></label>
+                    <input class="form-control" type="email" placeholder="<?php echo $lang['email']; ?>" id="email" name="email" title="<?php echo $lang['email_title']; ?>" required>
+
+                    <div class="valid-feedback"><?php echo $lang['swori']; ?></div>
+                    <div class="invalid-feedback"><?php echo $lang['araswori']; ?></div>
                 </div>
 
                 <div class="form-group">
-                    <label class="texts" for="password">პაროლი</label>
-                    <input class="form-control" type="password" placeholder="პაროლი" id="password" name="pass" title="შეიყვანეთ თქვენი პაროლი" required>
-                    <div class="valid-feedback">სწორი.</div>
-                    <div class="invalid-feedback">არასწორი.</div>
+                    <label class="texts" for="password"><?php echo $lang['paroli']; ?></label>
+                    <input class="form-control" type="password" placeholder="<?php echo $lang['paroli']; ?>" id="password" name="pass" title="<?php echo $lang['momxmareblis_paroli_title']; ?>" required>
+
+                    <div class="valid-feedback"><?php echo $lang['swori']; ?></div>
+                    <div class="invalid-feedback"><?php echo $lang['araswori']; ?></div>
                 </div>
 
                 <!-- <div class="form-group">
@@ -57,7 +80,7 @@ include 'skript_php.php';
                     <div class="invalid-feedback">არასწორი.</div>
                 </div>  -->
 
-                <input class="btn btn-primary btn-block" type="submit" id="button" value="რეგისტრაცია">
+                <input class="btn btn-primary btn-block" type="submit" id="button" value="<?php echo $lang['registracia']; ?>">
 
             </form>
         </div>

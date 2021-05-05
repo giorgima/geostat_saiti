@@ -94,7 +94,7 @@ $con = connect_sql();
 
 }
 
-$stmt = $con->prepare("select `foto_name`,`title_".$_SESSION['lang']."` as title, `texts_".$_SESSION['lang']."` as texts from article where `id` = ? ");
+$stmt = $con->prepare("select `categoris`, `foto_name`, `title_".$_SESSION['lang']."` as title, `texts_".$_SESSION['lang']."` as texts from article where `id` = ? ");
 $stmt->bind_param("s", $id);
 $stmt->execute();
 $stmt_result = $stmt->get_result();
@@ -105,19 +105,19 @@ if ($stmt_result->num_rows > 0)
 
   ?>
     <div class="col-9 pl-5 pt-3">
-      <h1> <?php echo $lang['satauri']; ?> : &nbsp;<?php echo $data["title"]; ?>
-      </h1>
+      <h3> <?php echo $lang['kategoria']; ?> : &nbsp;<?php echo $data["categoris"]; ?> </h3>
+
+      <h1> <?php echo $lang['satauri']; ?> : &nbsp;<?php echo $data["title"]; ?> </h1>
 
       <p id="demo" class="pt-2 pb-2" style="color: #A6AAB5"></p>
-
       <script>
       var date = new Date();
       var Month = date.getMonth() + 1;
       document.getElementById("demo").innerHTML = "<?php echo $lang['gamoqveynebis_tarigi']; ?> : &nbsp;" + date.getDate() + "/" + Month + "/" + date.getFullYear() ;
       </script>
 
-      <p> <?php echo $lang['texsti']; ?> : &nbsp;<?php echo $data["texts"]; ?>
-      </p>
+      <p> <?php echo $lang['texsti']; ?> : &nbsp;<?php echo $data["texts"]; ?> </p>
+
       <img src='<?php echo "FOTO/".$data["foto_name"] ?>'style="width: 500px;" ><br>
 
     </div>
@@ -157,6 +157,17 @@ if ($stmt_result->num_rows > 0)
           <p class="pt-2"> <?php echo $lang['card_texsti']; ?> </p>
           </div>
         </div>
+
+         <div class="card mt-3">
+          <div class="card-header"><b> <?php echo $lang['card_header']; ?> </b>
+            <i class="far fa-file fa-lg" style="margin-left: 70px;"></i>
+          </div>
+          <div class="card-body"><b> <?php echo $lang['card_satauri']; ?> </b>
+          <p class="pt-2"> <?php echo $lang['card_texsti']; ?> </p>
+          </div>
+        </div>
+
+        
       </nav>
 
     </div>

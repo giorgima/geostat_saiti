@@ -2,13 +2,33 @@
 
 include 'skript_php.php';
 
+if(isset($_GET['lang'])){
+  $lang = $_GET['lang'];
+  $_SESSION['lang'] = $lang;
+}
+else{
+  $_SESSION['lang'] = 'ka';
+  $lang = 'ka';
+}
+
+switch ($lang) {
+  case 'ka':
+    include 'ka.php';
+    break;
+  case 'en':
+    include 'en.php';
+    break;
+  default:
+    include 'ka.php';
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en" style="height: 100%;">
 
 <head>
 
-    <title>ავტორიზაცია</title>
+    <title><?php echo $lang['avtorizacia']; ?></title>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +45,7 @@ include 'skript_php.php';
 
 <body>
     <div class="container">
-        <h1 id="satauri" class="text-center p-3">ავტორიზაცია</h1>
+        <h1 id="satauri" class="text-center p-3"><?php echo $lang['avtorizacia']; ?></h1>
 
         <div id="borders" class="container p-4" style="width:40%">
             <form action="skript_php.php" method="POST" autocomplete="off" class="needs-validation" novalidate>
@@ -36,10 +56,10 @@ include 'skript_php.php';
                         <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
                     </div>
 
-                    <input class="form-control" type="text" placeholder="მომხმარებლის სახელი" id="usernam" name="username" title="შეიყვანეთ თქვენი ნიკი" autofocus="username" value="<?php if(isset($_COOKIE["username"])) { echo $_COOKIE["username"]; } ?>" required>
+                    <input class="form-control" type="text" placeholder="<?php echo $lang['momxmareblis_sazeli']; ?>" id="usernam" name="username" title="<?php echo $lang['momxmareblis_sazeli_title']; ?>" autofocus="username" value="<?php if(isset($_COOKIE["username"])) { echo $_COOKIE["username"]; } ?>" required>
 
-                    <div class="valid-feedback">სწორი.</div>
-                    <div class="invalid-feedback">არასწორი.</div>
+                    <div class="valid-feedback"><?php echo $lang['swori']; ?></div>
+                    <div class="invalid-feedback"><?php echo $lang['araswori']; ?></div>
                 </div>
 
                 <div class="input-group mb-3">
@@ -48,21 +68,21 @@ include 'skript_php.php';
                         <span class="input-group-text"><i class="fa fa-key" aria-hidden="true"></i></span>
                     </div>
 
-                    <input class="form-control" type="password" placeholder="პაროლი"  id="passwd" name="pass" title="შეიყვანეთ თქვენი პაროლი"
+                    <input class="form-control" type="password" placeholder="<?php echo $lang['paroli']; ?>"  id="passwd" name="pass" title="<?php echo $lang['momxmareblis_paroli_title']; ?>"
                     value="<?php if(isset($_COOKIE["pass"])) { echo $_COOKIE["pass"]; } ?>" required>
 
-                    <div class="valid-feedback">სწორი.</div>
-                    <div class="invalid-feedback">არასწორი.</div><br>
+                    <div class="valid-feedback"><?php echo $lang['swori']; ?></div>
+                    <div class="invalid-feedback"><?php echo $lang['araswori']; ?></div><br>
 
                 </div>
                 <!-- tvali -->
                 <i class="fa fa-eye showpwd" onClick="showPwd('passwd', this)"></i>
 
                 <div class="checkbox">
-                    <label><input type="checkbox" checked="checked" name="remember"><b> დამახსოვრება</b></label>
+                    <label><input type="checkbox" checked="checked" name="remember"><b> <?php echo $lang['damaxsovreba']; ?></b></label>
                 </div>
 
-                <input class="btn btn-primary btn-block" type="submit" name="login" id="button" value="ავტორიზაცია">
+                <input class="btn btn-primary btn-block" type="submit" name="login" id="button" value="<?php echo $lang['avtorizacia']; ?>">
 
             </form>
         </div>

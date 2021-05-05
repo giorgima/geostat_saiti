@@ -9,6 +9,18 @@
 			"registracia" => "რეგისტრაცია",
 			"avtorizacia" => "ავტორიზაცია",
 
+			//avtorizacia----------------------------
+			"momxmareblis_sazeli" => "მომხმარებლის სახელი",
+			"momxmareblis_sazeli_title" => "შეიყვანეთ თქვენი ნიკი",
+
+			"paroli" => "პაროლი",
+			"momxmareblis_paroli_title" => "შეიყვანეთ თქვენი პაროლი",
+			"damaxsovreba" => "დამახსოვრება",
+
+			//registracia-----------------------------
+			"email" => "ელ-ფოსტა",
+			"email_title" => "შეიყვანეთ თქვენი ელ-ფოსტა",
+
 			//satauri ----------------
 			"title" => "მოგესალმებით გთხოვთ გაიაროთ ავტორიზაცია",
 
@@ -19,13 +31,23 @@
 
 			//statiis forma----------------------
 			"suratis_atvirtva" => "სურათის ატვირთვა",
+			
 			"statiis_satauri" => "სტატიის სათაური",
 			"statiis_texsti" => "სტატიის ტექსტი",
+			"statiis_satauri_ka" => "სტატიის სათაური შეავსეთ ქართულად",
+			"statiis_texsti_ka" => "სტატიის ტექსტი შეავსეთ ქართულად",
+			"statiis_satauri_en" => "სტატიის სათაური შეავსეთ ინგლისურად",
+			"statiis_texsti_en" => "სტატიის ტექსტი შეავსეთ ინგლისურად",
+
 			"damateba" => "დამატება",
 			"gauqmeba" => "გაუქმება",
 
 			"swori" => "სწორი",
 			"araswori" => "არასწორი",
+
+			//kategoriebi--------------------------
+			"kategoriis_archeva" => "კატეგორიის არჩევა",
+			"kategoria" => "კატეგორია",
 
 			//cxrili --------------------
 			"dzebna" => "ძებნა",

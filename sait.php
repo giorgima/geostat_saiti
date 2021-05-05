@@ -1,5 +1,3 @@
-
-
 <?php
 
 include 'skript_php.php';
@@ -23,11 +21,23 @@ switch ($lang) {
   default:
     include 'ka.php';
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+<style>
+.tabcontent {
+  float: left;
+  /*padding: 30px;*/
+  margin: 0px 0px 30px 0px;
+  /*border: 1px solid #ccc;*/
+  width: 100%;
+  /*height: 400px;*/
+  display: none;
+}
+</style>
+
   <title>საქსტატი</title>
 
   <meta charset="UTF-8">
@@ -80,13 +90,13 @@ switch ($lang) {
         else
             {
 
-              echo '<a href="registracion.php">
+              echo '<a href=registracion.php?lang='.$_SESSION['lang'].'>
                       <li>
                         <span class="glyphicon glyphicon-user"></span>'.$lang['registracia'].'
                       </li>
                     </a>
 
-                    <a href="avtorizacia.php">
+                    <a href=avtorizacia.php?lang='.$_SESSION['lang'].'>
                       <li>
                         <span class="glyphicon glyphicon-log-in pr-3"></span>'.$lang['avtorizacia'].'
                       </li>
@@ -107,21 +117,26 @@ switch ($lang) {
 	    <div class="col-sm-1" style="margin-right:60px;">
 	      <nav class="navbar sidenav border border-dark p-2 mt-4">
 	        <ul class="navbar-nav">
+
 	          <li class="nav-item">
 	            <a class="nav-link disabled" href="#"> <?php echo $lang['zoli'];  ?> </a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link" href="https://en.wikipedia.org/wiki/Main_Page">Wikipedia</a>
+              <button type="button" class="close" onclick="openCity(event, 'closes')">&times;</button>
+	            <a class="nav-link tablinks" onclick="openCity(event, 'London')">LONDON</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link"
-	              href="https://www.w3schools.com/bootstrap4/bootstrap_utilities.asp">www.w3schools.com</a>
+              <button type="button" class="close" onclick="openCity(event, 'closes')">&times;</button>
+	            <a class="nav-link tablinks" onclick="openCity(event, 'Paris')">PARIS</a>
 	          </li>
+            <li class="nav-item">
+              <button type="button" class="close" onclick="openCity(event, 'closes')">&times;</button>
+              <a class="nav-link tablinks" onclick="openCity(event, 'Tokyo')">TOKIO</a>
+            </li>
 
 	          <li class="nav-item">
 	            <a class="nav-link disabled" href="#"> <?php echo $lang['zoli']; ?> </a>
 	          </li>
-
 	          <li class="nav-item">
 	            <a class="nav-link" href="#">Link</a>
 	          </li>
@@ -192,9 +207,22 @@ switch ($lang) {
                 </div>
 
                 <div class="form-group">
+                  <label for="sel1"><?php echo $lang['kategoriis_archeva']; ?></label>
+                  <select class="form-control form-select" id="sel1" name="categori" title="<?php echo $lang['kategoriis_archeva']; ?>" required>
+                    <option selected><?php echo $lang['kategoriis_archeva']; ?></option>
+                    <option>LONDON</option>
+                    <option>PARIS</option>
+                    <option>TOKIO</option>
+                  </select>
+                </div>
+
+                <div class="valid-feedback"> <?php echo $lang['swori']; ?> </div>
+                <div class="invalid-feedback"> <?php echo $lang['araswori']; ?> </div>
+
+                <div class="form-group">
                   <label for="title"> <?php echo $lang['statiis_satauri']; ?> </label>
 
-                  <input class="form-control mb-3" type="text" placeholder="<?php echo $lang['statiis_satauri']; ?>" id="title" name="title" title="<?php echo $lang['statiis_satauri']; ?>" autofocus="title" required>
+                  <input class="form-control mb-3" type="text" placeholder="<?php echo $lang['statiis_satauri_ka']; ?>" id="title_ka" name="title_ka" title="<?php echo $lang['statiis_satauri_ka']; ?>" autofocus="title" required>
 
                   <div class="valid-feedback"> <?php echo $lang['swori']; ?> </div>
                   <div class="invalid-feedback"> <?php echo $lang['araswori']; ?> </div>
@@ -204,7 +232,7 @@ switch ($lang) {
                 <div class="form-group">
                   <label for="texts"> <?php echo $lang['statiis_texsti']; ?> </label>
 
-                  <textarea class="form-control mb-3" type="text" placeholder="<?php echo $lang['statiis_texsti']; ?>" id="texts" name="texts" title="<?php echo $lang['statiis_texsti']; ?>" required></textarea>
+                  <textarea class="form-control mb-3" type="text" placeholder="<?php echo $lang['statiis_texsti_ka']; ?>" id="texts_ka" name="texts_ka" title="<?php echo $lang['statiis_texsti_ka']; ?>" required></textarea>
 
                   <div class="valid-feedback"> <?php echo $lang['swori']; ?> </div>
                   <div class="invalid-feedback"> <?php echo $lang['araswori']; ?> </div>
@@ -214,7 +242,7 @@ switch ($lang) {
                 <div class="form-group">
                   <label for="title"> <?php echo $lang['statiis_satauri']; ?> </label>
 
-                  <input class="form-control mb-3" type="text" placeholder="<?php echo $lang['statiis_satauri']; ?>" id="title" name="title_en" title="<?php echo $lang['statiis_satauri']; ?>" autofocus="title" required>
+                  <input class="form-control mb-3" type="text" placeholder="<?php echo $lang['statiis_satauri_en']; ?>" id="title_en" name="title_en" title="<?php echo $lang['statiis_satauri_en']; ?>" autofocus="title" required>
 
                   <div class="valid-feedback"> <?php echo $lang['swori']; ?> </div>
                   <div class="invalid-feedback"> <?php echo $lang['araswori']; ?> </div>
@@ -224,7 +252,7 @@ switch ($lang) {
                 <div class="form-group">
                   <label for="texts"> <?php echo $lang['statiis_texsti']; ?> </label>
 
-                  <textarea class="form-control mb-3" type="text" placeholder="<?php echo $lang['statiis_texsti']; ?>" id="texts" name="texts_en" title="<?php echo $lang['statiis_texsti']; ?>" required></textarea>
+                  <textarea class="form-control mb-3" type="text" placeholder="<?php echo $lang['statiis_texsti_en']; ?>" id="texts_en" name="texts_en" title="<?php echo $lang['statiis_texsti_en']; ?>" required></textarea>
 
                   <div class="valid-feedback"> <?php echo $lang['swori']; ?> </div>
                   <div class="invalid-feedback"> <?php echo $lang['araswori']; ?> </div>
@@ -246,6 +274,52 @@ switch ($lang) {
         </div>
       </div>
 
+      <!--/////////////////////////////// categoriebis modebna -->
+      <div class="container-fluid pt-4">
+        <div class="row">
+          <!-- <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'London')">London</button>
+            <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
+            <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+          </div> -->
+
+          <div id="closes" class="tabcontent">
+          	<!-- categori X -->
+          </div>
+
+          <div id="London" class="tabcontent p-2">
+      
+              <?php echo categori_serch(); ?>
+ 
+          </div>
+
+          <div id="Paris" class="tabcontent p-2">
+             <div class="container alert alert-warning">
+                  <h4><strong>London</strong></h4>
+                  <p>London is the capital city of England.</p>
+                </div>
+                <div class="container alert alert-warning">
+                  <h4><strong>London</strong></h4>
+                  <p>London is the capital city of England.</p>
+              </div>
+          </div>
+
+          <div id="Tokyo" class="tabcontent p-2">
+             <div class="container alert alert-danger">
+                  <h4><strong>London</strong></h4>
+                  <p>London is the capital city of England.</p>
+                </div>  
+                <div class="container alert alert-danger">
+                  <h4><strong>London</strong></h4>
+                  <p>London is the capital city of England.</p>
+              </div>
+          </div>
+
+          <!-- <div class="clearfix"></div> -->
+        </div>
+      </div>
+      <!-- ///////////////////////////////////////////////////-->
+      
       <div class="container-fluid brend" data-spy="scroll" data-target="#myScrollspy" data-offset="1">
         <div class="row">
           <div class="col-sm-4">
@@ -302,17 +376,18 @@ switch ($lang) {
 								  <table class="table table-dark table-hover table-striped table-bordered table-sm">
 								  <thead>
 									<tr>
-									  <th class="th-sm">ID</th>
-									  <th class="th-sm">'.$lang ['statiis_satauri'].'</th>
-									  <th class="th-sm">'.$lang ['statiis_texsti'].'</th>
+									  	<th class="th-sm">ID</th>
+									  	<th class="th-sm">'.$lang ['statiis_satauri'].'</th>
+									  	<th class="th-sm">'.$lang ['statiis_texsti'].'</th>
+                    					<th class="th-sm">'.$lang ['kategoria'].'</th>
 									</tr>
 								  </thead>
 								  <tbody id="myTable">';
 
-                    $result4 = pagination();
-									  while ($row = $result4[0]->fetch_assoc())
+                    				$result4 = pagination();
+									while ($row = $result4[0]->fetch_assoc())
 									  {
-										echo '<tr id='.$row["title"].'><td>'.$row["id"].'</td><td><a href=single.php?id='.$row["id"].'&lang='.$_SESSION['lang'].'>'.$row['title'].'</td><td>'.$row['texts'].'</td></tr>';
+										echo '<tr id='.$row["title"].'><td>'.$row["id"].'</td><td><a href=single.php?id='.$row["id"].'&lang='.$_SESSION['lang'].'>'.$row['title'].'</td><td>'.$row['texts'].'</td><td>'.$row["categoris"].'</td></tr>';
 
 									  }
 
@@ -324,8 +399,8 @@ switch ($lang) {
 										for($page=1; $page <= $result4[1]; $page++){
 
 											echo '<li class="page-item">
-                      <a href="sait.php?page='.$page.'">'.$page.'</a>
-                      </li>';
+						                      <a href="sait.php?page='.$page.'">'.$page.'</a>
+						                      </li>';
 										}
 
     								echo '<div class="p-2">';
@@ -345,7 +420,6 @@ switch ($lang) {
                   else
                       {
                         echo '<div class="container-fluid col-sm-8 pl-5">
-
                               <video width="600" controls>';
                                 // echo id_connects();
                                echo ' <source src="VIDEO/skillet.mp4" type="video/mp4">
@@ -362,7 +436,7 @@ switch ($lang) {
   </div>
 
 <footer>
-  <div class="container-fluid bg-dark mt-4 pl-5 pt-4">
+  <div class="container-fluid bg-dark mt-4 pl-5 pt-4 pb-2">
     <div class="row">
         <div class="footer-col col-4">
           <h4><?php echo $lang['compania']; ?></h4>

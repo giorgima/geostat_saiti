@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+//-----------------------------------------phpmailer code
 // use PHPMailer\PHPMailer\PHPMailer;
 // use PHPMailer\PHPMailer\SMTP;
 // use PHPMailer\PHPMailer\Exception;
@@ -40,10 +40,12 @@ session_start();
 	// 	echo "Mailer Error: " . $mail->ErrorInfo;
 	// }
 // }
+//------------------------------------------------------------
+
 
 function connect_sql(){
 
-	$con = new mysqli('localhost','root','123456','test1');
+	$con = new mysqli('localhost','root','','test1');
 	$con->set_charset("utf8");
 
 	if ($con->connect_error)
@@ -51,6 +53,26 @@ function connect_sql(){
 		die('conect failed :'.$con->connect_error);
 	}
 		return $con;
+}
+
+function categori_serch(){
+	$con = connect_sql();
+	$sql = "SELECT * from categori_search";
+
+	$result = $con-> query($sql);
+	if ($result-> num_rows > 0)
+	{
+	    while ($row = $result-> fetch_assoc())
+	    {
+	        echo "<div class='container alert alert-info'><h3><strong>".$row["title"]."</strong></h3><p>".$row["texts"]."</p></div>";
+	    }
+	}
+	else{
+		echo "<div class='alert alert-danger'> <h1><strong> none </strong></h1></div>";
+	}
+
+		$con->close();
+
 }
 
 function registracion($username, $email, $password)
@@ -149,7 +171,7 @@ if(!empty($_POST["remember"])) {
 }
 
 
-function statia($title_ka, $texts_ka, $title_en, $texts_en, $foto_name)
+function statia($categoris, $title_ka, $texts_ka, $title_en, $texts_en, $foto_name)
 {
 	$con = connect_sql();
 
@@ -157,10 +179,10 @@ function statia($title_ka, $texts_ka, $title_en, $texts_en, $foto_name)
 		$target_dir = "FOTO/";
 		$target_file = $target_dir . basename($foto_name["name"]);
 
-		$sql = "INSERT INTO article(title_ka, texts_ka, title_en, texts_en, foto_name) VALUES(?, ?, ?, ?, ?)";
+		$sql = "INSERT INTO article(categoris, title_ka, texts_ka, title_en, texts_en, foto_name) VALUES(?, ?, ?, ?, ?, ?)";
 
 		$stmt = $con->prepare($sql);
-		$stmt->bind_param("sssss",$title_ka, $texts_ka, $title_en, $texts_en, $image);
+		$stmt->bind_param("ssssss", $categoris, $title_ka, $texts_ka, $title_en, $texts_en, $image);
 		$stmt->execute();
 
 		if (move_uploaded_file($foto_name['tmp_name'], $target_dir.$image)) {
@@ -173,6 +195,36 @@ function statia($title_ka, $texts_ka, $title_en, $texts_en, $foto_name)
 		header("refresh:1; url=sait.php");
 
 		$con->close();
+
+}
+
+
+function pagination(){
+
+
+	$con = connect_sql();
+
+	$results_per_page = 5;
+
+	$sql1 = "SELECT * from article";
+  	$resul1 = $con-> query($sql1);
+  	$rows1 = $resul1-> num_rows;
+
+	$number_of_page = ceil($rows1/$results_per_page);
+
+	if(!isset($_GET['page'])){
+		$page=1;
+	}else{
+		$page=$_GET['page'];
+	}
+
+	$first_page = ($page-1)*$results_per_page;
+
+	$sql2 = 'SELECT  id, categoris, title_'.$_SESSION['lang'].' as title, texts_'.$_SESSION['lang'].' as texts from article ORDER BY title ASC LIMIT '.$first_page. ','.$results_per_page;
+ 	$result2 = $con-> query($sql2);
+
+	$res = array($result2,$number_of_page);
+    return $res;
 
 }
 
@@ -196,34 +248,6 @@ function statia($title_ka, $texts_ka, $title_en, $texts_en, $foto_name)
 
 // }
 
-function pagination(){
-
-
-	$con = connect_sql();
-
-	$results_per_page = 5;
-
-	$sql1 = "SELECT * from article";
-  	$resul1 = $con-> query($sql1);
-  	$rows1 = $resul1-> num_rows;
-
-	$number_of_page = ceil($rows1/$results_per_page);
-
-	if(!isset($_GET['page'])){
-		$page=1;
-	}else{
-		$page=$_GET['page'];
-	}
-
-	$first_page = ($page-1)*$results_per_page;
-
-	$sql2 = 'SELECT  id, title_'.$_SESSION['lang'].' as title, texts_'.$_SESSION['lang'].' as texts from article ORDER BY title ASC LIMIT '.$first_page. ','.$results_per_page;
- 	$result2 = $con-> query($sql2);
-
-	$res = array($result2,$number_of_page);
-    return $res;
-
-}
 
 //---------------------------------------------------------------------
 	if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['pass']) )
@@ -247,16 +271,16 @@ function pagination(){
 	}
 
 
-	if (isset($_POST['title']) && isset($_POST['texts']) && isset($_POST['texts_en']) && isset($_POST['texts_en']) && (isset($_POST['button'])) && !empty($_FILES["foto_name"]["name"]))
+	if (isset($_POST['title_ka']) && isset($_POST['texts_ka']) && isset($_POST['texts_en']) && isset($_POST['texts_en']) && (isset($_POST['button'])) && !empty($_FILES["foto_name"]["name"]))
 	{
-
-			$title_ka = $_POST['title'];
-			$texts_ka = $_POST['texts'];
+			$categoris = $_POST['categori'];
+			$title_ka = $_POST['title_ka'];
+			$texts_ka = $_POST['texts_ka'];
 			$title_en = $_POST['title_en'];
 			$texts_en = $_POST['texts_en'];
 			$foto_name = $_FILES["foto_name"];
 
-			statia($title_ka, $texts_ka, $title_en, $texts_en, $_FILES["foto_name"]);
+			statia($categoris, $title_ka, $texts_ka, $title_en, $texts_en, $_FILES["foto_name"]);
 	}
 
 

@@ -9,6 +9,17 @@
 			"registracia" => "Registration ",
 			"avtorizacia" => "Authorization ",
 
+			//avtorizacia----------------------------
+			"momxmareblis_sazeli" => "username",
+			"momxmareblis_sazeli_title" => "Enter your nickname",
+
+			"paroli" => "password",
+			"momxmareblis_paroli_title" => "Enter your password",
+			"damaxsovreba" => "Remember",
+
+			//registracia-----------------------------
+			"email" => "e-mail",
+			"email_title" => "Enter your email",
 
 			//satauri ----------------
 			"title" => "Welcome, please log in",
@@ -20,13 +31,23 @@
 
 			//statiis forma----------------------
 			"suratis_atvirtva" => "Upload an image",
+
 			"statiis_satauri" => "Article title",
 			"statiis_texsti" => "The text of the article",
+			"statiis_satauri_ka" => "Fill in the title of the article in Georgian",
+			"statiis_texsti_ka" => "Fill in the text of the article in Georgian",
+			"statiis_satauri_en" => "Fill in the title of the article in English",
+			"statiis_texsti_en" => "Fill in the text of the article in English",
+
 			"damateba" => "Add",
 			"gauqmeba" => "Cancel",
 
 			"swori" => "Correct",
 			"araswori" => "Wrong",
+
+			//kategoriebi--------------------------
+			"kategoriis_archeva" => "Choose a category",
+			"kategoria" => "category",
 
 			//cxrili --------------------
 			"dzebna" => "Search",
@@ -39,7 +60,7 @@
 			"reklamis_gilaki" => "Jump",
 
 			//navbar ---------------------
-			"zoli" => "Sidebar ",
+			"zoli" => "Sidebar &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",
 
 			//footer --------------
 			"compania" => "Company",
