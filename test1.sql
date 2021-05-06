@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.4
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Apr 28, 2021 at 08:02 AM
--- Server version: 5.7.24
--- PHP Version: 7.2.19
+-- Хост: 127.0.0.1
+-- Время создания: Май 06 2021 г., 12:17
+-- Версия сервера: 10.4.18-MariaDB
+-- Версия PHP: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `test1`
+-- База данных: `test1`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `article`
+-- Структура таблицы `article`
 --
 
 CREATE TABLE `article` (
@@ -34,20 +33,45 @@ CREATE TABLE `article` (
   `texts_ka` varchar(200) NOT NULL,
   `title_en` varchar(50) NOT NULL,
   `texts_en` varchar(200) NOT NULL,
-  `foto_name` varchar(200) NOT NULL
+  `foto_name` varchar(200) NOT NULL,
+  `categoris` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `article`
+-- Дамп данных таблицы `article`
 --
 
-INSERT INTO `article` (`id`, `title_ka`, `texts_ka`, `title_en`, `texts_en`, `foto_name`) VALUES
-(39, 'ადასდას', 'ასდასდსად', 'asdasdas', 'daasdas', 'map.png');
+INSERT INTO `article` (`id`, `title_ka`, `texts_ka`, `title_en`, `texts_en`, `foto_name`, `categoris`) VALUES
+(40, 'სტატია', 'სტატიას', 'statia', 'statias', 'Capture.PNG', 'london'),
+(41, 'asdas', 'asddas', 'dasd', 'dasd', 'Capture4.PNG', 'TOKIO'),
+(42, 'სადასდ', 'სდასდას', 'hfdofas', 'asohdashdol', 'Capture4.PNG', 'PARIS'),
+(43, 'ასოფჰაოსჰფოაჰ', 'სფდლსჯფკსფჯ', 'slkfjdsfkjsdn', 'sdjflksdfks', 'quiz.PNG', 'PARIS');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `registracion`
+-- Структура таблицы `categori_search`
+--
+
+CREATE TABLE `categori_search` (
+  `id` int(11) NOT NULL,
+  `categori` text CHARACTER SET utf8 COLLATE utf8_croatian_ci NOT NULL,
+  `title` varchar(50) CHARACTER SET utf8 COLLATE utf8_croatian_ci NOT NULL,
+  `texts` varchar(255) CHARACTER SET utf8 COLLATE utf8_croatian_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Дамп данных таблицы `categori_search`
+--
+
+INSERT INTO `categori_search` (`id`, `categori`, `title`, `texts`) VALUES
+(1, 'game', 'satauri', 'game_texts'),
+(2, 'game', 'satauri_2', 'game_texts_2');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `registracion`
 --
 
 CREATE TABLE `registracion` (
@@ -58,45 +82,55 @@ CREATE TABLE `registracion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `registracion`
+-- Дамп данных таблицы `registracion`
 --
 
 INSERT INTO `registracion` (`id`, `username`, `email`, `pass`) VALUES
-(19, 'gio', 'gio@l.ru', '123'),
-(20, 'gm', 'gm@l.ru', '202cb962ac59075b964b07152d234b70'),
-(21, 'gi', 'gi@l.ru', '202cb962ac59075b964b07152d234b70');
+(22, 'g', 'g@l.ru', 'c4ca4238a0b923820dcc509a6f75849b');
 
 --
--- Indexes for dumped tables
+-- Индексы сохранённых таблиц
 --
 
 --
--- Indexes for table `article`
+-- Индексы таблицы `article`
 --
 ALTER TABLE `article`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `registracion`
+-- Индексы таблицы `categori_search`
+--
+ALTER TABLE `categori_search`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `registracion`
 --
 ALTER TABLE `registracion`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
--- AUTO_INCREMENT for table `article`
+-- AUTO_INCREMENT для таблицы `article`
 --
 ALTER TABLE `article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
--- AUTO_INCREMENT for table `registracion`
+-- AUTO_INCREMENT для таблицы `categori_search`
+--
+ALTER TABLE `categori_search`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT для таблицы `registracion`
 --
 ALTER TABLE `registracion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
