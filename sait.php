@@ -69,7 +69,7 @@ switch ($lang) {
         <a class="nav-link" href="single.php"> <?php echo $lang['chvens_shesaxeb']; ?> </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#"> <?php echo $lang['kontaktebi']; ?> </a>
+        <a class="nav-link" href="category.php"> <?php echo $lang['kontaktebi']; ?> </a>
       </li>
     </ul>
 
@@ -123,26 +123,32 @@ switch ($lang) {
 	          </li>
 	          <li class="nav-item">
               <button type="button" class="close" onclick="openCity(event, 'closes')">&times;</button>
-	            <a class="nav-link tablinks" onclick="openCity(event, 'London')">LONDON</a>
+	            <a class="nav-link tablinks" onclick="openCity(event, 'categori_serch')">categori_serch</a>
 	          </li>
 	          <li class="nav-item">
               <button type="button" class="close" onclick="openCity(event, 'closes')">&times;</button>
-	            <a class="nav-link tablinks" onclick="openCity(event, 'Paris')">PARIS</a>
+	            <a class="nav-link tablinks" onclick="openCity(event, 'axali_ambebi')">axali_ambebi</a>
 	          </li>
             <li class="nav-item">
               <button type="button" class="close" onclick="openCity(event, 'closes')">&times;</button>
-              <a class="nav-link tablinks" onclick="openCity(event, 'Tokyo')">TOKIO</a>
+              <a class="nav-link tablinks" onclick="openCity(event, 'kodi')">kodi</a>
             </li>
 
 	          <li class="nav-item">
 	            <a class="nav-link disabled" href="#"> <?php echo $lang['zoli']; ?> </a>
 	          </li>
-	          <li class="nav-item">
-	            <a class="nav-link" href="#">Link</a>
-	          </li>
-	          <li class="nav-item">
-	            <a class="nav-link" href="#">Link</a>
-	          </li>
+	         <li class="nav-item">
+              <button type="button" class="close" onclick="openCity(event, 'closes')">&times;</button>
+              <a class="nav-link tablinks" onclick="openCity(event, 'dizaini')">dizaini</a>
+            </li>
+            <li class="nav-item">
+              <button type="button" class="close" onclick="openCity(event, 'closes')">&times;</button>
+              <a class="nav-link tablinks" onclick="openCity(event, 'mxiaruli')">mxiaruli</a>
+            </li>
+            <li class="nav-item">
+              <button type="button" class="close" onclick="openCity(event, 'closes')">&times;</button>
+              <a class="nav-link tablinks" onclick="openCity(event, 'yelsaxvevebis')">yelsaxvevebis</a>
+            </li>
 
 	          <li class="nav-item">
 	            <a class="nav-link disabled" href="#"> <?php echo $lang['zoli'];  ?> </a>
@@ -208,16 +214,18 @@ switch ($lang) {
 
                 <div class="form-group">
                   <label for="sel1"><?php echo $lang['kategoriis_archeva']; ?></label>
-                  <select class="form-control form-select" id="sel1" name="categori" title="<?php echo $lang['kategoriis_archeva']; ?>" required>
+                  <select class="form-control form-select" id="sel1" name="categoris" title="<?php echo $lang['kategoriis_archeva']; ?>" required>
                     <option selected><?php echo $lang['kategoriis_archeva']; ?></option>
-                    <option>LONDON</option>
-                    <option>PARIS</option>
-                    <option>TOKIO</option>
+                    <option>axali_ambebi</option>
+                    <option>kodi</option>
+                    <option>dizaini</option>
+                    <option>mxiaruli</option>
+                    <option>yelsaxvevebis</option>
                   </select>
-                </div>
 
-                <div class="valid-feedback"> <?php echo $lang['swori']; ?> </div>
-                <div class="invalid-feedback"> <?php echo $lang['araswori']; ?> </div>
+                  <div class="valid-feedback"> <?php echo $lang['swori']; ?> </div>
+                  <div class="invalid-feedback"> <?php echo $lang['araswori'];?> </div>
+                </div>
 
                 <div class="form-group">
                   <label for="title"> <?php echo $lang['statiis_satauri']; ?> </label>
@@ -287,13 +295,11 @@ switch ($lang) {
           	<!-- categori X -->
           </div>
 
-          <div id="London" class="tabcontent p-2">
-      
+          <div id="categori_serch" class="tabcontent p-2">    
               <?php echo categori_serch(); ?>
- 
           </div>
 
-          <div id="Paris" class="tabcontent p-2">
+          <div id="axali_ambebi" class="tabcontent p-2">
              <div class="container alert alert-warning">
                   <h4><strong>London</strong></h4>
                   <p>London is the capital city of England.</p>
@@ -304,7 +310,40 @@ switch ($lang) {
               </div>
           </div>
 
-          <div id="Tokyo" class="tabcontent p-2">
+          <div id="kodi" class="tabcontent p-2">
+             <div class="container alert alert-danger">
+                  <h4><strong>London</strong></h4>
+                  <p>London is the capital city of England.</p>
+                </div>  
+                <div class="container alert alert-danger">
+                  <h4><strong>London</strong></h4>
+                  <p>London is the capital city of England.</p>
+              </div>
+          </div>
+
+          <div id="dizaini" class="tabcontent p-2">
+             <div class="container alert alert-danger">
+                  <h4><strong>London</strong></h4>
+                  <p>London is the capital city of England.</p>
+                </div>  
+                <div class="container alert alert-danger">
+                  <h4><strong>London</strong></h4>
+                  <p>London is the capital city of England.</p>
+              </div>
+          </div>
+
+          <div id="mxiaruli" class="tabcontent p-2">
+             <div class="container alert alert-danger">
+                  <h4><strong>London</strong></h4>
+                  <p>London is the capital city of England.</p>
+                </div>  
+                <div class="container alert alert-danger">
+                  <h4><strong>London</strong></h4>
+                  <p>London is the capital city of England.</p>
+              </div>
+          </div>
+
+          <div id="yelsaxvevebis" class="tabcontent p-2">
              <div class="container alert alert-danger">
                   <h4><strong>London</strong></h4>
                   <p>London is the capital city of England.</p>

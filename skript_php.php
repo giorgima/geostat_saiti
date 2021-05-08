@@ -57,14 +57,14 @@ function connect_sql(){
 
 function categori_serch(){
 	$con = connect_sql();
-	$sql = "SELECT * from categori_search";
+	$sql = "SELECT * from article";
 
 	$result = $con-> query($sql);
 	if ($result-> num_rows > 0)
 	{
 	    while ($row = $result-> fetch_assoc())
 	    {
-	        echo "<div class='container alert alert-info'><h3><strong>".$row["title"]."</strong></h3><p>".$row["texts"]."</p></div>";
+	        echo "<div class='container alert alert-info'><h3>".$row["categoris"]."<br><strong>".$row["title_ka"]."</strong></h3><p>".$row["texts_ka"]."</p></div>";
 	    }
 	}
 	else{
@@ -138,7 +138,7 @@ function avtorizacia($username, $password)
 						-webkit-transform: translateX(-50%) translateY(-50%);
 						transform: translateX(-50%) translateY(-50%);">
 				</div>';
-				header("refresh:5; url=sait.php");
+				header("refresh:3; url=sait.php");
 
 				$con->close();
 
@@ -186,10 +186,10 @@ function statia($categoris, $title_ka, $texts_ka, $title_en, $texts_en, $foto_na
 		$stmt->execute();
 
 		if (move_uploaded_file($foto_name['tmp_name'], $target_dir.$image)) {
-  		echo $msg = "Image uploaded successfully";
+  		echo $msg = "სტატია დამატებულია";
   	}
   	else{
-			echo $msg = "Failed to upload image";
+			echo $msg = "სტატია არაა დამატებული";
   	}
 
 		header("refresh:1; url=sait.php");
@@ -273,7 +273,7 @@ function pagination(){
 
 	if (isset($_POST['title_ka']) && isset($_POST['texts_ka']) && isset($_POST['texts_en']) && isset($_POST['texts_en']) && (isset($_POST['button'])) && !empty($_FILES["foto_name"]["name"]))
 	{
-			$categoris = $_POST['categori'];
+			$categoris = $_POST['categoris'];
 			$title_ka = $_POST['title_ka'];
 			$texts_ka = $_POST['texts_ka'];
 			$title_en = $_POST['title_en'];

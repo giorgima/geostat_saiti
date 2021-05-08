@@ -69,6 +69,7 @@ switch ($lang) {
         <li>
           <a href="#" title="rss"><i class="fas fa-rss fa-lg"></i></a>
         </li>
+
         <li>
           <a href='single.php?id= <?php echo $_SESSION['id']; ?> &lang=ka'> <img src='FOTO/ka.png' width='20px'> </a>
         </li>
@@ -121,9 +122,11 @@ if ($stmt_result->num_rows > 0)
       <img src='<?php echo "FOTO/".$data["foto_name"] ?>'style="width: 500px;" ><br>
 
     </div>
+
 <?php
 }
 ?>
+
 
     <div class="col-3">
         <nav class="navbar">
@@ -133,19 +136,19 @@ if ($stmt_result->num_rows > 0)
           <h5><b><?php echo $lang['kategoriebi']; ?></b></h5>
 
           <li class="nav-item">
-            <a class="nav-link active" href="#"> <?php echo $lang['axali_ambebi']; ?></a>
+            <a class="nav-link" href="category.php?name=axali_ambebi"> <?php echo $lang['axali_ambebi']; ?></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"> <?php echo $lang['kodi']; ?></a>
+            <a class="nav-link" href="category.php?name=kodi"> <?php echo $lang['kodi']; ?></a>
           </li>
            <li class="nav-item">
-            <a class="nav-link" href="#"> <?php echo $lang['dizaini']; ?></a>
+            <a class="nav-link" href="category.php?name=dizaini"> <?php echo $lang['dizaini']; ?></a>
           </li>
            <li class="nav-item">
-            <a class="nav-link" href="#"> <?php echo $lang['mxiaruli']; ?></a>
+            <a class="nav-link" href="category.php?name=mxiaruli"> <?php echo $lang['mxiaruli']; ?></a>
           </li>
            <li class="nav-item">
-            <a class="nav-link" href="#"> <?php echo $lang['yelsaxvevebis']; ?></a>
+            <a class="nav-link" href="category.php?name=yelsaxvevebis"> <?php echo $lang['yelsaxvevebis']; ?></a>
           </li>
         </ul>
 
