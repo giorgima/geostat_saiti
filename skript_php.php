@@ -273,7 +273,7 @@ function pagination(){
 
 	if (isset($_POST['title_ka']) && isset($_POST['texts_ka']) && isset($_POST['texts_en']) && isset($_POST['texts_en']) && (isset($_POST['button'])) && !empty($_FILES["foto_name"]["name"]))
 	{
-			$categoris = $_POST['categoris'];
+			$categoris = $_POST['categori'];
 			$title_ka = $_POST['title_ka'];
 			$texts_ka = $_POST['texts_ka'];
 			$title_en = $_POST['title_en'];

@@ -134,24 +134,24 @@ if ($stmt_result->num_rows > 0)
 
         <ul id="navb" class="nav flex-column pt-2">
           <h5><b><?php echo $lang['kategoriebi']; ?></b></h5>
-
-          <li class="nav-item">
-            <a class="nav-link" href="category.php?name=axali_ambebi"> <?php echo $lang['axali_ambebi']; ?></a>
+<?php
+         echo '<li class="nav-item">
+            <a class="nav-link" href="category.php?name=axali_ambebi&lang='.$_SESSION['lang'].'">'.$lang['axali_ambebi'].'</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="category.php?name=kodi"> <?php echo $lang['kodi']; ?></a>
+            <a class="nav-link" href="category.php?name=kodi&lang='.$_SESSION['lang'].'">'.$lang['kodi'].'</a>
           </li>
            <li class="nav-item">
-            <a class="nav-link" href="category.php?name=dizaini"> <?php echo $lang['dizaini']; ?></a>
+            <a class="nav-link" href="category.php?name=dizaini&lang='.$_SESSION['lang'].'" >'.$lang['dizaini'].'</a>
           </li>
            <li class="nav-item">
-            <a class="nav-link" href="category.php?name=mxiaruli"> <?php echo $lang['mxiaruli']; ?></a>
+            <a class="nav-link" href="category.php?name=mxiaruli&lang='.$_SESSION['lang'].'">'.$lang['mxiaruli'].'</a>
           </li>
            <li class="nav-item">
-            <a class="nav-link" href="category.php?name=yelsaxvevebis"> <?php echo $lang['yelsaxvevebis']; ?></a>
+            <a class="nav-link" href="category.php?name=yelsaxvevebis&lang='.$_SESSION['lang'].'">'.$lang['yelsaxvevebis'].'</a>
           </li>
-        </ul>
-
+        </ul>';
+?>
         <div class="card mt-3">
           <div class="card-header"><b> <?php echo $lang['card_header']; ?> </b>
             <i class="far fa-file fa-lg" style="margin-left: 70px;"></i>

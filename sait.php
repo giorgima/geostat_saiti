@@ -214,7 +214,7 @@ switch ($lang) {
 
                 <div class="form-group">
                   <label for="sel1"><?php echo $lang['kategoriis_archeva']; ?></label>
-                  <select class="form-control form-select" id="sel1" name="categoris" title="<?php echo $lang['kategoriis_archeva']; ?>" required>
+                  <select class="form-control form-select" id="sel1" name="categori" title="<?php echo $lang['kategoriis_archeva']; ?>" required>
                     <option selected><?php echo $lang['kategoriis_archeva']; ?></option>
                     <option>axali_ambebi</option>
                     <option>kodi</option>
@@ -418,7 +418,7 @@ switch ($lang) {
 									  	<th class="th-sm">ID</th>
 									  	<th class="th-sm">'.$lang ['statiis_satauri'].'</th>
 									  	<th class="th-sm">'.$lang ['statiis_texsti'].'</th>
-                    					<th class="th-sm">'.$lang ['kategoria'].'</th>
+                    	<th class="th-sm">'.$lang ['kategoria'].'</th>
 									</tr>
 								  </thead>
 								  <tbody id="myTable">';
