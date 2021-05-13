@@ -24,7 +24,7 @@ switch ($lang) {
 
 ?>
 <!DOCTYPE html>
-<html lang="en" style="height: 100%;">
+<html lang="en">
 
 <head>
 
@@ -39,7 +39,8 @@ switch ($lang) {
 
     <link rel="stylesheet" href="CSS\registracion.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
 </head>
 
 <body>

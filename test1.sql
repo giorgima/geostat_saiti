@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Май 08 2021 г., 19:14
+-- Время создания: Май 13 2021 г., 11:57
 -- Версия сервера: 10.4.18-MariaDB
 -- Версия PHP: 8.0.3
 
@@ -48,6 +48,26 @@ INSERT INTO `article` (`id`, `title_ka`, `texts_ka`, `title_en`, `texts_en`, `fo
 (43, 'ასოფჰაოსჰფოაჰ', 'სფდლსჯფკსფჯ', 'slkfjdsfkjsdn', 'sdjflksdfks', 'quiz.PNG', 'dizaini'),
 (45, 'dasd', 'asda', 'dsad', 'sad', 'Capture11.PNG', 'dizaini');
 
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `registracion`
+--
+
+CREATE TABLE `registracion` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `pass` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `registracion`
+--
+
+INSERT INTO `registracion` (`id`, `username`, `email`, `pass`) VALUES
+(22, 'g', 'g@l.ru', 'c4ca4238a0b923820dcc509a6f75849b');
+
 --
 -- Индексы сохранённых таблиц
 --
@@ -59,6 +79,12 @@ ALTER TABLE `article`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `registracion`
+--
+ALTER TABLE `registracion`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT для сохранённых таблиц
 --
 
@@ -67,6 +93,12 @@ ALTER TABLE `article`
 --
 ALTER TABLE `article`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+
+--
+-- AUTO_INCREMENT для таблицы `registracion`
+--
+ALTER TABLE `registracion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

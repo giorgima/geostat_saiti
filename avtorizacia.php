@@ -24,7 +24,7 @@ switch ($lang) {
 
 ?>
 <!DOCTYPE html>
-<html lang="en" style="height: 100%;">
+<html lang="en">
 
 <head>
 
@@ -75,10 +75,13 @@ switch ($lang) {
                     <div class="invalid-feedback"><?php echo $lang['araswori']; ?></div><br>
 
                 </div>
-                <!-- tvali -->
-                <i class="fa fa-eye showpwd" onClick="showPwd('passwd', this)"></i>
 
-                <div class="checkbox">
+                <!-- tvali -->
+                <div>
+                <i class="fa fa-eye showpwd" onClick="showPwd('passwd', this)"></i>
+                </div>
+
+                <div class="checkbox pb-5">
                     <label><input type="checkbox" checked="checked" name="remember"><b> <?php echo $lang['damaxsovreba']; ?></b></label>
                 </div>
 

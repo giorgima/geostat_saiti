@@ -27,7 +27,7 @@ $cate = $_GET['name'];
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 
   <title>categoris10</title>
