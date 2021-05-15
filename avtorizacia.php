@@ -58,8 +58,8 @@ switch ($lang) {
 
                     <input class="form-control" type="text" placeholder="<?php echo $lang['momxmareblis_sazeli']; ?>" id="usernam" name="username" title="<?php echo $lang['momxmareblis_sazeli_title']; ?>" autofocus="username" value="<?php if(isset($_COOKIE["username"])) { echo $_COOKIE["username"]; } ?>" required>
 
-                    <div class="valid-feedback"><?php echo $lang['swori']; ?></div>
-                    <div class="invalid-feedback"><?php echo $lang['araswori']; ?></div>
+                    <div class="valid-feedback"><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['swori']; ?></div>
+                    <div class="invalid-feedback"><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['araswori']; ?></div>
                 </div>
 
                 <div class="input-group mb-3">
@@ -70,9 +70,11 @@ switch ($lang) {
 
                     <input class="form-control" type="password" placeholder="<?php echo $lang['paroli']; ?>"  id="passwd" name="pass" title="<?php echo $lang['momxmareblis_paroli_title']; ?>"
                     value="<?php if(isset($_COOKIE["pass"])) { echo $_COOKIE["pass"]; } ?>" required>
+                    
+                    <!-- <i class="fa fa-eye showpwd" onClick="showPwd('passwd', this)"></i> -->
 
-                    <div class="valid-feedback"><?php echo $lang['swori']; ?></div>
-                    <div class="invalid-feedback"><?php echo $lang['araswori']; ?></div><br>
+                    <div class="valid-feedback"><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['swori']; ?></div>
+                    <div class="invalid-feedback"><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['araswori']; ?></div><br>
 
                 </div>
 

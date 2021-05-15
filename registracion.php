@@ -50,28 +50,42 @@ switch ($lang) {
         <div id="borders" class="container p-4" style="width:40%">
             <form action="skript_php.php" method="POST" autocomplete="off" class="needs-validation" novalidate>
 
-                <div class="form-group">
-                    <label class="texts" for="username"><?php echo $lang['momxmareblis_sazeli']; ?></label>
+                <div class="input-group mt-4">
+                    <label class="texts" for="username"></label>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
+                    </div>
+
                     <input class="form-control" type="text" placeholder="<?php echo $lang['momxmareblis_sazeli']; ?>" id="username" name="username" title="<?php echo $lang['momxmareblis_sazeli_title']; ?>" autofocus="username" required>
 
-                    <div class="valid-feedback"><?php echo $lang['swori']; ?></div>
-                    <div class="invalid-feedback"><?php echo $lang['araswori']; ?></div>
+                    <div class="valid-feedback"><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['swori']; ?></div>
+                    <div class="invalid-feedback"><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['araswori']; ?></div>
                 </div>
 
-                <div class="form-group">
-                    <label class="texts" for="elfosta"><?php echo $lang['email']; ?></label>
+
+                <div class="input-group mt-4">
+                    <label class="texts" for="elfosta"></label>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                    </div>
+
                     <input class="form-control" type="email" placeholder="<?php echo $lang['email']; ?>" id="email" name="email" title="<?php echo $lang['email_title']; ?>" required>
 
-                    <div class="valid-feedback"><?php echo $lang['swori']; ?></div>
-                    <div class="invalid-feedback"><?php echo $lang['araswori']; ?></div>
+                    <div class="valid-feedback"><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['swori']; ?></div>
+                    <div class="invalid-feedback"><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['araswori']; ?></div>
                 </div>
 
-                <div class="form-group">
-                    <label class="texts" for="password"><?php echo $lang['paroli']; ?></label>
+
+                <div class="input-group mt-4">
+                    <label class="texts" for="password"></label>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-key" aria-hidden="true"></i></span>
+                    </div>
+
                     <input class="form-control" type="password" placeholder="<?php echo $lang['paroli']; ?>" id="password" name="pass" title="<?php echo $lang['momxmareblis_paroli_title']; ?>" required>
 
-                    <div class="valid-feedback"><?php echo $lang['swori']; ?></div>
-                    <div class="invalid-feedback"><?php echo $lang['araswori']; ?></div>
+                    <div class="valid-feedback"><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['swori']; ?></div>
+                    <div class="invalid-feedback"><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['araswori']; ?></div>
                 </div>
 
                 <!-- <div class="form-group">
