@@ -50,29 +50,79 @@ switch ($lang) {
         <div id="borders" class="container p-4" style="width:40%">
             <form action="skript_php.php" method="POST" autocomplete="off" class="needs-validation" novalidate>
 
-                <div class="input-group mt-4">
+                <div class="input-group">
                     <label class="texts" for="username"></label>
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
                     </div>
 
-                    <input class="form-control" type="text" placeholder="<?php echo $lang['momxmareblis_sazeli']; ?>" id="username" name="username" title="<?php echo $lang['momxmareblis_sazeli_title']; ?>" autofocus="username" required>
+                    <input class="form-control" type="text" placeholder="<?php echo $lang['momxmareblis_sazeli']; ?>" id="username" name="username" 
+                    title="<?php echo $lang['momxmareblis_sazeli_title']; ?>" autofocus="username" required>
+                </div>
 
-                    <div class="valid-feedback"><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['swori']; ?></div>
-                    <div class="invalid-feedback"><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['araswori']; ?></div>
+
+                <!-- dabadebis dge -->
+                <div class="form-check-inline mt-4">
+                    <div class="input-group-prepend mr-1" style="height:38px">
+                        <span class="input-group-text"><i class='fas fa-birthday-cake'></i></span>
+                    </div>
+
+                    <label for="sel1"></label>
+                      <select class="form-control mr-3" id="sel1" name="date_of_birth" style="width:106px" required>
+                        <option value =""><?php echo $lang['dge']; ?></option>
+                        <option>01/</option>
+                        <option>02/</option>
+                        <option>03/</option>
+                      </select>
+
+                      <select class="form-control mr-3" id="sel1" name="date_of_birth" style="width:107px" required>
+                        <option value =""><?php echo $lang['tve']; ?></option>
+                        <option>1/</option>
+                        <option>2/</option>
+                        <option>3/</option>
+                      </select>
+
+                      <select class="form-control" id="sel1" name="date_of_birth" style="width:107px" required>
+                        <option value =""><?php echo $lang['weli']; ?></option>
+                        <option>2000</option>
+                        <option>1997</option>
+                        <option>1998</option>
+                      </select>
+
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback"></div>
+                </div>
+
+
+                <!-- sqesi -->
+                <div class="form-check-inline mt-4">
+                    <div class="input-group-prepend mr-2" style="height:38px">
+                        <span class="input-group-text"><i class='fas fa-transgender' style="font-size:20px"></i></span>
+                    </div>
+
+                    <label class="form-check-label mr-4" for="radio1">
+                        <input type="radio" class="form-check-input" id="radio1" name="gender" value="მამრობითი" ><?php echo $lang['mamrobiti']; ?>
+                    </label>
+           
+                    <label class="form-check-label" for="radio2">
+                        <input type="radio" class="form-check-input" id="radio2" name="gender" value="დედრობითი"><?php echo $lang['mdedrobit']; ?>
+                    </label>
+
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback"></div>
                 </div>
 
 
                 <div class="input-group mt-4">
-                    <label class="texts" for="elfosta"></label>
+                    <label class="texts" for="email"></label>
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i></span>
                     </div>
 
                     <input class="form-control" type="email" placeholder="<?php echo $lang['email']; ?>" id="email" name="email" title="<?php echo $lang['email_title']; ?>" required>
 
-                    <div class="valid-feedback"><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['swori']; ?></div>
-                    <div class="invalid-feedback"><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['araswori']; ?></div>
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback"></div>
                 </div>
 
 
@@ -84,8 +134,8 @@ switch ($lang) {
 
                     <input class="form-control" type="password" placeholder="<?php echo $lang['paroli']; ?>" id="password" name="pass" title="<?php echo $lang['momxmareblis_paroli_title']; ?>" required>
 
-                    <div class="valid-feedback"><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['swori']; ?></div>
-                    <div class="invalid-feedback"><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['araswori']; ?></div>
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback"></div>
                 </div>
 
                 <!-- <div class="form-group">

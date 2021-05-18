@@ -75,7 +75,7 @@ function categori_serch(){
 
 }
 
-function registracion($username, $email, $password)
+function registracion($username, $date_of_birth, $gender, $email, $password)
 {
 	$con = connect_sql();
 	$password=md5($password);
@@ -91,9 +91,9 @@ function registracion($username, $email, $password)
 		}
 		else{
 
-			$sql = "INSERT INTO registracion(username, email, pass) VALUES(?, ?, ?)";
+			$sql = "INSERT INTO registracion(username, date_of_birth, gender, email, pass) VALUES(?, ?, ?, ?, ?)";
 			$stmt = $con->prepare($sql);
-			if( $stmt->bind_param("sss", $username, $email, $password)){
+			if( $stmt->bind_param("sssss", $username, $date_of_birth, $gender, $email, $password)){
 
 				$stmt->execute();
 			}
@@ -250,13 +250,15 @@ function pagination(){
 
 
 //---------------------------------------------------------------------
-	if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['pass']) )
+	if (isset($_POST['username']) && isset($_POST['date_of_birth']) && isset($_POST['gender']) && isset($_POST['email']) && isset($_POST['pass']) )
 	{
 			$username = $_POST['username'];
+			$date_of_birth = $_POST['date_of_birth'];
+			$gender = $_POST['gender'];
 			$email = $_POST['email'];
 			$password = $_POST['pass'];
 
-			registracion($username, $email, $password);
+			registracion($username, $date_of_birth, $gender, $email, $password);
 	}
 
 

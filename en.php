@@ -20,6 +20,11 @@
 			//registracia-----------------------------
 			"email" => "e-mail",
 			"email_title" => "Enter your email",
+			"mamrobiti" => "Male",
+			"mdedrobit" => "Female",
+			"dge" => "Day",
+			"tve" => "Month",
+			"weli" => "Year",
 
 			//satauri ----------------
 			"title" => "Welcome, please log in",
