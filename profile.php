@@ -78,12 +78,20 @@ switch ($lang) {
 <div class="container">
 	<div class="row">
 		<div class="col-6">
+		<!-- foto -->
 
-			
+		<!-- username -->
+
 		</div>
 		<div class="col-6">
+			<!-- logout --> <!-- mtavari page -->
 
-			
+			<!-- data -->
+
+			<!-- sqes -->
+
+			<!-- email -->
+
 		</div>
 	</div>
 </div>

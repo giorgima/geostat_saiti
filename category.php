@@ -22,7 +22,7 @@ switch ($lang) {
 }
 
 $cate = $_GET['name'];
-  // = $_SESSION['name'];
+ $_SESSION['name'] = $cate;
 
 ?>
 
@@ -30,7 +30,7 @@ $cate = $_GET['name'];
 <html lang="en">
 <head>
 
-  <title>categoris10</title>
+  <title>კატეგორიები</title>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -63,10 +63,28 @@ $cate = $_GET['name'];
           <a class="nav-link" title="Contact" href="#"><i class="far fa-envelope fa-lg pr-1"></i> <?php echo $lang['kontaktebi']; ?> </a>
         </li>
       </ul>
+
+      <ul id="navbar_right" class="nav navbar-nav navbar-right text-right">
+        <li>
+          <a href="#" title="rss"><i class="fas fa-rss fa-lg"></i></a>
+        </li>
+
+        <li>
+          <a href='category.php?name= <?php echo $_SESSION['name']; ?> &lang=ka'> <img src='FOTO/ka.png' width='20px'> </a>
+        </li>
+        <li>
+          <a href='category.php?name= <?php echo $_SESSION['name']; ?> &lang=en'> <img src='FOTO/en.png' width='30px'> </a>
+        </li>
+
+      </ul>
   </nav>
 </div>
 
 <!-- ////////////////////////////////////// -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-9">
+
 <?php
 
 $con10 = connect_sql();
@@ -114,7 +132,58 @@ else{
 	$con10->close();
 
 ?>
+
+
+</div>
 <!-- ///////////////////////////////////////////////////// -->
+
+<div class="col-3">
+  <nav class="navbar">
+    <ul id="navb" class="nav flex-column pt-2">
+      <h5><b><?php echo $lang['kategoriebi']; ?></b></h5>
+
+<?php
+         echo '<li class="nav-item">
+            <a class="nav-link" href="category.php?name=axali_ambebi&lang='.$_SESSION['lang'].'">'.$lang['axali_ambebi'].'</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="category.php?name=kodi&lang='.$_SESSION['lang'].'">'.$lang['kodi'].'</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" href="category.php?name=dizaini&lang='.$_SESSION['lang'].'" >'.$lang['dizaini'].'</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" href="category.php?name=mxiaruli&lang='.$_SESSION['lang'].'">'.$lang['mxiaruli'].'</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" href="category.php?name=yelsaxvevebis&lang='.$_SESSION['lang'].'">'.$lang['yelsaxvevebis'].'</a>
+          </li>
+        </ul>';
+?>
+
+        <div class="card mt-3">
+          <div class="card-header"><b> <?php echo $lang['card_header']; ?> </b>
+            <i class="far fa-file fa-lg" style="margin-left: 70px;"></i>
+          </div>
+          <div class="card-body"><b> <?php echo $lang['card_satauri']; ?> </b>
+          <p class="pt-2"> <?php echo $lang['card_texsti']; ?> </p>
+          </div>
+        </div>
+
+         <div class="card mt-3">
+          <div class="card-header"><b> <?php echo $lang['card_header']; ?> </b>
+            <i class="far fa-file fa-lg" style="margin-left: 70px;"></i>
+          </div>
+          <div class="card-body"><b> <?php echo $lang['card_satauri']; ?> </b>
+          <p class="pt-2"> <?php echo $lang['card_texsti']; ?> </p>
+          </div>
+        </div>
+
+      </nav>
+</div>
+</div>
+</div>
+
 
 <footer>
   <div class="container-fluid bg-dark mt-4 pl-5 pt-4 pb-2">

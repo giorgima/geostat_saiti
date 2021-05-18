@@ -60,12 +60,6 @@ switch ($lang) {
       </ul>
 
       <ul id="navbar_right" class="nav navbar-nav navbar-right text-right">
-        <li class="nav-item">
-          <a href="#" title="facebook"><i class="fab fa-facebook-square fa-lg"></i></a>
-        </li class="nav-item">
-        <li>
-          <a href="#" title="twitter"><i class="fab fa-twitter fa-lg"></i></a>
-        </li class="nav-item">
         <li>
           <a href="#" title="rss"><i class="fas fa-rss fa-lg"></i></a>
         </li>
