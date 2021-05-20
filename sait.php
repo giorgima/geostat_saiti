@@ -81,7 +81,7 @@ switch ($lang) {
         {
 
 
-          echo '<div style="color:white;">'.$_SESSION["name"].'&nbsp;&nbsp;&nbsp;</div>
+          echo '<div style="color:white;"><a class="nav-link" href="profile.php">'.$_SESSION['name'].'</a>&nbsp;&nbsp;&nbsp;</div>
           <div class="p-2">
             <a href="logout.php" title="გამოსვლა"><i class="fas fa-sign-out-alt"></i> </a>
           </div>';

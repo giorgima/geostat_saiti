@@ -65,6 +65,25 @@ switch ($lang) {
 
     <ul id="login" class="nav navbar-nav navbar-right text-right pr-5">
 
+
+<?php
+        if(isset($_SESSION['is_logged']) && $_SESSION['is_logged']==true)
+        {
+
+
+          echo '<div style="color:white;">'.$_SESSION['name'].'&nbsp;&nbsp;&nbsp;</div>
+          <div class="p-2">
+            <a href="logout.php" title="გამოსვლა"><i class="fas fa-sign-out-alt"></i> </a>
+          </div>';
+
+        }
+        else
+            {
+              echo '';
+            }
+?>
+
+
       <li>
         <a href='profile.php?lang=ka'> <img src='FOTO/ka.png' width='20px'> </a>
       </li>
@@ -75,26 +94,67 @@ switch ($lang) {
     </ul>
   </nav>
 
-<div class="container">
-	<div class="row">
-		<div class="col-6">
-		<!-- foto -->
+<?php
+if(isset($_SESSION['is_logged']) && $_SESSION['is_logged']==true)
+{
 
-		<!-- username -->
+echo '<div class="container">
+		<h1 id="satauri" class="text-center">პროფილი</h1>
+			<div class="row">
+				<div class="col-6 mt-2 mb-5">
+					<div class="card bg-info m-3">
 
+						<div class="card-header">
+						<!-- foto -->
+						<img src="https://static-cse.canva.com/blob/195615/paul-skorupskas-7KLa-xLbSXA-unsplash-2.jpg" class="rounded-circle" alt="Cinque Terre" width="60%" height="60%" style="margin-left: 100px;">   
+			    		</div>
+
+			    		<div class="card-body">
+			    		<!-- username -->
+						<h1 class="text-center">'.$_SESSION['name'].'</h1>
+						</div>
+
+			    		<div class="card-footer">
+						<!-- logout -->
+						<a class="btn btn-primary container-fluid" role="button" href="logout.php" title="გამოსვლა"> გამოსვლა &nbsp;&nbsp; <i class="fas fa-sign-out-alt"></i> </a>
+						</div>
+
+					</div>
+				</div>';
+
+
+		$con = connect_sql();
+
+		$sql = "SELECT * from registracion";
+		$result = $con-> query($sql);	
+	   	$row = $result-> fetch_assoc();
+	    
+		echo '<div class="col-6 mt-2 mb-5">
+			<div class="card bg-info m-3">
+				<div class="card-header">
+					<p class="text-center">დაბადების თარიღი : &nbsp;&nbsp;'.$row['date_of_birth'].'</p>
+				</div>
+				<div class="card-body">
+					<p class="text-center">სქესი : &nbsp;&nbsp;'.$row['gender'].'</p>
+				</div>
+				<div class="card-footer">
+					<p class="text-center">ელ-ფოსტა : &nbsp;&nbsp;'.$row['email'].'</p>
+				</div>
+			</div>
 		</div>
-		<div class="col-6">
-			<!-- logout --> <!-- mtavari page -->
 
-			<!-- data -->
 
-			<!-- sqes -->
-
-			<!-- email -->
-
-		</div>
 	</div>
-</div>
+</div>';
+}
+else
+    {
+      echo '<div class"col-6">
+      <h1 class="text-center m-5 p-5">GAIARET AVTORIZACIA</h1>
+      </div>';
+    }
+
+?>
 
 <footer>
   <div class="container-fluid bg-dark mt-4 pl-5 pt-4 pb-2">
