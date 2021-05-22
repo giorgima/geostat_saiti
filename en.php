@@ -92,5 +92,12 @@
 			"card_satauri"=>"Pork Sausage News!",
 			"card_texsti"=>"island lies in the northern Leeward Islands portion of the West Indies.",
 
+			//profile --------------
+			"profili" => "Profile",
+			"dabadebis_tarigi" => "date of birth",
+			"sqesi" => "gender",
+			"gaiaret_avtorizacia" => "SING IN",
+			"gamosvla" => "LOG OUT",
+
 	);
  ?>

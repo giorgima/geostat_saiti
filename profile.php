@@ -99,7 +99,7 @@ if(isset($_SESSION['is_logged']) && $_SESSION['is_logged']==true)
 {
 
 echo '<div class="container">
-		<h1 id="satauri" class="text-center">პროფილი</h1>
+		<h1 id="satauri" class="text-center">'.$lang['profili'].'</h1>
 			<div class="row">
 				<div class="col-6 mt-2 mb-5">
 					<div class="card bg-info m-3">
@@ -116,7 +116,7 @@ echo '<div class="container">
 
 			    		<div class="card-footer">
 						<!-- logout -->
-						<a class="btn btn-primary container-fluid" role="button" href="logout.php" title="გამოსვლა"> გამოსვლა &nbsp;&nbsp; <i class="fas fa-sign-out-alt"></i> </a>
+						<a class="btn btn-primary container-fluid" role="button" href="logout.php" title="'.$lang['gamosvla'].'"> '.$lang['gamosvla'].' &nbsp;&nbsp; <i class="fas fa-sign-out-alt"></i> </a>
 						</div>
 
 					</div>
@@ -132,13 +132,13 @@ echo '<div class="container">
 		echo '<div class="col-6 mt-2 mb-5">
 			<div class="card bg-info m-3">
 				<div class="card-header">
-					<p class="text-center">დაბადების თარიღი : &nbsp;&nbsp;'.$row['date_of_birth'].'</p>
+					<p class="text-center">'.$lang['dabadebis_tarigi'].' : &nbsp;&nbsp;'.$row['date_of_birth'].'</p>
 				</div>
 				<div class="card-body">
-					<p class="text-center">სქესი : &nbsp;&nbsp;'.$row['gender'].'</p>
+					<p class="text-center">'.$lang['sqesi'].' : &nbsp;&nbsp;'.$row['gender'].'</p>
 				</div>
 				<div class="card-footer">
-					<p class="text-center">ელ-ფოსტა : &nbsp;&nbsp;'.$row['email'].'</p>
+					<p class="text-center">'.$lang['email'].' : &nbsp;&nbsp;'.$row['email'].'</p>
 				</div>
 			</div>
 		</div>
@@ -149,12 +149,28 @@ echo '<div class="container">
 }
 else
     {
-      echo '<div class"col-6">
-      <h1 class="text-center m-5 p-5">GAIARET AVTORIZACIA</h1>
+      echo '<div class"container-fluid">
+      <h1 class="text-center m-5 p-5">'.$lang['gaiaret_avtorizacia'].'</h1>
       </div>';
     }
 
 ?>
+<!-- parolis shecvla------------------------------ -->
+		<div class="col-6 mt-2 mb-5">
+			<div class="card bg-info m-3">
+				<div class="card-header">
+					<p class="text-center">asdasd</p>
+				</div>
+				<div class="card-body">
+					<p class="text-center">saddasd</p>
+				</div>
+				<div class="card-footer">
+					<p class="text-center">dasda</p>
+				</div>
+			</div>
+		</div>
+
+<!-- parolis shecvla------------------------------ -->
 
 <footer>
   <div class="container-fluid bg-dark mt-4 pl-5 pt-4 pb-2">
