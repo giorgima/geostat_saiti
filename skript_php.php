@@ -55,6 +55,11 @@ function connect_sql(){
 		return $con;
 }
 
+// function change_Password(){
+
+	
+// }
+
 function categori_serch(){
 	$con = connect_sql();
 	$sql = "SELECT * from article";

@@ -101,7 +101,7 @@ if(isset($_SESSION['is_logged']) && $_SESSION['is_logged']==true)
 echo '<div class="container">
 		<h1 id="satauri" class="text-center">'.$lang['profili'].'</h1>
 			<div class="row">
-				<div class="col-6 mt-2 mb-5">
+				<div class="col-6">
 					<div class="card bg-info m-3">
 
 						<div class="card-header">
@@ -120,7 +120,36 @@ echo '<div class="container">
 						</div>
 
 					</div>
-				</div>';
+				</div>
+				
+
+	<div class="col-6">
+		<div class="card bg-info m-3">
+
+			<form action="skript_php.php" method="POST" autocomplete="off" class="needs-validation" novalidate>
+				<div class="card-header p-4">
+					<label for="Password_comparison"> ძველი პაროლი </label>
+  					<input type="password" id="Password_comparison" name="Password_comparison" placeholder="შეიყვანეთ არსებული პაროლი" title="შეიყვანეთ არსებული პაროლი" minlength="8" maxlength="12" style="width:60%;" required>
+
+  					<div class="valid-feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['swori'].'</div>
+                    <div class="invalid-feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['araswori'].'</div>
+
+				</div>
+				<div class="card-body p-4">
+					<label for="new_password"> ახალი პაროლი </label>
+  					<input type="password" id="new_password" name="new_password" placeholder="შეიყვანეთ ახალი პაროლი" title="შეიყვანეთ ახალი პაროლი" minlength="8" maxlength="12" style="width:60%;" required>
+
+  					<div class="valid-feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['swori'].'</div>
+                    <div class="invalid-feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['araswori'].'</div>
+
+				</div>
+				<div class="card-footer">
+					<input class="btn btn-primary btn-block" type="submit" name="change_Password" id="button" value="პაროლის შეცვლა">
+				</div>
+			</form>
+
+		</div>
+	</div>';
 
 
 		$con = connect_sql();
@@ -129,7 +158,7 @@ echo '<div class="container">
 		$result = $con-> query($sql);	
 	   	$row = $result-> fetch_assoc();
 	    
-		echo '<div class="col-6 mt-2 mb-5">
+		echo '<div class="col-6 mb-5">
 			<div class="card bg-info m-3">
 				<div class="card-header">
 					<p class="text-center">'.$lang['dabadebis_tarigi'].' : &nbsp;&nbsp;'.$row['date_of_birth'].'</p>
@@ -155,22 +184,7 @@ else
     }
 
 ?>
-<!-- parolis shecvla------------------------------ -->
-		<div class="col-6 mt-2 mb-5">
-			<div class="card bg-info m-3">
-				<div class="card-header">
-					<p class="text-center">asdasd</p>
-				</div>
-				<div class="card-body">
-					<p class="text-center">saddasd</p>
-				</div>
-				<div class="card-footer">
-					<p class="text-center">dasda</p>
-				</div>
-			</div>
-		</div>
 
-<!-- parolis shecvla------------------------------ -->
 
 <footer>
   <div class="container-fluid bg-dark mt-4 pl-5 pt-4 pb-2">
