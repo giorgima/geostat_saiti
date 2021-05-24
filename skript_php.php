@@ -55,10 +55,6 @@ function connect_sql(){
 		return $con;
 }
 
-// function change_Password(){
-
-	
-// }
 
 function categori_serch(){
 	$con = connect_sql();
@@ -233,7 +229,36 @@ function pagination(){
 
 }
 
+function change_Password($old_Password, $new_password){
 
+	$con = connect_sql();
+
+	$old_Password = md5($old_Password);
+	$new_password = md5($new_password);
+	$_SESSION['id'] = $_POST['id'];
+    $id = $_SESSION['id'];
+
+    $sql = "SELECT * FROM registracion WHERE id='$id' AND pass='$old_Password'";
+
+    $result = mysqli_query($con, $sql);
+    if(mysqli_num_rows($result) === 1){
+    	
+    	$sql_2 = "UPDATE registracion SET pass='$new_password' WHERE id='$id'";
+
+    	mysqli_query($con, $sql_2);
+		echo "პაროლი შეცვლილია";
+		header("refresh:3; url=profile.php");
+		
+	}
+	else{
+	    	echo "shecdoma";
+	    }
+
+	$con->close();
+}
+
+
+    
 // function table($id, $title, $texts)
 // {
 // 	$con = connect_sql();
@@ -288,6 +313,16 @@ function pagination(){
 			$foto_name = $_FILES["foto_name"];
 
 			statia($categoris, $title_ka, $texts_ka, $title_en, $texts_en, $_FILES["foto_name"]);
+	}
+
+
+	if (isset($_POST['old_Password']) && isset($_POST['new_password']))
+	{
+
+			$old_Password = $_POST['old_Password'];
+			$new_password = $_POST['new_password'];
+
+			change_Password($old_Password, $new_password);
 	}
 
 

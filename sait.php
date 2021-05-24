@@ -21,6 +21,7 @@ switch ($lang) {
   default:
     include 'ka.php';
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

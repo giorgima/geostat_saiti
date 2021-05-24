@@ -128,8 +128,8 @@ echo '<div class="container">
 
 			<form action="skript_php.php" method="POST" autocomplete="off" class="needs-validation" novalidate>
 				<div class="card-header p-4">
-					<label for="Password_comparison"> ძველი პაროლი </label>
-  					<input type="password" id="Password_comparison" name="Password_comparison" placeholder="შეიყვანეთ არსებული პაროლი" title="შეიყვანეთ არსებული პაროლი" minlength="8" maxlength="12" style="width:60%;" required>
+					<label for="old_Password"> ძველი პაროლი </label>
+  					<input type="password" id="old_Password" name="old_Password" placeholder="შეიყვანეთ არსებული პაროლი" title="შეიყვანეთ არსებული პაროლი" minlength="3" maxlength="8" style="width:60%;" required>
 
   					<div class="valid-feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['swori'].'</div>
                     <div class="invalid-feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['araswori'].'</div>
@@ -137,14 +137,14 @@ echo '<div class="container">
 				</div>
 				<div class="card-body p-4">
 					<label for="new_password"> ახალი პაროლი </label>
-  					<input type="password" id="new_password" name="new_password" placeholder="შეიყვანეთ ახალი პაროლი" title="შეიყვანეთ ახალი პაროლი" minlength="8" maxlength="12" style="width:60%;" required>
+  					<input type="password" id="new_password" name="new_password" placeholder="შეიყვანეთ ახალი პაროლი" title="შეიყვანეთ ახალი პაროლი" minlength="3" maxlength="8" style="width:60%;" required>
 
   					<div class="valid-feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['swori'].'</div>
                     <div class="invalid-feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['araswori'].'</div>
 
 				</div>
 				<div class="card-footer">
-					<input class="btn btn-primary btn-block" type="submit" name="change_Password" id="button" value="პაროლის შეცვლა">
+					<input class="btn btn-primary btn-block" type="submit" name="changes_Password" id="button" value="პაროლის შეცვლა">
 				</div>
 			</form>
 
