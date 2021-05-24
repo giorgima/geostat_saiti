@@ -26,6 +26,7 @@ switch ($lang) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
   <title>profile</title>
@@ -66,7 +67,7 @@ switch ($lang) {
     <ul id="login" class="nav navbar-nav navbar-right text-right pr-5">
 
 
-<?php
+      <?php
         if(isset($_SESSION['is_logged']) && $_SESSION['is_logged']==true)
         {
 
@@ -94,9 +95,13 @@ switch ($lang) {
     </ul>
   </nav>
 
-<?php
+  <?php
 if(isset($_SESSION['is_logged']) && $_SESSION['is_logged']==true)
 {
+  $var = "";
+  if(isset($_GET['id'])){
+   $var=$_GET['id'];
+  }
 
 echo '<div class="container">
 		<h1 id="satauri" class="text-center">'.$lang['profili'].'</h1>
@@ -106,7 +111,7 @@ echo '<div class="container">
 
 						<div class="card-header">
 						<!-- foto -->
-						<img src="https://static-cse.canva.com/blob/195615/paul-skorupskas-7KLa-xLbSXA-unsplash-2.jpg" class="rounded-circle" alt="Cinque Terre" width="60%" height="60%" style="margin-left: 100px;">   
+						<img src="https://static-cse.canva.com/blob/195615/paul-skorupskas-7KLa-xLbSXA-unsplash-2.jpg" class="rounded-circle" alt="Cinque Terre" width="60%" height="60%" style="margin-left: 100px;">
 			    		</div>
 
 			    		<div class="card-body">
@@ -121,12 +126,12 @@ echo '<div class="container">
 
 					</div>
 				</div>
-				
+
 
 	<div class="col-6">
 		<div class="card bg-info m-3">
 
-			<form action="skript_php.php" method="POST" autocomplete="off" class="needs-validation" novalidate>
+			<form action="skript_php.php" method="POST" class="needs-validation" novalidate>
 				<div class="card-header p-4">
 					<label for="old_Password"> ძველი პაროლი </label>
   					<input type="password" id="old_Password" name="old_Password" placeholder="შეიყვანეთ არსებული პაროლი" title="შეიყვანეთ არსებული პაროლი" minlength="3" maxlength="8" style="width:60%;" required>
@@ -146,8 +151,8 @@ echo '<div class="container">
 				<div class="card-footer">
 					<input class="btn btn-primary btn-block" type="submit" name="changes_Password" id="button" value="პაროლის შეცვლა">
 				</div>
+        <input type="hidden" name="myVariable" value='.$var.'>
 			</form>
-
 		</div>
 	</div>';
 
@@ -155,9 +160,9 @@ echo '<div class="container">
 		$con = connect_sql();
 
 		$sql = "SELECT * from registracion";
-		$result = $con-> query($sql);	
+		$result = $con-> query($sql);
 	   	$row = $result-> fetch_assoc();
-	    
+
 		echo '<div class="col-6 mb-5">
 			<div class="card bg-info m-3">
 				<div class="card-header">
@@ -186,9 +191,9 @@ else
 ?>
 
 
-<footer>
-  <div class="container-fluid bg-dark mt-4 pl-5 pt-4 pb-2">
-    <div class="row">
+  <footer>
+    <div class="container-fluid bg-dark mt-4 pl-5 pt-4 pb-2">
+      <div class="row">
         <div class="footer-col col-4">
           <h4><?php echo $lang['compania']; ?></h4>
           <ul>
@@ -216,13 +221,14 @@ else
           </div>
         </div>
       </div>
-  </div>
-</footer>
+    </div>
+  </footer>
 
-    <script src="JS\skript_Js.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="JS\skript_Js.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
+
 </html>

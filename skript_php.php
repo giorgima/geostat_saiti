@@ -1,5 +1,8 @@
 <?php
 session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 //-----------------------------------------phpmailer code
 // use PHPMailer\PHPMailer\PHPMailer;
 // use PHPMailer\PHPMailer\SMTP;
@@ -45,7 +48,7 @@ session_start();
 
 function connect_sql(){
 
-	$con = new mysqli('localhost','root','','test1');
+	$con = new mysqli('localhost','root','123456','test1');
 	$con->set_charset("utf8");
 
 	if ($con->connect_error)
@@ -126,6 +129,7 @@ function avtorizacia($username, $password)
 			{
 				$_SESSION['is_logged']=true;
 				$_SESSION['name']=$data["username"];
+					$_SESSION['id']=$data["id"];
 
 				echo "ავტორიზაცია წარმატებული <br>";
 				damaxsovreba_cookie($username,$password);
@@ -229,36 +233,31 @@ function pagination(){
 
 }
 
-function change_Password($old_Password, $new_password){
-
-	$con = connect_sql();
+function change_Password($old_Password, $new_password, $id){
 
 	$old_Password = md5($old_Password);
 	$new_password = md5($new_password);
-	$_SESSION['id'] = $_POST['id'];
-    $id = $_SESSION['id'];
+$con =  mysqli_connect('127.0.0.1:3306','root','123456','test1') or die('Unable To connect');
 
-    $sql = "SELECT * FROM registracion WHERE id='$id' AND pass='$old_Password'";
+$result = mysqli_query($con,"SELECT * from registracion WHERE id='" . $id . "'");
+$row=mysqli_fetch_array($result);
 
-    $result = mysqli_query($con, $sql);
-    if(mysqli_num_rows($result) === 1){
-    	
-    	$sql_2 = "UPDATE registracion SET pass='$new_password' WHERE id='$id'";
+if($old_Password == $row["pass"] ) {
 
-    	mysqli_query($con, $sql_2);
-		echo "პაროლი შეცვლილია";
+	echo "fsdfsd";
+mysqli_query($con,"UPDATE registracion set pass='" . $new_password. "' WHERE id='" . $id . "'");
+	echo "პაროლი შეცვლილია";
 		header("refresh:3; url=profile.php");
-		
-	}
-	else{
-	    	echo "shecdoma";
-	    }
+} else{
+ 	echo "shecdoma";
+}
+
 
 	$con->close();
 }
 
 
-    
+
 // function table($id, $title, $texts)
 // {
 // 	$con = connect_sql();
@@ -316,13 +315,14 @@ function change_Password($old_Password, $new_password){
 	}
 
 
-	if (isset($_POST['old_Password']) && isset($_POST['new_password']))
+	if (isset($_POST['old_Password']) && isset($_POST['new_password']) && isset($_POST['myVariable']))
 	{
 
 			$old_Password = $_POST['old_Password'];
 			$new_password = $_POST['new_password'];
+			$id = $_POST['myVariable'];
 
-			change_Password($old_Password, $new_password);
+	    change_Password($old_Password, $new_password,$id);
 	}
 
 
