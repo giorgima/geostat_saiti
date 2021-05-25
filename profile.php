@@ -26,6 +26,7 @@ switch ($lang) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
   <title>profile</title>
@@ -41,6 +42,69 @@ switch ($lang) {
   <link rel="stylesheet" href="CSS\profile.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<style>
+/* Style all input fields */
+/*input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
+*/
+/* Style the submit button */
+input[type=submit] {
+  background-color: #0080ff;
+  color: white;
+}
+
+/* Style the container for inputs */
+/*.container {
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+*/
+/* The message box is shown when the user clicks on the password field */
+#message {
+  display:none;
+  background: #f1f1f1;
+  color: #000;
+  position: relative;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+#message p {
+  padding: 10px 35px;
+  font-size: 16px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "✔";
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: "✖";
+}
+</style>
+
 </head>
 
 <body>
@@ -66,7 +130,7 @@ switch ($lang) {
     <ul id="login" class="nav navbar-nav navbar-right text-right pr-5">
 
 
-<?php
+      <?php
         if(isset($_SESSION['is_logged']) && $_SESSION['is_logged']==true)
         {
 
@@ -94,9 +158,13 @@ switch ($lang) {
     </ul>
   </nav>
 
-<?php
+  <?php
 if(isset($_SESSION['is_logged']) && $_SESSION['is_logged']==true)
 {
+  $var = "";
+  if(isset($_GET['id'])){
+   $var=$_GET['id'];
+  }
 
 echo '<div class="container">
 		<h1 id="satauri" class="text-center">'.$lang['profili'].'</h1>
@@ -106,7 +174,7 @@ echo '<div class="container">
 
 						<div class="card-header">
 						<!-- foto -->
-						<img src="https://static-cse.canva.com/blob/195615/paul-skorupskas-7KLa-xLbSXA-unsplash-2.jpg" class="rounded-circle" alt="Cinque Terre" width="60%" height="60%" style="margin-left: 100px;">   
+						<img src="https://static-cse.canva.com/blob/195615/paul-skorupskas-7KLa-xLbSXA-unsplash-2.jpg" class="rounded-circle" alt="Cinque Terre" width="60%" height="60%" style="margin-left: 100px;">
 			    		</div>
 
 			    		<div class="card-body">
@@ -121,33 +189,53 @@ echo '<div class="container">
 
 					</div>
 				</div>
-				
+
 
 	<div class="col-6">
 		<div class="card bg-info m-3">
 
-			<form action="skript_php.php" method="POST" autocomplete="off" class="needs-validation" novalidate>
+			<form action="skript_php.php" method="POST" class="needs-validation" novalidate>
 				<div class="card-header p-4">
-					<label for="old_Password"> ძველი პაროლი </label>
-  					<input type="password" id="old_Password" name="old_Password" placeholder="შეიყვანეთ არსებული პაროლი" title="შეიყვანეთ არსებული პაროლი" minlength="3" maxlength="8" style="width:60%;" required>
+
+					<label for="old_Password">
+            <div class="input-group-prepend ml-5">
+              <span class="input-group-text"><i class="fa fa-key" aria-hidden="true"></i></span>
+            </div>
+          </label>
+
+  					<input type="password" id="old_Password" name="old_Password" placeholder="'.$lang['sheiyvane_arsebuli_paroli'].'" title="'.$lang['sheiyvane_arsebuli_paroli'].'" minlength="3" maxlength="20" style="width:60%;" required>
 
   					<div class="valid-feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['swori'].'</div>
                     <div class="invalid-feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['araswori'].'</div>
 
 				</div>
 				<div class="card-body p-4">
-					<label for="new_password"> ახალი პაროლი </label>
-  					<input type="password" id="new_password" name="new_password" placeholder="შეიყვანეთ ახალი პაროლი" title="შეიყვანეთ ახალი პაროლი" minlength="3" maxlength="8" style="width:60%;" required>
+
+					<label for="new_password"> 
+            <div class="input-group-prepend ml-5">
+              <span class="input-group-text"><i class="fa fa-key" aria-hidden="true"></i></span>
+            </div>
+          </label>
+
+  					<input type="password" id="psw" name="new_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="'.$lang['sheiyvane_axli_paroli'].'" title="'.$lang['sheiyvane_axli_paroli'].'" minlength="8" maxlength="20" style="width:60%;" required>
 
   					<div class="valid-feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['swori'].'</div>
                     <div class="invalid-feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['araswori'].'</div>
 
 				</div>
-				<div class="card-footer">
-					<input class="btn btn-primary btn-block" type="submit" name="changes_Password" id="button" value="პაროლის შეცვლა">
-				</div>
-			</form>
 
+              <div id="message">
+                <p id="letter" class="invalid">'.$lang['mcire_aso'].'</p>
+                <p id="capital" class="invalid">'.$lang['didi_aso'].'</p>
+                <p id="number" class="invalid">'.$lang['ricxvi'].'</p>
+                <p id="length" class="invalid">'.$lang['minimum_simbolo'].'</p>
+              </div>
+
+				<div class="card-footer">
+					<input class="btn btn-primary btn-block" type="submit" name="changes_Password" id="button" value="'.$lang['parolis_shecvla'].'">
+				</div>
+        <input type="hidden" name="myVariable" value='.$var.'>
+			</form>
 		</div>
 	</div>';
 
@@ -155,9 +243,9 @@ echo '<div class="container">
 		$con = connect_sql();
 
 		$sql = "SELECT * from registracion";
-		$result = $con-> query($sql);	
+		$result = $con-> query($sql);
 	   	$row = $result-> fetch_assoc();
-	    
+
 		echo '<div class="col-6 mb-5">
 			<div class="card bg-info m-3">
 				<div class="card-header">
@@ -186,9 +274,9 @@ else
 ?>
 
 
-<footer>
-  <div class="container-fluid bg-dark mt-4 pl-5 pt-4 pb-2">
-    <div class="row">
+  <footer>
+    <div class="container-fluid bg-dark mt-4 pl-5 pt-4 pb-2">
+      <div class="row">
         <div class="footer-col col-4">
           <h4><?php echo $lang['compania']; ?></h4>
           <ul>
@@ -216,13 +304,14 @@ else
           </div>
         </div>
       </div>
-  </div>
-</footer>
+    </div>
+  </footer>
 
-    <script src="JS\skript_Js.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="JS\skript_Js.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
+
 </html>

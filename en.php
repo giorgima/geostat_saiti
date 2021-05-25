@@ -99,5 +99,15 @@
 			"gaiaret_avtorizacia" => "SING IN",
 			"gamosvla" => "LOG OUT",
 
+			"sheiyvane_arsebuli_paroli" => "Enter the existing password",
+			"sheiyvane_axli_paroli" => "Enter a new password",
+			"parolis_shecvla" => "change Password",
+
+
+			"mcire_aso" => "A lowercase letter",
+			"didi_aso" => "A capital letter",
+			"ricxvi" => "A number",
+			"minimum_simbolo" => "Minimum 8 character",
+
 	);
  ?>
