@@ -45,16 +45,13 @@ switch ($lang) {
 
 <style>
 /* Style all input fields */
-/*input {
-  width: 100%;
-  padding: 12px;
+input {
+  width: 90%;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
-  margin-top: 6px;
-  margin-bottom: 16px;
 }
-*/
+
 /* Style the submit button */
 input[type=submit] {
   background-color: #0080ff;
@@ -198,12 +195,12 @@ echo '<div class="container">
 				<div class="card-header p-4">
 
 					<label for="old_Password">
-            <div class="input-group-prepend ml-5">
+            <div class="input-group-prepend">
               <span class="input-group-text"><i class="fa fa-key" aria-hidden="true"></i></span>
             </div>
           </label>
 
-  					<input type="password" id="old_Password" name="old_Password" placeholder="'.$lang['sheiyvane_arsebuli_paroli'].'" title="'.$lang['sheiyvane_arsebuli_paroli'].'" minlength="3" maxlength="20" style="width:60%;" required>
+  					<input type="password" id="old_Password" name="old_Password" placeholder="'.$lang['sheiyvane_arsebuli_paroli'].'" title="'.$lang['sheiyvane_arsebuli_paroli'].'" minlength="3" maxlength="20" required>
 
   					<div class="valid-feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['swori'].'</div>
                     <div class="invalid-feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['araswori'].'</div>
@@ -212,15 +209,15 @@ echo '<div class="container">
 				<div class="card-body p-4">
 
 					<label for="new_password"> 
-            <div class="input-group-prepend ml-5">
+            <div class="input-group-prepend">
               <span class="input-group-text"><i class="fa fa-key" aria-hidden="true"></i></span>
             </div>
           </label>
 
-  					<input type="password" id="psw" name="new_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="'.$lang['sheiyvane_axli_paroli'].'" title="'.$lang['sheiyvane_axli_paroli'].'" minlength="8" maxlength="20" style="width:60%;" required>
+  					<input type="password" id="psw" name="new_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="'.$lang['sheiyvane_axli_paroli'].'" title="'.$lang['sheiyvane_axli_paroli'].'" minlength="8" maxlength="20" required>
 
   					<div class="valid-feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['swori'].'</div>
-                    <div class="invalid-feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['araswori'].'</div>
+            <div class="invalid-feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['araswori'].'</div>
 
 				</div>
 
