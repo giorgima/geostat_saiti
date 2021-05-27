@@ -237,6 +237,7 @@ function change_Password($old_Password, $new_password, $id){
 
 	$old_Password = md5($old_Password);
 	$new_password = md5($new_password);
+<<<<<<< HEAD
 $con =  mysqli_connect('127.0.0.1:3306','root','123456','test1') or die('Unable To connect');
 
 $result = mysqli_query($con,"SELECT * from registracion WHERE id='" . $id . "'");
@@ -252,12 +253,33 @@ mysqli_query($con,"UPDATE registracion set pass='" . $new_password. "' WHERE id=
  	echo "shecdoma";
 }
 
+=======
+	$con =  mysqli_connect('127.0.0.1:3306','root','','test1') or die('Unable To connect');
 
-	$con->close();
-}
+	$result = mysqli_query($con,"SELECT * from registracion WHERE id='" . $id . "'");
+	$row=mysqli_fetch_array($result);
+
+	if($old_Password == $row["pass"] ) {
+
+		echo "fsdfsd";
+	mysqli_query($con,"UPDATE registracion set pass='" . $new_password. "' WHERE id='" . $id . "'");
+		echo "პაროლი შეცვლილია";
+			header("refresh:3; url=profile.php");
+	} else{
+	 	echo "shecdoma";
+	}
+
+
+		$con->close();
+	}
+>>>>>>> 51b63fcde6f55a5ae54758e155e0bb328a4be3b8
 
 
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 51b63fcde6f55a5ae54758e155e0bb328a4be3b8
 // function table($id, $title, $texts)
 // {
 // 	$con = connect_sql();

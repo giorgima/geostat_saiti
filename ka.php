@@ -99,5 +99,14 @@
 			"gaiaret_avtorizacia" => "გაიარეთ ავტორიზაცია",
 			"gamosvla" => "გამოსვლა",
 
+			"sheiyvane_arsebuli_paroli" => "შეიყვანეთ არსებული პაროლი",
+			"sheiyvane_axli_paroli" => "შეიყვანეთ ახალი პაროლი",
+			"parolis_shecvla" => "პაროლის შეცვლა",
+
+			"mcire_aso" => "მცირე ასო",
+			"didi_aso" => "დიდი ასო",
+			"ricxvi" => "Რიცხვი",
+			"minimum_simbolo" => "მინიმუმ 8 სიმბოლო",
+
 	);
  ?>
