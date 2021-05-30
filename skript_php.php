@@ -64,7 +64,7 @@ function categori_serch(){
 	$sql = "SELECT * from article";
 
 	$result = $con-> query($sql);
-	if ($result-> num_rows > 0)
+	if ($result->num_rows > 0)
 	{
 	    while ($row = $result-> fetch_assoc())
 	    {
@@ -215,7 +215,7 @@ function pagination(){
 
 	$sql1 = "SELECT * from article";
   	$resul1 = $con-> query($sql1);
-  	$rows1 = $resul1-> num_rows;
+  	$rows1 = $resul1->num_rows;
 
 	$number_of_page = ceil($rows1/$results_per_page);
 
@@ -262,10 +262,15 @@ function change_Password($old_Password, $new_password, $id){
 function messages_input($nam, $vis, $msg_texts){
 	$con = connect_sql();
 
-		// $stmt1 = $con->prepare('select * from registracion where `username` = $vis');
+		// $stmt1 = $con->prepare("select * from registracion where `username` = ?");
 		// $stmt1->bind_param("s", $username);
 		// $stmt1->execute();
-		// if($stmt1->get_result()){
+		// $res = $stmt1->get_result()
+
+		// $sql1 = "SELECT * from registracion where `username` = $vis";
+		// $result1 = $con->query($sql1);
+
+	// if($result1->num_rows > 0){
 
 		$sql = "INSERT INTO letters(gamgzavneli, mimgebi, message_text) VALUES(?, ?, ?)";
 		$stmt = $con->prepare($sql);
@@ -289,7 +294,7 @@ function messages_output(){
 	$sql = "SELECT * from letters";
 
 	$result = $con-> query($sql);
-	if ($result-> num_rows > 0)
+	if ($result->num_rows > 0)
 	{
 	    while ($row = $result-> fetch_assoc())
 	    {
@@ -319,7 +324,7 @@ function messages_output(){
 //     $sql = "SELECT * from article";
 
 //     $result = $con-> query($sql);
-//     if ($result-> num_rows > 0)
+//     if ($result->num_rows > 0)
 //     {
 //         while ($row = $result-> fetch_assoc())
 //         {
