@@ -98,6 +98,7 @@
 			"sqesi" => "სქესის",
 			"gaiaret_avtorizacia" => "გაიარეთ ავტორიზაცია",
 			"gamosvla" => "გამოსვლა",
+			"mesijebis_naxva" => "მესიჯების ნახვა",
 
 			"sheiyvane_arsebuli_paroli" => "შეიყვანეთ არსებული პაროლი",
 			"sheiyvane_axli_paroli" => "შეიყვანეთ ახალი პაროლი",
@@ -107,6 +108,16 @@
 			"didi_aso" => "დიდი ასო",
 			"ricxvi" => "Რიცხვი",
 			"minimum_simbolo" => "მინიმუმ 8 სიმბოლო",
+
+			"vis" => "ვის",
+			"vis_title" => "ჩაწერეთ მომხმარებლის სახელი ვისთანაც გსურთ გაგზავნა",
+			"texti" => "ტექსტი",
+			"texti_title" => "შეიტანეთ ტექსტი",
+			"gagzavna" => "გაგზავნა",
+
+			//messages_page---------------------
+			"mesijebis_gverdi" => "შეტყობინებების გვერდი",
+
 
 	);
  ?>

@@ -98,16 +98,25 @@
 			"sqesi" => "gender",
 			"gaiaret_avtorizacia" => "SING IN",
 			"gamosvla" => "LOG OUT",
+			"mesijebis_naxva" => "View messages",
 
 			"sheiyvane_arsebuli_paroli" => "Enter the existing password",
 			"sheiyvane_axli_paroli" => "Enter a new password",
 			"parolis_shecvla" => "change Password",
 
-
 			"mcire_aso" => "A lowercase letter",
 			"didi_aso" => "A capital letter",
 			"ricxvi" => "A number",
 			"minimum_simbolo" => "Minimum 8 character",
+
+			"vis" => "Who",
+			"vis_title" => "Enter the username to whom you want to send the message",
+			"texti" => "Text",
+			"texti_title" => "Enter the text",
+			"gagzavna" => "send",
+
+			//messages_page---------------------
+			"mesijebis_gverdi" => "messages page",
 
 	);
  ?>

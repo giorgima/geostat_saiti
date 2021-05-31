@@ -64,7 +64,7 @@ function categori_serch(){
 	$sql = "SELECT * from article";
 
 	$result = $con-> query($sql);
-	if ($result-> num_rows > 0)
+	if ($result->num_rows > 0)
 	{
 	    while ($row = $result-> fetch_assoc())
 	    {
@@ -76,7 +76,6 @@ function categori_serch(){
 	}
 
 		$con->close();
-
 }
 
 function registracion($username, $date_of_birth, $gender, $email, $password)
@@ -151,11 +150,13 @@ function avtorizacia($username, $password)
 			else
 			{
 				echo "ავტორიზაცია შეცდომა";
+				header("refresh:3; url=avtorizacia.php");
 			}
 		}
 		else
 		{
 			echo "შეცდომა";
+			header("refresh:1; url=avtorizacia.php");
 		}
 
 }
@@ -191,10 +192,11 @@ function statia($categoris, $title_ka, $texts_ka, $title_en, $texts_en, $foto_na
 		$stmt->execute();
 
 		if (move_uploaded_file($foto_name['tmp_name'], $target_dir.$image)) {
-  		echo $msg = "სტატია დამატებულია";
+  		echo "სტატია დამატებულია";
   	}
   	else{
-			echo $msg = "სტატია არაა დამატებული";
+			echo "სტატია არაა დამატებული";
+			header("refresh:1; url=sait.php");
   	}
 
 		header("refresh:1; url=sait.php");
@@ -213,7 +215,7 @@ function pagination(){
 
 	$sql1 = "SELECT * from article";
   	$resul1 = $con-> query($sql1);
-  	$rows1 = $resul1-> num_rows;
+  	$rows1 = $resul1->num_rows;
 
 	$number_of_page = ceil($rows1/$results_per_page);
 
@@ -259,22 +261,79 @@ mysqli_query($con,"UPDATE registracion set pass='" . $new_password. "' WHERE id=
 	$result = mysqli_query($con,"SELECT * from registracion WHERE id='" . $id . "'");
 	$row=mysqli_fetch_array($result);
 
-	if($old_Password == $row["pass"] ) {
+	if($old_Password == $row["pass"]){
 
-		echo "fsdfsd";
 	mysqli_query($con,"UPDATE registracion set pass='" . $new_password. "' WHERE id='" . $id . "'");
-		echo "პაროლი შეცვლილია";
-			header("refresh:3; url=profile.php");
-	} else{
+	echo "პაროლი შეცვლილია";
+	header("refresh:3; url=profile.php");
+
+	}else{
+
 	 	echo "shecdoma";
+	 	header("refresh:3; url=profile.php");
+	}
+		$con->close();
 	}
 
 
-		$con->close();
+function messages_input($nam, $vis, $msg_texts){
+	$con = connect_sql();
+
+		// $stmt1 = $con->prepare("select * from registracion where `username` = ?");
+		// $stmt1->bind_param("s", $username);
+		// $stmt1->execute();
+		// $res = $stmt1->get_result()
+
+		// $sql1 = "SELECT * from registracion where `username` = $vis";
+		// $result1 = $con->query($sql1);
+
+	// if($result1->num_rows > 0){
+
+		$sql = "INSERT INTO letters(gamgzavneli, mimgebi, message_text) VALUES(?, ?, ?)";
+		$stmt = $con->prepare($sql);
+		$stmt->bind_param("sss", $nam, $vis, $msg_texts);
+		$stmt->execute();
+
+  		echo "მესიჯი გაგზავნილია";
+		header("refresh:1; url=profile.php");
+
+	// }else{
+	// 	echo "მესიჯი არაა გაგზავნილია momxmarebeli ar arsebobs";
+	// 	header("refresh:3; url=profile.php");
+	// }
+
+	$con->close();
+}
+
+
+function messages_output(){
+	$con = connect_sql();
+	$sql = "SELECT * from letters";
+
+	$result = $con-> query($sql);
+	if ($result->num_rows > 0)
+	{
+	    while ($row = $result-> fetch_assoc())
+	    {
+	        echo '<div class="container mt-3">
+					  <div class="media border p-3">
+					    <div class="media-body">
+					      <h4>'.$row['gamgzavneli'].'<small> Posted on February 19, 2016</small></h4>
+					      <p>'.$row['message_text'].'</p>       
+					    </div>
+					  </div>
+					</div>';
+	    }
+	}
+	else{
+		echo "<div class='alert alert-danger'> <h1><strong> none </strong></h1></div>";
 	}
 >>>>>>> 51b63fcde6f55a5ae54758e155e0bb328a4be3b8
 
 
+	$con->close();
+		        
+}
 
 <<<<<<< HEAD
 
@@ -287,7 +346,7 @@ mysqli_query($con,"UPDATE registracion set pass='" . $new_password. "' WHERE id=
 //     $sql = "SELECT * from article";
 
 //     $result = $con-> query($sql);
-//     if ($result-> num_rows > 0)
+//     if ($result->num_rows > 0)
 //     {
 //         while ($row = $result-> fetch_assoc())
 //         {
@@ -345,6 +404,16 @@ mysqli_query($con,"UPDATE registracion set pass='" . $new_password. "' WHERE id=
 			$id = $_POST['myVariable'];
 
 	    change_Password($old_Password, $new_password,$id);
+	}
+
+
+	if (isset($_POST['vis']) && isset($_POST['msg_texts']))
+	{		
+			$nam = $_POST['nam'];
+			$vis = $_POST['vis'];
+			$msg_texts = $_POST['msg_texts'];
+
+	    messages_input($nam, $vis, $msg_texts);
 	}
 
 

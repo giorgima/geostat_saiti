@@ -44,6 +44,10 @@ switch ($lang) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 <style>
+.siz{
+    width: 49%;
+}
+
 /* Style all input fields */
 input {
   width: 90%;
@@ -65,7 +69,7 @@ input[type=submit] {
 }
 */
 /* The message box is shown when the user clicks on the password field */
-#message {
+#pas_restriction {
   display:none;
   background: #f1f1f1;
   color: #000;
@@ -74,7 +78,7 @@ input[type=submit] {
   margin-top: 10px;
 }
 
-#message p {
+#pas_restriction p {
   padding: 10px 35px;
   font-size: 16px;
 }
@@ -155,12 +159,12 @@ input[type=submit] {
     </ul>
   </nav>
 
-  <?php
+<?php
 if(isset($_SESSION['is_logged']) && $_SESSION['is_logged']==true)
 {
   $var = "";
   if(isset($_GET['id'])){
-   $var=$_GET['id'];
+   $var = $_GET['id'];
   }
 
 echo '<div class="container">
@@ -179,72 +183,61 @@ echo '<div class="container">
 						<h1 class="text-center">'.$_SESSION['name'].'</h1>
 						</div>
 
-			    		<div class="card-footer">
+			    	<div class="card-footer">
 						<!-- logout -->
-						<a class="btn btn-primary container-fluid" role="button" href="logout.php" title="'.$lang['gamosvla'].'"> '.$lang['gamosvla'].' &nbsp;&nbsp; <i class="fas fa-sign-out-alt"></i> </a>
+						<a class="btn btn-primary siz" role="button" href="logout.php" title="'.$lang['gamosvla'].'"> '.$lang['gamosvla'].' &nbsp;&nbsp; <i class="fas fa-sign-out-alt"></i> </a>
+
+            <a class="btn btn-primary siz" role="button" href="messages_page.php?lang='.$_SESSION['lang'].'">'.$lang['mesijebis_naxva'].'</a>
 						</div>
 
 					</div>
 				</div>
 
 
-	<div class="col-6">
-		<div class="card bg-info m-3">
+<div class="col-6">
+	<div class="card bg-info m-3">
 
-			<form action="skript_php.php" method="POST" class="needs-validation" novalidate>
-				<div class="card-header p-4">
+		<form action="skript_php.php" method="POST" class="needs-validation" novalidate>
+			<div class="card-header">
+	     <div class="form-group">
+          <label for="vis"></label>
 
-					<label for="old_Password">
-            <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fa fa-key" aria-hidden="true"></i></span>
-            </div>
-          </label>
+        <input class="form-control" type="text" placeholder="'.$lang['vis'].'" id="vis" name="vis" title="'.$lang['vis_title'].'" required>
 
-  					<input type="password" id="old_Password" name="old_Password" placeholder="'.$lang['sheiyvane_arsebuli_paroli'].'" title="'.$lang['sheiyvane_arsebuli_paroli'].'" minlength="3" maxlength="20" required>
+					<div class="valid-feedback">'.$lang['swori'].'</div>
+          <div class="invalid-feedback">'.$lang['araswori'].'</div>
+        </div>
+			</div>
 
-  					<div class="valid-feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['swori'].'</div>
-                    <div class="invalid-feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['araswori'].'</div>
+			<div class="card-body">
+				 <div class="form-group m-1">
+          <label for="comment"></label>
+            <textarea class="form-control" rows="5" id="comment" name="msg_texts" placeholder="'.$lang['texti'].'" title="'.$lang['texti_title'].'" required></textarea>
 
-				</div>
-				<div class="card-body p-4">
+            <div class="valid-feedback">'.$lang['swori'].'</div>
+          <div class="invalid-feedback">'.$lang['araswori'].'</div>
+        </div>
+			</div>
 
-					<label for="new_password"> 
-            <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fa fa-key" aria-hidden="true"></i></span>
-            </div>
-          </label>
+			<div class="card-footer">
+				<input class="btn btn-primary btn-block" type="submit" name="send_letter" id="button" value="'.$lang['gagzavna'].'">
+			</div>
 
-  					<input type="password" id="psw" name="new_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="'.$lang['sheiyvane_axli_paroli'].'" title="'.$lang['sheiyvane_axli_paroli'].'" minlength="8" maxlength="20" required>
+      <input type="hidden" name="nam" value="'.$_SESSION['name'].'">
 
-  					<div class="valid-feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['swori'].'</div>
-            <div class="invalid-feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['araswori'].'</div>
-
-				</div>
-
-              <div id="message">
-                <p id="letter" class="invalid">'.$lang['mcire_aso'].'</p>
-                <p id="capital" class="invalid">'.$lang['didi_aso'].'</p>
-                <p id="number" class="invalid">'.$lang['ricxvi'].'</p>
-                <p id="length" class="invalid">'.$lang['minimum_simbolo'].'</p>
-              </div>
-
-				<div class="card-footer">
-					<input class="btn btn-primary btn-block" type="submit" name="changes_Password" id="button" value="'.$lang['parolis_shecvla'].'">
-				</div>
-        <input type="hidden" name="myVariable" value='.$var.'>
-			</form>
-		</div>
-	</div>';
+		</form>
+	</div>
+</div>';
 
 
 		$con = connect_sql();
 
 		$sql = "SELECT * from registracion";
 		$result = $con-> query($sql);
-	   	$row = $result-> fetch_assoc();
+	  $row = $result-> fetch_assoc();
 
 		echo '<div class="col-6 mb-5">
-			<div class="card bg-info m-3">
+			<div class="card bg-info m-3 p-2">
 				<div class="card-header">
 					<p class="text-center">'.$lang['dabadebis_tarigi'].' : &nbsp;&nbsp;'.$row['date_of_birth'].'</p>
 				</div>
@@ -258,12 +251,61 @@ echo '<div class="container">
 		</div>
 
 
+      <div class="col-6">
+        <div class="card bg-info m-3">
+
+          <form action="skript_php.php" method="POST" class="needs-validation" novalidate>
+            <div class="card-header p-4">
+
+              <label for="old_Password">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-key" aria-hidden="true"></i></span>
+                </div>
+              </label>
+
+                <input type="password" id="old_Password" name="old_Password" placeholder="'.$lang['sheiyvane_arsebuli_paroli'].'" title="'.$lang['sheiyvane_arsebuli_paroli'].'" minlength="3" maxlength="20" required>
+
+                <div class="valid-feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['swori'].'</div>
+                <div class="invalid-feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['araswori'].'</div>
+
+            </div>
+            <div class="card-body">
+
+              <label for="new_password"> 
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-key" aria-hidden="true"></i></span>
+                </div>
+              </label>
+
+                <input type="password" id="psw" name="new_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="'.$lang['sheiyvane_axli_paroli'].'" title="'.$lang['sheiyvane_axli_paroli'].'" minlength="8" maxlength="20" required>
+
+                <div class="valid-feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['swori'].'</div>
+                <div class="invalid-feedback">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$lang['araswori'].'</div>
+
+            </div>
+
+                  <div id="pas_restriction">
+                    <p id="letter" class="invalid">'.$lang['mcire_aso'].'</p>
+                    <p id="capital" class="invalid">'.$lang['didi_aso'].'</p>
+                    <p id="number" class="invalid">'.$lang['ricxvi'].'</p>
+                    <p id="length" class="invalid">'.$lang['minimum_simbolo'].'</p>
+                  </div>
+
+            <div class="card-footer">
+              <input class="btn btn-primary btn-block" type="submit" name="changes_Password" id="button" value="'.$lang['parolis_shecvla'].'">
+            </div>
+            <input type="hidden" name="myVariable" value='.$var.'>
+          </form>
+        </div>
+      </div>
+
+
 	</div>
 </div>';
 }
 else
     {
-      echo '<div class"container-fluid">
+      echo '<div class="container-fluid">
       <h1 class="text-center m-5 p-5">'.$lang['gaiaret_avtorizacia'].'</h1>
       </div>';
     }
