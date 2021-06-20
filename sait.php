@@ -40,25 +40,7 @@ switch ($lang) {
   }
   </style>
 <style>
-body {
-  font-family: Arial;
-}
 
-* {
-  box-sizing: border-box;
-}
-
-.openBtn {
-  background: #f1f1f1;
-  border: none;
-  padding: 10px 15px;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.openBtn:hover {
-  background: #bbb;
-}
 
 .overlay {
   height: 100%;
