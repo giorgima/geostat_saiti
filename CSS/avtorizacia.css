@@ -8,22 +8,16 @@ body {
 
 }
 
-#borders {
+/*#borders {
     border-radius: 45px;
     border: 5px solid #e6e6e6;
-}
+}*/
 
 #satauri {
+    margin: 10% 30% 3% 30%;
     text-shadow: 1px 1px #FF0000;
     font-size: 35px;
 }
-
-
-/* #username,
-#passwd,
-#button {
-    border-radius: 30px;
-} */
 
 .checkbox {
     margin-left: 10px;
@@ -34,8 +28,11 @@ body {
 }
 
 .showpwd {
-    position: relative;
+    position: fixed !important;
+    margin: -43px 22%;
+/*    position: relative;
     left: 22em;
     bottom: 3em;
-    cursor: pointer;
+    cursor: pointer;*/
+
 }
