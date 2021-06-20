@@ -20,10 +20,12 @@ switch ($lang) {
   default:
     include 'ka.php';
 }
-
+if(isset($_GET['name'])){
 $cate = $_GET['name'];
- $_SESSION['name'] = $cate;
-
+$_SESSION['catename'] = $cate;
+}else{
+  echo "";
+}
 ?>
 
 <!DOCTYPE html>
@@ -70,10 +72,10 @@ $cate = $_GET['name'];
         </li>
 
         <li>
-          <a href='category.php?name= <?php echo $_SESSION['name']; ?> &lang=ka'> <img src='FOTO/ka.png' width='20px'> </a>
+          <a href='category.php?name= <?php echo $_SESSION['catename']; ?> &lang=ka'> <img src='FOTO/ka.png' width='20px'> </a>
         </li>
         <li>
-          <a href='category.php?name= <?php echo $_SESSION['name']; ?> &lang=en'> <img src='FOTO/en.png' width='30px'> </a>
+          <a href='category.php?name= <?php echo $_SESSION['catename']; ?> &lang=en'> <img src='FOTO/en.png' width='30px'> </a>
         </li>
 
       </ul>
@@ -88,6 +90,7 @@ $cate = $_GET['name'];
 <?php
 
 $con10 = connect_sql();
+if(isset($cate)){
 
 switch ($cate) {
   case "axali_ambebi":
@@ -109,27 +112,31 @@ switch ($cate) {
 	$sql10 = "SELECT * from article";
 }
 
-$result10 = $con10-> query($sql10);
-if ($result10-> num_rows > 0)
-{
-    while ($row10 = $result10-> fetch_assoc())
-    {
-        echo '<div class="container-fluid"><br>
-    			<div class="card alert alert-info">
-			  		<h5 class="card-header ">'.$row10['categoris'].'</h5>
-		  			<div class="card-body ">
-		    		<h5 class="card-title">'.$row10['title_ka'].'</h5>
-		    		<p class="card-text">'.$row10['texts_ka'].'</p>
-		  			</div>
-				</div>
-			  </div>';
-    }
-}
-else{
-	echo "<div class='alert alert-danger'> <h1><strong> none </strong></h1></div>";
+  $result10 = $con10-> query($sql10);
+  if ($result10-> num_rows > 0)
+  {
+      while ($row10 = $result10-> fetch_assoc())
+      {
+          echo '<div class="container-fluid"><br>
+      			<div class="card alert alert-info">
+  			  		<h5 class="card-header ">'.$row10['categoris'].'</h5>
+  		  			<div class="card-body ">
+  		    		<h5 class="card-title">'.$row10['title_ka'].'</h5>
+  		    		<p class="card-text">'.$row10['texts_ka'].'</p>
+  		  			</div>
+  				</div>
+  			  </div>';
+      }
+  }
+  else{
+  	echo "<div class='alert alert-danger'> <h1><strong> none </strong></h1></div>";
+  }
+
+}else{
+  echo "airchiet kadegoria";
 }
 
-	$con10->close();
+  $con10->close();
 
 ?>
 
