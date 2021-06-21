@@ -53,7 +53,7 @@ switch ($lang) {
 
 .overlay-content {
   position: relative;
-  top: 46%;
+  top: 20%;
   width: 80%;
   text-align: center;
   margin-top: 30px;
@@ -122,10 +122,11 @@ switch ($lang) {
   <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
 
   <div class="overlay-content">
-    <div class="card bg-success">
+
       <div class="card-body text-center">
-        <p class="card-text"><b>REKLAMA ?</b></p>
-      </div>
+       <a href="https://www.mymarket.ge/ka/"> <img src="https://bm.ge/uploads/news/5e84839ea9487.png" alt="Trulli" width="647" height="339"></a>
+        <p class="card-text" style="color: white;"><b>REKLAMA ? click</b></p>
+
     </div>
   </div>
 </div>

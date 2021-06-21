@@ -142,6 +142,16 @@ if ($stmt_result->num_rows > 0)
 
       <img src='<?php echo "FOTO/".$data["foto_name"] ?>'style="width: 500px;" ><br>
 
+        <div class="modal-body">
+          <form action="skript_php.php" method="POST" autocomplete="off">
+            <div>
+              <textarea name="comments" id="comments" style="font-family:sans-serif;font-size:1.2em;">
+              </textarea>
+            </div>
+            <input type="submit" value="Submit">
+          </form>
+      </div>
+
     </div>
 
 <?php
