@@ -9,6 +9,7 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+
 footer {
     /*position: fixed;*/
     left: 0px;
@@ -82,6 +83,12 @@ footer {
 
 
 /*responsive*/
+.usernik:hover {
+    color: #ffffff !important;
+}
+.usernik:link {
+    color: #bbbbbb;
+}
 
 @media(max-width: 767px) {
     .footer-col {

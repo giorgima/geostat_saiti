@@ -83,6 +83,12 @@ footer {
 
 
 /*responsive*/
+.usernik:hover {
+    color: #ffffff !important;
+}
+.usernik:link {
+    color: #bbbbbb;
+}
 
 @media(max-width: 767px) {
     .footer-col {
