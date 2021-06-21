@@ -48,7 +48,7 @@ error_reporting(E_ALL);
 
 function connect_sql(){
 
-	$con = new mysqli('localhost','root','','test1');
+	$con = new mysqli('localhost','root','123456','test1');
 	$con->set_charset("utf8");
 
 	if ($con->connect_error)
@@ -302,7 +302,7 @@ function messages_output(){
 					  <div class="media border p-3">
 					    <div class="media-body">
 					      <h4>'.$row['gamgzavneli'].'<small> Posted on February 19, 2016</small></h4>
-					      <p>'.$row['message_text'].'</p>       
+					      <p>'.$row['message_text'].'</p>
 					    </div>
 					  </div>
 					</div>';
@@ -313,7 +313,7 @@ function messages_output(){
 	}
 
 	$con->close();
-		        
+
 }
 
 
@@ -386,7 +386,7 @@ function messages_output(){
 
 
 	if (isset($_POST['vis']) && isset($_POST['msg_texts']))
-	{		
+	{
 			$nam = $_POST['nam'];
 			$vis = $_POST['vis'];
 			$msg_texts = $_POST['msg_texts'];

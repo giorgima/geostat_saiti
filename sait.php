@@ -38,9 +38,6 @@ switch ($lang) {
     /*height: 400px;*/
     display: none;
   }
-  </style>
-<style>
-
 
 .overlay {
   height: 100%;
@@ -127,7 +124,7 @@ switch ($lang) {
   <div class="overlay-content">
     <div class="card bg-success">
       <div class="card-body text-center">
-        <p class="card-text">reklama</p>
+        <p class="card-text"><b>REKLAMA ?</b></p>
       </div>
     </div>
   </div>
@@ -143,24 +140,23 @@ function closeSearch() {
 }
 </script>
 <!-- -------------------------------------------------------------- -->
-
   <nav class="navbar navbar-inverse navbar-expand-sm bg-dark navbar-dark">
-    <a class="navbar-brand" href="sait.php">
-      <img src="FOTO\logo.jpg" alt="logo" style="width:40px;">
-    </a>
+      <a class="navbar-brand mr-5 ml-2" title="Websaite Name" href="sait.php"><h4>Websaite Name</h4></a>
+
 
     <!-- Links -->
     <ul class="nav navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="sait.php"> <?php echo $lang['mtavari']; ?> </a>
+        <a class="nav-link" href="sait.php"><i class="fas fa-home fa-lg pr-1"></i> <?php echo $lang['mtavari']; ?> </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="single.php"> <?php echo $lang['chvens_shesaxeb']; ?> </a>
+        <a class="nav-link" href="#"><i class="fas fa-feather-alt fa-lg pr-1"></i> <?php echo $lang['chvens_shesaxeb']; ?> </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="category.php"> <?php echo $lang['kontaktebi']; ?> </a>
+        <a class="nav-link" href="category.php"><i class="far fa-envelope fa-lg pr-1"></i> <?php echo $lang['kontaktebi']; ?> </a>
       </li>
     </ul>
+
 
     <ul id="login" class="nav navbar-nav navbar-right text-right pr-5">
 
@@ -170,7 +166,7 @@ function closeSearch() {
         {
 
 
-          echo '<div style="color:white;"><a class="nav-link" href="profile.php?id='.$_SESSION['id'].'&lang='.$_SESSION['lang'].'">'.$_SESSION['name'].'</a>&nbsp;&nbsp;&nbsp;</div>
+          echo '<div style="color:white;" class="mt-2"><a class="usernik" href="profile.php?id='.$_SESSION['id'].'&lang='.$_SESSION['lang'].'">'.$_SESSION['name'].'</a>&nbsp;&nbsp;&nbsp;</div>
           <div class="p-2">
             <a href="logout.php" title="გამოსვლა"><i class="fas fa-sign-out-alt"></i> </a>
           </div>';
@@ -192,6 +188,8 @@ function closeSearch() {
                     </a>';
             }
       ?>
+
+
       <li>
         <a href='sait.php?lang=ka'> <img src='FOTO/ka.png' width='20px'> </a>
       </li>

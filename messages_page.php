@@ -46,43 +46,52 @@ switch ($lang) {
 <body>
 
   <nav class="navbar navbar-inverse navbar-expand-sm bg-dark navbar-dark">
-    <a class="navbar-brand" href="sait.php">
-      <img src="FOTO\logo.jpg" alt="logo" style="width:40px;">
-    </a>
+      <a class="navbar-brand mr-5 ml-2" title="Websaite Name" href="sait.php"><h4>Websaite Name</h4></a>
 
-    <!-- Links -->
-    <ul class="nav navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="sait.php"> <?php echo $lang['mtavari']; ?> </a>
+      <!-- Links -->
+      <ul id="navbar_left" class="nav navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" title="Home" href="#"><i class="fas fa-home fa-lg pr-1"></i> <?php echo $lang['mtavari']; ?> </a>
+        </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i class="fas fa-feather-alt fa-lg pr-1"></i> <?php echo $lang['chvens_shesaxeb']; ?> </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="single.php"> <?php echo $lang['chvens_shesaxeb']; ?> </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="category.php"> <?php echo $lang['kontaktebi']; ?> </a>
+        <a class="nav-link" href="#"><i class="far fa-envelope fa-lg pr-1"></i> <?php echo $lang['kontaktebi']; ?> </a>
       </li>
     </ul>
 
     <ul id="login" class="nav navbar-nav navbar-right text-right pr-5">
 
 
-<?php
-  if(isset($_SESSION['is_logged']) && $_SESSION['is_logged']==true)
-  {
+      <?php
+        if(isset($_SESSION['is_logged']) && $_SESSION['is_logged']==true)
+        {
 
 
-    echo '<div style="color:white;">'.$_SESSION['name'].'&nbsp;&nbsp;&nbsp;</div>
-    <div class="p-2">
-      <a href="logout.php" title="გამოსვლა"><i class="fas fa-sign-out-alt"></i> </a>
-    </div>';
+          echo '<div style="color:white;" class="mt-2"><a class="usernik" href="profile.php?id='.$_SESSION['id'].'&lang='.$_SESSION['lang'].'">'.$_SESSION['name'].'</a>&nbsp;&nbsp;&nbsp;</div>
+          <div class="p-2">
+            <a href="logout.php" title="გამოსვლა"><i class="fas fa-sign-out-alt"></i> </a>
+          </div>';
 
-  }
-  else
-      {
-        echo '';
-      }
-?>
 
+        }
+        else
+            {
+
+              echo '<a href=registracion.php?lang='.$_SESSION['lang'].'>
+                      <li>
+                        <span class="glyphicon glyphicon-user"></span>'.$lang['registracia'].'
+                      </li>
+                    </a>
+
+                    <a href=avtorizacia.php?lang='.$_SESSION['lang'].'>
+                      <li>
+                        <span class="glyphicon glyphicon-log-in pr-3"></span>'.$lang['avtorizacia'].'
+                      </li>
+                    </a>';
+            }
+      ?>
 
       <li>
         <a href='messages_page.php?lang=ka'> <img src='FOTO/ka.png' width='20px'> </a>

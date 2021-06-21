@@ -59,10 +59,37 @@ switch ($lang) {
         </li>
       </ul>
 
-      <ul id="navbar_right" class="nav navbar-nav navbar-right text-right">
-        <li>
-          <a href="#" title="rss"><i class="fas fa-rss fa-lg"></i></a>
-        </li>
+      <ul id="navbar_right" class="nav navbar-nav navbar-right text-right pr-5">
+
+      <?php
+        if(isset($_SESSION['is_logged']) && $_SESSION['is_logged']==true)
+        {
+
+
+          echo '<div style="color:white;" class="mt-2"><a class="usernik" href="profile.php?id='.$_SESSION['id'].'&lang='.$_SESSION['lang'].'">'.$_SESSION['name'].'</a>&nbsp;&nbsp;&nbsp;</div>
+          <div class="p-2">
+            <a href="logout.php" title="გამოსვლა"><i class="fas fa-sign-out-alt"></i> </a>
+          </div>';
+
+
+        }
+        else
+            {
+
+              echo '<a href=registracion.php?lang='.$_SESSION['lang'].'>
+                      <li>
+                        <span class="glyphicon glyphicon-user"></span>'.$lang['registracia'].'
+                      </li>
+                    </a>
+
+                    <a href=avtorizacia.php?lang='.$_SESSION['lang'].'>
+                      <li>
+                        <span class="glyphicon glyphicon-log-in pr-3"></span>'.$lang['avtorizacia'].'
+                      </li>
+                    </a>';
+            }
+      ?>
+
 
         <li>
           <a href='single.php?id= <?php echo $_SESSION['id']; ?> &lang=ka'> <img src='FOTO/ka.png' width='20px'> </a>
@@ -164,7 +191,7 @@ if ($stmt_result->num_rows > 0)
           </div>
         </div>
 
-        
+
       </nav>
 
     </div>
