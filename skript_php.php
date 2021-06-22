@@ -48,7 +48,7 @@ error_reporting(E_ALL);
 
 function connect_sql(){
 
-	$con = new mysqli('localhost','root','123456','test1');
+	$con = new mysqli('localhost','root','','test1');
 	$con->set_charset("utf8");
 
 	if ($con->connect_error)
