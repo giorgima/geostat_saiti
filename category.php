@@ -1,5 +1,4 @@
 <?php
-
 include 'skript_php.php';
 
 if(isset($_GET['lang'])){
@@ -21,25 +20,33 @@ switch ($lang) {
   default:
     include 'ka.php';
 }
-
+if(isset($_GET['name'])){
+$cate = $_GET['name'];
+$_SESSION['catename'] = $cate;
+}else{
+  echo "";
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>single page</title>
+
+  <title>კატეგორიები</title>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="single">
+  <meta name="description" content="საქსტატი">
   <meta name="keywords" content="HTML, CSS, JavaScript">
   <meta name="author" content="გიორგი მომხმარებლის">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-  <link rel="stylesheet" href="CSS\single.css">
+  <link rel="stylesheet" href="CSS\category.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
+
 <body>
 
 <div>
@@ -58,6 +65,7 @@ switch ($lang) {
           <a class="nav-link" title="Contact" href="#"><i class="far fa-envelope fa-lg pr-1"></i> <?php echo $lang['kontaktebi']; ?> </a>
         </li>
       </ul>
+
 
       <ul id="navbar_right" class="nav navbar-nav navbar-right text-right pr-5">
 
@@ -92,79 +100,83 @@ switch ($lang) {
 
 
         <li>
-          <a href='single.php?id= <?php echo $_SESSION['id']; ?> &lang=ka'> <img src='FOTO/ka.png' width='20px'> </a>
+          <a href='category.php?name= <?php echo $_SESSION['catename']; ?> &lang=ka'> <img src='FOTO/ka.png' width='20px'> </a>
         </li>
         <li>
-          <a href='single.php?id= <?php echo $_SESSION['id']; ?> &lang=en'> <img src='FOTO/en.png' width='30px'> </a>
+          <a href='category.php?name= <?php echo $_SESSION['catename']; ?> &lang=en'> <img src='FOTO/en.png' width='30px'> </a>
         </li>
 
       </ul>
   </nav>
 </div>
 
+<!-- ////////////////////////////////////// -->
 <div class="container-fluid">
   <div class="row">
+    <div class="col-9">
 
 <?php
 
-$con = connect_sql();
+$con10 = connect_sql();
+if(isset($cate)){
 
- if(isset($_GET['id'])){
-
-    $id = $_GET['id'];
-    $_SESSION['id'] = $id;
-
+switch ($cate) {
+  case "axali_ambebi":
+    $sql10 = "SELECT * from article WHERE categoris = 'axali_ambebi'";
+    break;
+  case "kodi":
+    $sql10 = "SELECT * from article WHERE categoris = 'kodi'";
+    break;
+  case "dizaini":
+    $sql10 = "SELECT * from article WHERE categoris = 'dizaini'";
+    break;
+  case "mxiaruli":
+    $sql10 = "SELECT * from article WHERE categoris = 'mxiaruli'";
+    break;
+  case "yelsaxvevebis":
+    $sql10 = "SELECT * from article WHERE categoris = 'yelsaxvevebis'";
+    break;
+  default:
+	$sql10 = "SELECT * from article";
 }
 
-$stmt = $con->prepare("select `categoris`, `foto_name`, `title_".$_SESSION['lang']."` as title, `texts_".$_SESSION['lang']."` as texts from article where `id` = ? ");
-$stmt->bind_param("s", $id);
-$stmt->execute();
-$stmt_result = $stmt->get_result();
+  $result10 = $con10-> query($sql10);
+  if ($result10-> num_rows > 0)
+  {
+      while ($row10 = $result10-> fetch_assoc())
+      {
+          echo '<div class="container-fluid"><br>
+      			<div class="card alert alert-info">
+  			  		<h5 class="card-header ">'.$row10['categoris'].'</h5>
+  		  			<div class="card-body ">
+  		    		<h5 class="card-title">'.$row10['title_ka'].'</h5>
+  		    		<p class="card-text">'.$row10['texts_ka'].'</p>
+  		  			</div>
+  				</div>
+  			  </div>';
+      }
+  }
+  else{
+  	echo "<div class='alert alert-danger'> <h1><strong> none </strong></h1></div>";
+  }
 
-if ($stmt_result->num_rows > 0)
-{
-  $data = $stmt_result->fetch_assoc();
-
-  ?>
-    <div class="col-9 pl-5 pt-3">
-      <h3> <?php echo $lang['kategoria']; ?> : &nbsp;<?php echo $data["categoris"]; ?> </h3>
-
-      <h1> <?php echo $lang['satauri']; ?> : &nbsp;<?php echo $data["title"]; ?> </h1>
-
-      <p id="demo" class="pt-2 pb-2" style="color: #A6AAB5"></p>
-      <script>
-      var date = new Date();
-      var Month = date.getMonth() + 1;
-      document.getElementById("demo").innerHTML = "<?php echo $lang['gamoqveynebis_tarigi']; ?> : &nbsp;" + date.getDate() + "/" + Month + "/" + date.getFullYear() ;
-      </script>
-
-      <p> <?php echo $lang['texsti']; ?> : &nbsp;<?php echo $data["texts"]; ?> </p>
-
-      <img src='<?php echo "FOTO/".$data["foto_name"] ?>'style="width: 500px;" ><br>
-
-        <div class="modal-body">
-          <form action="skript_php.php" method="POST" autocomplete="off">
-            <div>
-              <textarea name="comments" id="comments" style="font-family:sans-serif;font-size:1.2em;">
-              </textarea>
-            </div>
-            <input type="submit" value="Submit">
-          </form>
-      </div>
-
-    </div>
-
-<?php
+}else{
+  echo "airchiet kadegoria";
 }
+
+  $con10->close();
+
 ?>
 
 
-    <div class="col-3">
-        <nav class="navbar">
+</div>
+<!-- ///////////////////////////////////////////////////// -->
 
+<div class="col-3">
+  <nav class="navbar">
+    <ul id="navb" class="nav flex-column pt-2">
+      <h5><b><?php echo $lang['kategoriebi']; ?></b></h5>
 
-        <ul id="navb" class="nav flex-column pt-2">
-          <h5><b><?php echo $lang['kategoriebi']; ?></b></h5>
 <?php
          echo '<li class="nav-item">
             <a class="nav-link" href="category.php?name=axali_ambebi&lang='.$_SESSION['lang'].'">'.$lang['axali_ambebi'].'</a>
@@ -183,6 +195,7 @@ if ($stmt_result->num_rows > 0)
           </li>
         </ul>';
 ?>
+
         <div class="card mt-3">
           <div class="card-header"><b> <?php echo $lang['card_header']; ?> </b>
             <i class="far fa-file fa-lg" style="margin-left: 70px;"></i>
@@ -201,15 +214,14 @@ if ($stmt_result->num_rows > 0)
           </div>
         </div>
 
-
       </nav>
-
-    </div>
-  </div>
+</div>
+</div>
 </div>
 
+
 <footer>
-  <div class="container-fluid bg-dark mt-4 pl-5 pt-4">
+  <div class="container-fluid bg-dark mt-4 pl-5 pt-4 pb-2">
     <div class="row">
         <div class="footer-col col-4">
           <h4><?php echo $lang['compania']; ?></h4>

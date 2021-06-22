@@ -7,16 +7,23 @@ body {
     text-indent: 10px;
 }
 
-#borders {
+/*#borders {
     border-radius: 45px;
     border: 5px solid #e6e6e6;
-}
+}*/
 
 #satauri {
+    margin: 5% 30% 2% 30%;
     text-shadow: 1px 1px #FF0000;
     font-size: 35px;
 }
 
-#username, #email, #password, #passwordagain, #button {
-    border-radius: 30px;
+#button{
+	margin-top: 20%;
+
+}
+
+#username, #email, #password, #passwordagain,  {
+    /*border-radius: 30px;*/
+
 }

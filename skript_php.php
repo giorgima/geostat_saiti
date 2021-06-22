@@ -1,5 +1,8 @@
 <?php
 session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 //-----------------------------------------phpmailer code
 // use PHPMailer\PHPMailer\PHPMailer;
 // use PHPMailer\PHPMailer\SMTP;
@@ -45,7 +48,7 @@ session_start();
 
 function connect_sql(){
 
-	$con = new mysqli('localhost','root','','test1');
+	$con = new mysqli('localhost','root','123456','test1');
 	$con->set_charset("utf8");
 
 	if ($con->connect_error)
@@ -55,16 +58,17 @@ function connect_sql(){
 		return $con;
 }
 
+
 function categori_serch(){
 	$con = connect_sql();
-	$sql = "SELECT * from categori_search";
+	$sql = "SELECT * from article";
 
 	$result = $con-> query($sql);
-	if ($result-> num_rows > 0)
+	if ($result->num_rows > 0)
 	{
 	    while ($row = $result-> fetch_assoc())
 	    {
-	        echo "<div class='container alert alert-info'><h3><strong>".$row["title"]."</strong></h3><p>".$row["texts"]."</p></div>";
+	        echo "<div class='container alert alert-info'><h3>".$row["categoris"]."<br><strong>".$row["title_ka"]."</strong></h3><p>".$row["texts_ka"]."</p></div>";
 	    }
 	}
 	else{
@@ -72,10 +76,9 @@ function categori_serch(){
 	}
 
 		$con->close();
-
 }
 
-function registracion($username, $email, $password)
+function registracion($username, $date_of_birth, $gender, $email, $password)
 {
 	$con = connect_sql();
 	$password=md5($password);
@@ -91,9 +94,9 @@ function registracion($username, $email, $password)
 		}
 		else{
 
-			$sql = "INSERT INTO registracion(username, email, pass) VALUES(?, ?, ?)";
+			$sql = "INSERT INTO registracion(username, date_of_birth, gender, email, pass) VALUES(?, ?, ?, ?, ?)";
 			$stmt = $con->prepare($sql);
-			if( $stmt->bind_param("sss", $username, $email, $password)){
+			if( $stmt->bind_param("sssss", $username, $date_of_birth, $gender, $email, $password)){
 
 				$stmt->execute();
 			}
@@ -125,6 +128,7 @@ function avtorizacia($username, $password)
 			{
 				$_SESSION['is_logged']=true;
 				$_SESSION['name']=$data["username"];
+					$_SESSION['id']=$data["id"];
 
 				echo "ავტორიზაცია წარმატებული <br>";
 				damaxsovreba_cookie($username,$password);
@@ -138,7 +142,7 @@ function avtorizacia($username, $password)
 						-webkit-transform: translateX(-50%) translateY(-50%);
 						transform: translateX(-50%) translateY(-50%);">
 				</div>';
-				header("refresh:5; url=sait.php");
+				header("refresh:3; url=sait.php");
 
 				$con->close();
 
@@ -146,11 +150,13 @@ function avtorizacia($username, $password)
 			else
 			{
 				echo "ავტორიზაცია შეცდომა";
+				header("refresh:3; url=avtorizacia.php");
 			}
 		}
 		else
 		{
 			echo "შეცდომა";
+			header("refresh:1; url=avtorizacia.php");
 		}
 
 }
@@ -186,10 +192,11 @@ function statia($categoris, $title_ka, $texts_ka, $title_en, $texts_en, $foto_na
 		$stmt->execute();
 
 		if (move_uploaded_file($foto_name['tmp_name'], $target_dir.$image)) {
-  		echo $msg = "Image uploaded successfully";
+  		echo "სტატია დამატებულია";
   	}
   	else{
-			echo $msg = "Failed to upload image";
+			echo "სტატია არაა დამატებული";
+			header("refresh:1; url=sait.php");
   	}
 
 		header("refresh:1; url=sait.php");
@@ -208,7 +215,7 @@ function pagination(){
 
 	$sql1 = "SELECT * from article";
   	$resul1 = $con-> query($sql1);
-  	$rows1 = $resul1-> num_rows;
+  	$rows1 = $resul1->num_rows;
 
 	$number_of_page = ceil($rows1/$results_per_page);
 
@@ -228,6 +235,87 @@ function pagination(){
 
 }
 
+function change_Password($old_Password, $new_password, $id){
+
+	$old_Password = md5($old_Password);
+	$new_password = md5($new_password);
+	$con =  mysqli_connect('127.0.0.1:3306','root','','test1') or die('Unable To connect');
+
+	$result = mysqli_query($con,"SELECT * from registracion WHERE id='" . $id . "'");
+	$row=mysqli_fetch_array($result);
+
+	if($old_Password == $row["pass"]){
+
+	mysqli_query($con,"UPDATE registracion set pass='" . $new_password. "' WHERE id='" . $id . "'");
+	echo "პაროლი შეცვლილია";
+	header("refresh:3; url=profile.php");
+
+	}else{
+
+	 	echo "shecdoma";
+	 	header("refresh:3; url=profile.php");
+	}
+		$con->close();
+	}
+
+
+function messages_input($nam, $vis, $msg_texts){
+	$con = connect_sql();
+
+		// $stmt1 = $con->prepare("select * from registracion where `username` = ?");
+		// $stmt1->bind_param("s", $username);
+		// $stmt1->execute();
+		// $res = $stmt1->get_result()
+
+		// $sql1 = "SELECT * from registracion where `username` = $vis";
+		// $result1 = $con->query($sql1);
+
+	// if($result1->num_rows > 0){
+
+		$sql = "INSERT INTO letters(gamgzavneli, mimgebi, message_text) VALUES(?, ?, ?)";
+		$stmt = $con->prepare($sql);
+		$stmt->bind_param("sss", $nam, $vis, $msg_texts);
+		$stmt->execute();
+
+  		echo "მესიჯი გაგზავნილია";
+		header("refresh:1; url=profile.php");
+
+	// }else{
+	// 	echo "მესიჯი არაა გაგზავნილია momxmarebeli ar arsebobs";
+	// 	header("refresh:3; url=profile.php");
+	// }
+
+	$con->close();
+}
+
+
+function messages_output(){
+	$con = connect_sql();
+	$sql = "SELECT * from letters";
+
+	$result = $con-> query($sql);
+	if ($result->num_rows > 0)
+	{
+	    while ($row = $result-> fetch_assoc())
+	    {
+	        echo '<div class="container mt-3">
+					  <div class="media border p-3">
+					    <div class="media-body">
+					      <h4>'.$row['gamgzavneli'].'<small> Posted on February 19, 2016</small></h4>
+					      <p>'.$row['message_text'].'</p>
+					    </div>
+					  </div>
+					</div>';
+	    }
+	}
+	else{
+		echo "<div class='alert alert-danger'> <h1><strong> none </strong></h1></div>";
+	}
+
+	$con->close();
+
+}
+
 
 // function table($id, $title, $texts)
 // {
@@ -236,7 +324,7 @@ function pagination(){
 //     $sql = "SELECT * from article";
 
 //     $result = $con-> query($sql);
-//     if ($result-> num_rows > 0)
+//     if ($result->num_rows > 0)
 //     {
 //         while ($row = $result-> fetch_assoc())
 //         {
@@ -250,13 +338,15 @@ function pagination(){
 
 
 //---------------------------------------------------------------------
-	if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['pass']) )
+	if (isset($_POST['username']) && isset($_POST['date_of_birth']) && isset($_POST['gender']) && isset($_POST['email']) && isset($_POST['pass']) )
 	{
 			$username = $_POST['username'];
+			$date_of_birth = $_POST['date_of_birth'];
+			$gender = $_POST['gender'];
 			$email = $_POST['email'];
 			$password = $_POST['pass'];
 
-			registracion($username, $email, $password);
+			registracion($username, $date_of_birth, $gender, $email, $password);
 	}
 
 
@@ -281,6 +371,27 @@ function pagination(){
 			$foto_name = $_FILES["foto_name"];
 
 			statia($categoris, $title_ka, $texts_ka, $title_en, $texts_en, $_FILES["foto_name"]);
+	}
+
+
+	if (isset($_POST['old_Password']) && isset($_POST['new_password']) && isset($_POST['myVariable']))
+	{
+
+			$old_Password = $_POST['old_Password'];
+			$new_password = $_POST['new_password'];
+			$id = $_POST['myVariable'];
+
+	    change_Password($old_Password, $new_password,$id);
+	}
+
+
+	if (isset($_POST['vis']) && isset($_POST['msg_texts']))
+	{
+			$nam = $_POST['nam'];
+			$vis = $_POST['vis'];
+			$msg_texts = $_POST['msg_texts'];
+
+	    messages_input($nam, $vis, $msg_texts);
 	}
 
 

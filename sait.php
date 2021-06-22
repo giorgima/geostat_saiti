@@ -21,20 +21,83 @@ switch ($lang) {
   default:
     include 'ka.php';
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-<style>
-.tabcontent {
-  float: left;
-  /*padding: 30px;*/
-  margin: 0px 0px 30px 0px;
-  /*border: 1px solid #ccc;*/
+  <style>
+  .tabcontent {
+    float: left;
+    /*padding: 30px;*/
+    margin: 0px 0px 30px 0px;
+    /*border: 1px solid #ccc;*/
+    width: 100%;
+    /*height: 400px;*/
+    display: none;
+  }
+
+.overlay {
+  height: 100%;
   width: 100%;
-  /*height: 400px;*/
   display: none;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+}
+
+.overlay-content {
+  position: relative;
+  top: 20%;
+  width: 80%;
+  text-align: center;
+  margin-top: 30px;
+  margin: auto;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+  cursor: pointer;
+  color: white;
+}
+
+.overlay .closebtn:hover {
+  color: #ccc;
+}
+
+.overlay input[type=text] {
+  padding: 15px;
+  font-size: 17px;
+  border: none;
+  float: left;
+  width: 80%;
+  background: white;
+}
+
+.overlay input[type=text]:hover {
+  background: #f1f1f1;
+}
+
+.overlay button {
+  float: left;
+  width: 20%;
+  padding: 15px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.overlay button:hover {
+  background: #bbb;
 }
 </style>
 
@@ -53,25 +116,48 @@ switch ($lang) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 
-<body>
+<body onload="openSearch()">
+<!-- -------------------------------------------------- -->
+<div id="myOverlay" class="overlay">
+  <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
 
+  <div class="overlay-content">
+
+      <div class="card-body text-center">
+       <a href="https://www.mymarket.ge/ka/"> <img src="https://bm.ge/uploads/news/5e84839ea9487.png" alt="Trulli" width="647" height="339"></a>
+        <p class="card-text" style="color: white;"><b>REKLAMA ? click</b></p>
+
+    </div>
+  </div>
+</div>
+
+<script>
+function openSearch() {
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function closeSearch() {
+  document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+<!-- -------------------------------------------------------------- -->
   <nav class="navbar navbar-inverse navbar-expand-sm bg-dark navbar-dark">
-    <a class="navbar-brand" href="sait.php">
-      <img src="FOTO\logo.jpg" alt="logo" style="width:40px;">
-    </a>
+      <a class="navbar-brand mr-5 ml-2" title="Websaite Name" href="sait.php"><h4>Websaite Name</h4></a>
+
 
     <!-- Links -->
     <ul class="nav navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="sait.php"> <?php echo $lang['mtavari']; ?> </a>
+        <a class="nav-link" href="sait.php"><i class="fas fa-home fa-lg pr-1"></i> <?php echo $lang['mtavari']; ?> </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="single.php"> <?php echo $lang['chvens_shesaxeb']; ?> </a>
+        <a class="nav-link" href="#"><i class="fas fa-feather-alt fa-lg pr-1"></i> <?php echo $lang['chvens_shesaxeb']; ?> </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#"> <?php echo $lang['kontaktebi']; ?> </a>
+        <a class="nav-link" href="category.php"><i class="far fa-envelope fa-lg pr-1"></i> <?php echo $lang['kontaktebi']; ?> </a>
       </li>
     </ul>
+
 
     <ul id="login" class="nav navbar-nav navbar-right text-right pr-5">
 
@@ -81,7 +167,7 @@ switch ($lang) {
         {
 
 
-          echo '<div style="color:white;">'.$_SESSION["name"].'&nbsp;&nbsp;&nbsp;</div>
+          echo '<div style="color:white;" class="mt-2"><a class="usernik" href="profile.php?id='.$_SESSION['id'].'&lang='.$_SESSION['lang'].'">'.$_SESSION['name'].'</a>&nbsp;&nbsp;&nbsp;</div>
           <div class="p-2">
             <a href="logout.php" title="გამოსვლა"><i class="fas fa-sign-out-alt"></i> </a>
           </div>';
@@ -103,65 +189,73 @@ switch ($lang) {
                     </a>';
             }
       ?>
-          <li>
-            <a href='sait.php?lang=ka'> <img src='FOTO/ka.png' width='20px'> </a>
-          </li>
-          <li>
-            <a href='sait.php?lang=en'> <img src='FOTO/en.png' width='30px'> </a>
-          </li>
+
+
+      <li>
+        <a href='sait.php?lang=ka'> <img src='FOTO/ka.png' width='20px'> </a>
+      </li>
+      <li>
+        <a href='sait.php?lang=en'> <img src='FOTO/en.png' width='30px'> </a>
+      </li>
     </ul>
   </nav>
 
-	<div class="container-fluid">
-	  <div class="row">
-	    <div class="col-sm-1" style="margin-right:60px;">
-	      <nav class="navbar sidenav border border-dark p-2 mt-4">
-	        <ul class="navbar-nav">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-1" style="margin-right:60px;">
+        <nav class="navbar sidenav border border-dark p-2 mt-4">
+          <ul class="navbar-nav">
 
-	          <li class="nav-item">
-	            <a class="nav-link disabled" href="#"> <?php echo $lang['zoli'];  ?> </a>
-	          </li>
-	          <li class="nav-item">
-              <button type="button" class="close" onclick="openCity(event, 'closes')">&times;</button>
-	            <a class="nav-link tablinks" onclick="openCity(event, 'London')">LONDON</a>
-	          </li>
-	          <li class="nav-item">
-              <button type="button" class="close" onclick="openCity(event, 'closes')">&times;</button>
-	            <a class="nav-link tablinks" onclick="openCity(event, 'Paris')">PARIS</a>
-	          </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#"> <?php echo $lang['zoli'];  ?> </a>
+            </li>
             <li class="nav-item">
               <button type="button" class="close" onclick="openCity(event, 'closes')">&times;</button>
-              <a class="nav-link tablinks" onclick="openCity(event, 'Tokyo')">TOKIO</a>
+              <a class="nav-link tablinks" onclick="openCity(event, 'categori_serch')">categori_serch</a>
+            </li>
+            <li class="nav-item">
+              <button type="button" class="close" onclick="openCity(event, 'closes')">&times;</button>
+              <a class="nav-link tablinks" onclick="openCity(event, 'axali_ambebi')">axali_ambebi</a>
+            </li>
+            <li class="nav-item">
+              <button type="button" class="close" onclick="openCity(event, 'closes')">&times;</button>
+              <a class="nav-link tablinks" onclick="openCity(event, 'kodi')">kodi</a>
             </li>
 
-	          <li class="nav-item">
-	            <a class="nav-link disabled" href="#"> <?php echo $lang['zoli']; ?> </a>
-	          </li>
-	          <li class="nav-item">
-	            <a class="nav-link" href="#">Link</a>
-	          </li>
-	          <li class="nav-item">
-	            <a class="nav-link" href="#">Link</a>
-	          </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#"> <?php echo $lang['zoli']; ?> </a>
+            </li>
+            <li class="nav-item">
+              <button type="button" class="close" onclick="openCity(event, 'closes')">&times;</button>
+              <a class="nav-link tablinks" onclick="openCity(event, 'dizaini')">dizaini</a>
+            </li>
+            <li class="nav-item">
+              <button type="button" class="close" onclick="openCity(event, 'closes')">&times;</button>
+              <a class="nav-link tablinks" onclick="openCity(event, 'mxiaruli')">mxiaruli</a>
+            </li>
+            <li class="nav-item">
+              <button type="button" class="close" onclick="openCity(event, 'closes')">&times;</button>
+              <a class="nav-link tablinks" onclick="openCity(event, 'yelsaxvevebis')">yelsaxvevebis</a>
+            </li>
 
-	          <li class="nav-item">
-	            <a class="nav-link disabled" href="#"> <?php echo $lang['zoli'];  ?> </a>
-	          </li>
-	          <li class="nav-item">
-	            <a class="nav-link" href="#">Link</a>
-	          </li>
-	          <li class="nav-item">
-	            <a class="nav-link" href="#">Link</a>
-	          </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#"> <?php echo $lang['zoli'];  ?> </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
 
-	        </ul>
-	      </nav>
-	    </div>
+          </ul>
+        </nav>
+      </div>
 
-    <div class=" col-sm-10 ml-5">
-      <div class="jumbotron container-fluid text-left brend mt-2">
+      <div class=" col-sm-10 ml-5">
+        <div class="jumbotron container-fluid text-left brend mt-2">
 
-        <?php
+          <?php
         if(isset($_SESSION['is_logged']) && $_SESSION['is_logged']==true)
         {
 
@@ -179,161 +273,206 @@ switch ($lang) {
             }
         ?>
 
-        <!-- The Modal -->
-        <div class="modal" id="myModal">
-          <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
+          <!-- The Modal -->
+          <div class="modal" id="myModal">
+            <div class="modal-dialog modal-dialog-scrollable">
+              <div class="modal-content">
 
-              <!-- Modal Header -->
-              <div class="modal-header">
-                <h3 class="modal-title"> <?php echo $lang['titles_gilakis_texsti']; ?> </h3>
-                <button type="button" class="close" data-dismiss="modal"> × </button>
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h3 class="modal-title"> <?php echo $lang['titles_gilakis_texsti']; ?> </h3>
+                  <button type="button" class="close" data-dismiss="modal"> × </button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <form action="skript_php.php" method="POST" autocomplete="off" class="needs-validation"
+                    enctype="multipart/form-data" novalidate>
+
+                    <div class="form-group">
+                      <label for="title"> <?php echo $lang['suratis_atvirtva']; ?> </label>
+
+                      <input class="form-control-file border p-1 mb-3" type="file" name="foto_name"
+                        accept="image/png, image/jpeg" title="<?php echo $lang['suratis_atvirtva']; ?>" required>
+
+                      <div class="valid-feedback"> <?php echo $lang['swori']; ?>
+                      </div>
+                      <div class="invalid-feedback"> <?php echo $lang['araswori'];?>
+                      </div>
+
+                    </div>
+
+                    <div class="form-group">
+                      <label for="sel1"><?php echo $lang['kategoriis_archeva']; ?></label>
+                      <select class="form-control form-select" id="sel1" name="categori"
+                        title="<?php echo $lang['kategoriis_archeva']; ?>" required>
+                        <option selected><?php echo $lang['kategoriis_archeva']; ?></option>
+                        <option>axali_ambebi</option>
+                        <option>kodi</option>
+                        <option>dizaini</option>
+                        <option>mxiaruli</option>
+                        <option>yelsaxvevebis</option>
+                      </select>
+
+                      <div class="valid-feedback"> <?php echo $lang['swori']; ?> </div>
+                      <div class="invalid-feedback"> <?php echo $lang['araswori'];?> </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="title"> <?php echo $lang['statiis_satauri']; ?> </label>
+
+                      <input class="form-control mb-3" type="text"
+                        placeholder="<?php echo $lang['statiis_satauri_ka']; ?>" id="title_ka" name="title_ka"
+                        title="<?php echo $lang['statiis_satauri_ka']; ?>" autofocus="title" required>
+
+                      <div class="valid-feedback"> <?php echo $lang['swori']; ?> </div>
+                      <div class="invalid-feedback"> <?php echo $lang['araswori']; ?> </div>
+
+                    </div>
+
+                    <div class="form-group">
+                      <label for="texts"> <?php echo $lang['statiis_texsti']; ?> </label>
+
+                      <textarea class="form-control mb-3" type="text"
+                        placeholder="<?php echo $lang['statiis_texsti_ka']; ?>" id="texts_ka" name="texts_ka"
+                        title="<?php echo $lang['statiis_texsti_ka']; ?>" required></textarea>
+
+                      <div class="valid-feedback"> <?php echo $lang['swori']; ?> </div>
+                      <div class="invalid-feedback"> <?php echo $lang['araswori']; ?> </div>
+
+                    </div>
+
+                    <div class="form-group">
+                      <label for="title"> <?php echo $lang['statiis_satauri']; ?> </label>
+
+                      <input class="form-control mb-3" type="text"
+                        placeholder="<?php echo $lang['statiis_satauri_en']; ?>" id="title_en" name="title_en"
+                        title="<?php echo $lang['statiis_satauri_en']; ?>" autofocus="title" required>
+
+                      <div class="valid-feedback"> <?php echo $lang['swori']; ?> </div>
+                      <div class="invalid-feedback"> <?php echo $lang['araswori']; ?> </div>
+
+                    </div>
+
+                    <div class="form-group">
+                      <label for="texts"> <?php echo $lang['statiis_texsti']; ?> </label>
+
+                      <textarea class="form-control mb-3" type="text"
+                        placeholder="<?php echo $lang['statiis_texsti_en']; ?>" id="texts_en" name="texts_en"
+                        title="<?php echo $lang['statiis_texsti_en']; ?>" required></textarea>
+
+                      <div class="valid-feedback"> <?php echo $lang['swori']; ?> </div>
+                      <div class="invalid-feedback"> <?php echo $lang['araswori']; ?> </div>
+
+                    </div>
+
+                    <input class="btn btn-success btn-block" type="submit" name="button"
+                      value="<?php echo $lang['damateba']; ?>">
+
+                  </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal"> <?php echo $lang['gauqmeba']; ?>
+                  </button>
+                </div>
+
               </div>
-
-              <!-- Modal body -->
-              <div class="modal-body">
-                <form action="skript_php.php" method="POST" autocomplete="off" class="needs-validation" enctype="multipart/form-data" novalidate>
-
-                <div class="form-group">
-                  <label for="title"> <?php echo $lang['suratis_atvirtva']; ?> </label>
-
-                  <input class="form-control-file border p-1 mb-3" type="file" name="foto_name" accept="image/png, image/jpeg" title="<?php echo $lang['suratis_atvirtva']; ?>" required>
-
-                  <div class="valid-feedback"> <?php echo $lang['swori']; ?>
-                  </div>
-                  <div class="invalid-feedback"> <?php echo $lang['araswori'];?>
-                  </div>
-
-                </div>
-
-                <div class="form-group">
-                  <label for="sel1"><?php echo $lang['kategoriis_archeva']; ?></label>
-                  <select class="form-control form-select" id="sel1" name="categori" title="<?php echo $lang['kategoriis_archeva']; ?>" required>
-                    <option selected><?php echo $lang['kategoriis_archeva']; ?></option>
-                    <option>LONDON</option>
-                    <option>PARIS</option>
-                    <option>TOKIO</option>
-                  </select>
-                </div>
-
-                <div class="valid-feedback"> <?php echo $lang['swori']; ?> </div>
-                <div class="invalid-feedback"> <?php echo $lang['araswori']; ?> </div>
-
-                <div class="form-group">
-                  <label for="title"> <?php echo $lang['statiis_satauri']; ?> </label>
-
-                  <input class="form-control mb-3" type="text" placeholder="<?php echo $lang['statiis_satauri_ka']; ?>" id="title_ka" name="title_ka" title="<?php echo $lang['statiis_satauri_ka']; ?>" autofocus="title" required>
-
-                  <div class="valid-feedback"> <?php echo $lang['swori']; ?> </div>
-                  <div class="invalid-feedback"> <?php echo $lang['araswori']; ?> </div>
-
-                </div>
-
-                <div class="form-group">
-                  <label for="texts"> <?php echo $lang['statiis_texsti']; ?> </label>
-
-                  <textarea class="form-control mb-3" type="text" placeholder="<?php echo $lang['statiis_texsti_ka']; ?>" id="texts_ka" name="texts_ka" title="<?php echo $lang['statiis_texsti_ka']; ?>" required></textarea>
-
-                  <div class="valid-feedback"> <?php echo $lang['swori']; ?> </div>
-                  <div class="invalid-feedback"> <?php echo $lang['araswori']; ?> </div>
-
-                </div>
-
-                <div class="form-group">
-                  <label for="title"> <?php echo $lang['statiis_satauri']; ?> </label>
-
-                  <input class="form-control mb-3" type="text" placeholder="<?php echo $lang['statiis_satauri_en']; ?>" id="title_en" name="title_en" title="<?php echo $lang['statiis_satauri_en']; ?>" autofocus="title" required>
-
-                  <div class="valid-feedback"> <?php echo $lang['swori']; ?> </div>
-                  <div class="invalid-feedback"> <?php echo $lang['araswori']; ?> </div>
-
-                </div>
-
-                <div class="form-group">
-                  <label for="texts"> <?php echo $lang['statiis_texsti']; ?> </label>
-
-                  <textarea class="form-control mb-3" type="text" placeholder="<?php echo $lang['statiis_texsti_en']; ?>" id="texts_en" name="texts_en" title="<?php echo $lang['statiis_texsti_en']; ?>" required></textarea>
-
-                  <div class="valid-feedback"> <?php echo $lang['swori']; ?> </div>
-                  <div class="invalid-feedback"> <?php echo $lang['araswori']; ?> </div>
-
-                </div>
-
-                  <input class="btn btn-success btn-block" type="submit" name= "button" value="<?php echo $lang['damateba']; ?>">
-
-                </form>
-              </div>
-
-              <!-- Modal footer -->
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal"> <?php echo $lang['gauqmeba']; ?> </button>
-              </div>
-
             </div>
           </div>
         </div>
-      </div>
 
-      <!--/////////////////////////////// categoriebis modebna -->
-      <div class="container-fluid pt-4">
-        <div class="row">
-          <!-- <div class="tab">
+        <!--/////////////////////////////// categoriebis modebna -->
+        <div class="container-fluid pt-4">
+          <div class="row">
+            <!-- <div class="tab">
             <button class="tablinks" onclick="openCity(event, 'London')">London</button>
             <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
             <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
           </div> -->
 
-          <div id="closes" class="tabcontent">
-          	<!-- categori X -->
-          </div>
+            <div id="closes" class="tabcontent">
+              <!-- categori X -->
+            </div>
 
-          <div id="London" class="tabcontent p-2">
-      
+            <div id="categori_serch" class="tabcontent p-2">
               <?php echo categori_serch(); ?>
- 
-          </div>
+            </div>
 
-          <div id="Paris" class="tabcontent p-2">
-             <div class="container alert alert-warning">
-                  <h4><strong>London</strong></h4>
-                  <p>London is the capital city of England.</p>
-                </div>
-                <div class="container alert alert-warning">
-                  <h4><strong>London</strong></h4>
-                  <p>London is the capital city of England.</p>
+            <div id="axali_ambebi" class="tabcontent p-2">
+              <div class="container alert alert-warning">
+                <h4><strong>London</strong></h4>
+                <p>London is the capital city of England.</p>
               </div>
-          </div>
-
-          <div id="Tokyo" class="tabcontent p-2">
-             <div class="container alert alert-danger">
-                  <h4><strong>London</strong></h4>
-                  <p>London is the capital city of England.</p>
-                </div>  
-                <div class="container alert alert-danger">
-                  <h4><strong>London</strong></h4>
-                  <p>London is the capital city of England.</p>
+              <div class="container alert alert-warning">
+                <h4><strong>London</strong></h4>
+                <p>London is the capital city of England.</p>
               </div>
-          </div>
+            </div>
 
-          <!-- <div class="clearfix"></div> -->
+            <div id="kodi" class="tabcontent p-2">
+              <div class="container alert alert-danger">
+                <h4><strong>London</strong></h4>
+                <p>London is the capital city of England.</p>
+              </div>
+              <div class="container alert alert-danger">
+                <h4><strong>London</strong></h4>
+                <p>London is the capital city of England.</p>
+              </div>
+            </div>
+
+            <div id="dizaini" class="tabcontent p-2">
+              <div class="container alert alert-danger">
+                <h4><strong>London</strong></h4>
+                <p>London is the capital city of England.</p>
+              </div>
+              <div class="container alert alert-danger">
+                <h4><strong>London</strong></h4>
+                <p>London is the capital city of England.</p>
+              </div>
+            </div>
+
+            <div id="mxiaruli" class="tabcontent p-2">
+              <div class="container alert alert-danger">
+                <h4><strong>London</strong></h4>
+                <p>London is the capital city of England.</p>
+              </div>
+              <div class="container alert alert-danger">
+                <h4><strong>London</strong></h4>
+                <p>London is the capital city of England.</p>
+              </div>
+            </div>
+
+            <div id="yelsaxvevebis" class="tabcontent p-2">
+              <div class="container alert alert-danger">
+                <h4><strong>London</strong></h4>
+                <p>London is the capital city of England.</p>
+              </div>
+              <div class="container alert alert-danger">
+                <h4><strong>London</strong></h4>
+                <p>London is the capital city of England.</p>
+              </div>
+            </div>
+
+            <!-- <div class="clearfix"></div> -->
+          </div>
         </div>
-      </div>
-      <!-- ///////////////////////////////////////////////////-->
-      
-      <div class="container-fluid brend" data-spy="scroll" data-target="#myScrollspy" data-offset="1">
-        <div class="row">
-          <div class="col-sm-4">
-            <h3> <?php echo $lang ['reklamis_satauri']; ?> </h3>
-            <p> <?php echo $lang ['reklamis_texsti']; ?>. </p>
+        <!-- ///////////////////////////////////////////////////-->
 
-            <a href="https://on.ge/story/61805-10-%E1%83%A1%E1%83%A2%E1%83%90%E1%83%A2%E1%83%98%E1%83%90-%E1%83%9B%E1%83%94%E1%83%9C%E1%83%A2%E1%83%90%E1%83%9A%E1%83%A3%E1%83%A0-%E1%83%AF%E1%83%90%E1%83%9C%E1%83%9B%E1%83%A0%E1%83%97%E1%83%94%E1%83%9A%E1%83%9D%E1%83%91%E1%83%90%E1%83%96%E1%83%94-%E1%83%A0%E1%83%9D%E1%83%9B%E1%83%94%E1%83%9A%E1%83%98%E1%83%AA-%E1%83%97%E1%83%90%E1%83%95%E1%83%98%E1%83%A1-%E1%83%A8%E1%83%94%E1%83%AA%E1%83%9C%E1%83%9D%E1%83%91%E1%83%A8%E1%83%98-%E1%83%93%E1%83%90%E1%83%92%E1%83%94%E1%83%AE%E1%83%9B%E1%83%90%E1%83%A0%E1%83%94%E1%83%91%E1%83%90%E1%83%97"
+        <div class="container-fluid brend" data-spy="scroll" data-target="#myScrollspy" data-offset="1">
+          <div class="row">
+            <div class="col-sm-4">
+              <h3> <?php echo $lang ['reklamis_satauri']; ?> </h3>
+              <p> <?php echo $lang ['reklamis_texsti']; ?>. </p>
 
-            class="btn btn-secondary  pr-2 mb-3" role="button"> <?php echo $lang['reklamis_gilaki']; ?> >></a>
+              <a href="https://on.ge/story/61805-10-%E1%83%A1%E1%83%A2%E1%83%90%E1%83%A2%E1%83%98%E1%83%90-%E1%83%9B%E1%83%94%E1%83%9C%E1%83%A2%E1%83%90%E1%83%9A%E1%83%A3%E1%83%A0-%E1%83%AF%E1%83%90%E1%83%9C%E1%83%9B%E1%83%A0%E1%83%97%E1%83%94%E1%83%9A%E1%83%9D%E1%83%91%E1%83%90%E1%83%96%E1%83%94-%E1%83%A0%E1%83%9D%E1%83%9B%E1%83%94%E1%83%9A%E1%83%98%E1%83%AA-%E1%83%97%E1%83%90%E1%83%95%E1%83%98%E1%83%A1-%E1%83%A8%E1%83%94%E1%83%AA%E1%83%9C%E1%83%9D%E1%83%91%E1%83%A8%E1%83%98-%E1%83%93%E1%83%90%E1%83%92%E1%83%94%E1%83%AE%E1%83%9B%E1%83%90%E1%83%A0%E1%83%94%E1%83%91%E1%83%90%E1%83%97"
+                class="btn btn-secondary  pr-2 mb-3" role="button"> <?php echo $lang['reklamis_gilaki']; ?> >></a>
 
-          </div>
+            </div>
 
-          <!-- -------------------------------------------------------------------------------- -->
-          <?php
+            <!-- -------------------------------------------------------------------------------- -->
+            <?php
                   if(isset($_SESSION['is_logged']) && $_SESSION['is_logged']==true)
                   {
                     echo '<div class="col-sm-8 p-2 container-fluid border border-dark">
@@ -379,7 +518,7 @@ switch ($lang) {
 									  	<th class="th-sm">ID</th>
 									  	<th class="th-sm">'.$lang ['statiis_satauri'].'</th>
 									  	<th class="th-sm">'.$lang ['statiis_texsti'].'</th>
-                    					<th class="th-sm">'.$lang ['kategoria'].'</th>
+                    	<th class="th-sm">'.$lang ['kategoria'].'</th>
 									</tr>
 								  </thead>
 								  <tbody id="myTable">';
@@ -427,17 +566,17 @@ switch ($lang) {
                               </div>';
                       }
                 ?>
-          <!-- ------------------------------------------------------------------------------->
+            <!-- ------------------------------------------------------------------------------->
 
+          </div>
         </div>
       </div>
     </div>
-   </div>
   </div>
 
-<footer>
-  <div class="container-fluid bg-dark mt-4 pl-5 pt-4 pb-2">
-    <div class="row">
+  <footer>
+    <div class="container-fluid bg-dark mt-4 pl-5 pt-4 pb-2">
+      <div class="row">
         <div class="footer-col col-4">
           <h4><?php echo $lang['compania']; ?></h4>
           <ul>
@@ -465,13 +604,13 @@ switch ($lang) {
           </div>
         </div>
       </div>
-  </div>
-</footer>
+    </div>
+  </footer>
 
-    <script src="JS\skript_Js.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="JS\skript_Js.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
