@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Июн 07 2021 г., 08:10
+-- Время создания: Июн 22 2021 г., 14:08
 -- Версия сервера: 10.4.18-MariaDB
 -- Версия PHP: 8.0.3
 
@@ -47,6 +47,18 @@ INSERT INTO `article` (`id`, `title_ka`, `texts_ka`, `title_en`, `texts_en`, `fo
 (42, 'სადასდ', 'სდასდას', 'hfdofas', 'asohdashdol', 'Capture4.PNG', 'axali_ambebi'),
 (43, 'ასოფჰაოსჰფოაჰ', 'სფდლსჯფკსფჯ', 'slkfjdsfkjsdn', 'sdjflksdfks', 'quiz.PNG', 'dizaini'),
 (45, 'dasd', 'asda', 'dsad', 'sad', 'Capture11.PNG', 'dizaini');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `coments`
+--
+
+CREATE TABLE `coments` (
+  `id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `coment` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -106,6 +118,12 @@ ALTER TABLE `article`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `coments`
+--
+ALTER TABLE `coments`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `letters`
 --
 ALTER TABLE `letters`
@@ -126,6 +144,12 @@ ALTER TABLE `registracion`
 --
 ALTER TABLE `article`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+
+--
+-- AUTO_INCREMENT для таблицы `coments`
+--
+ALTER TABLE `coments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `letters`
