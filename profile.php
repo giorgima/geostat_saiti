@@ -240,7 +240,7 @@ echo '<div class="container">
 
 		$con = connect_sql();
 
-		$sql = "SELECT * from registracion";
+		$sql = "SELECT * from registracion where username = '".$_SESSION['name']."'";
 		$result = $con-> query($sql);
 	  $row = $result-> fetch_assoc();
 
