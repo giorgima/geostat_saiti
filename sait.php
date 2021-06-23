@@ -39,67 +39,67 @@ switch ($lang) {
     display: none;
   }
 
-.overlay {
-  height: 100%;
-  width: 100%;
-  display: none;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0, 0.9);
-}
+  .overlay {
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
+  }
 
-.overlay-content {
-  position: relative;
-  top: 20%;
-  width: 80%;
-  text-align: center;
-  margin-top: 30px;
-  margin: auto;
-}
+  .overlay-content {
+    position: relative;
+    top: 20%;
+    width: 80%;
+    text-align: center;
+    margin-top: 30px;
+    margin: auto;
+  }
 
-.overlay .closebtn {
-  position: absolute;
-  top: 20px;
-  right: 45px;
-  font-size: 60px;
-  cursor: pointer;
-  color: white;
-}
+  .overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+    cursor: pointer;
+    color: white;
+  }
 
-.overlay .closebtn:hover {
-  color: #ccc;
-}
+  .overlay .closebtn:hover {
+    color: #ccc;
+  }
 
-.overlay input[type=text] {
-  padding: 15px;
-  font-size: 17px;
-  border: none;
-  float: left;
-  width: 80%;
-  background: white;
-}
+  .overlay input[type=text] {
+    padding: 15px;
+    font-size: 17px;
+    border: none;
+    float: left;
+    width: 80%;
+    background: white;
+  }
 
-.overlay input[type=text]:hover {
-  background: #f1f1f1;
-}
+  .overlay input[type=text]:hover {
+    background: #f1f1f1;
+  }
 
-.overlay button {
-  float: left;
-  width: 20%;
-  padding: 15px;
-  background: #ddd;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
-}
+  .overlay button {
+    float: left;
+    width: 20%;
+    padding: 15px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+  }
 
-.overlay button:hover {
-  background: #bbb;
-}
-</style>
+  .overlay button:hover {
+    background: #bbb;
+  }
+  </style>
 
   <title>საქსტატი</title>
 
@@ -117,32 +117,35 @@ switch ($lang) {
 </head>
 
 <body onload="openSearch()">
-<!-- -------------------------------------------------- -->
-<div id="myOverlay" class="overlay">
-  <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+  <!-- -------------------------------------------------- -->
+  <div id="myOverlay" class="overlay">
+    <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
 
-  <div class="overlay-content">
+    <div class="overlay-content">
 
       <div class="card-body text-center">
-       <a href="https://www.mymarket.ge/ka/"> <img src="https://bm.ge/uploads/news/5e84839ea9487.png" alt="Trulli" width="647" height="339"></a>
+        <a href="https://www.mymarket.ge/ka/"> <img src="https://bm.ge/uploads/news/5e84839ea9487.png" alt="Trulli"
+            width="647" height="339"></a>
         <p class="card-text" style="color: white;"><b>REKLAMA ? click</b></p>
 
+      </div>
     </div>
   </div>
-</div>
 
-<script>
-function openSearch() {
-  document.getElementById("myOverlay").style.display = "block";
-}
+  <script>
+  function openSearch() {
+    document.getElementById("myOverlay").style.display = "block";
+  }
 
-function closeSearch() {
-  document.getElementById("myOverlay").style.display = "none";
-}
-</script>
-<!-- -------------------------------------------------------------- -->
+  function closeSearch() {
+    document.getElementById("myOverlay").style.display = "none";
+  }
+  </script>
+  <!-- -------------------------------------------------------------- -->
   <nav class="navbar navbar-inverse navbar-expand-sm bg-dark navbar-dark">
-      <a class="navbar-brand mr-5 ml-2" title="Websaite Name" href="sait.php"><h4>Websaite Name</h4></a>
+    <a class="navbar-brand mr-5 ml-2" title="Websaite Name" href="sait.php">
+      <h4>Websaite Name</h4>
+    </a>
 
 
     <!-- Links -->
@@ -151,10 +154,12 @@ function closeSearch() {
         <a class="nav-link" href="sait.php"><i class="fas fa-home fa-lg pr-1"></i> <?php echo $lang['mtavari']; ?> </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fas fa-feather-alt fa-lg pr-1"></i> <?php echo $lang['chvens_shesaxeb']; ?> </a>
+        <a class="nav-link" href="#"><i class="fas fa-feather-alt fa-lg pr-1"></i>
+          <?php echo $lang['chvens_shesaxeb']; ?> </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="category.php"><i class="far fa-envelope fa-lg pr-1"></i> <?php echo $lang['kontaktebi']; ?> </a>
+        <a class="nav-link" href="category.php"><i class="far fa-envelope fa-lg pr-1"></i>
+          <?php echo $lang['kontaktebi']; ?> </a>
       </li>
     </ul>
 
@@ -607,10 +612,11 @@ function closeSearch() {
     </div>
   </footer>
 
-  <script src="JS\skript_Js.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="JS\skript_Js.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
+
 </html>

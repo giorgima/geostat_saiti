@@ -48,7 +48,7 @@ error_reporting(E_ALL);
 
 function connect_sql(){
 
-	$con = new mysqli('localhost','root','','test1');
+	$con = new mysqli('localhost','root','123456','test1');
 	$con->set_charset("utf8");
 
 	if ($con->connect_error)
@@ -316,6 +316,45 @@ function messages_output(){
 
 }
 
+function coments_add($post_id, $coment){
+	$con = connect_sql();
+
+	$sql = "INSERT INTO coments(post_id, coment) VALUES(?, ?)";
+	$stmt = $con->prepare($sql);
+	$stmt->bind_param("ss", $post_id, $coment);
+	$stmt->execute();
+
+	$con->close();
+
+}
+
+function coments_out($post_id){
+
+	$con = connect_sql();
+	$sql = "SELECT * FROM coments LEFT JOIN article ON coments.post_id = article.id where post_id='".$post_id."'";
+
+	$result = $con-> query($sql);
+	if ($result->num_rows > 0)
+	{
+	    while ($row = $result-> fetch_assoc())
+	    {
+	        echo '<div class="container mt-1">
+					  <div class="media border p-1">
+					    <div class="media-body">
+					      <h4>'.$row['id'].'<small> Posted on February 19, 2016</small></h4>
+					      <p>'.$row['coment'].'</p>
+					    </div>
+					  </div>
+					</div>';
+	    }
+	}
+	else{
+		echo "<div class='alert alert-danger'> <h1><strong> none </strong></h1></div>";
+	}
+
+	$con->close();
+}
+
 
 // function table($id, $title, $texts)
 // {
@@ -392,6 +431,21 @@ function messages_output(){
 			$msg_texts = $_POST['msg_texts'];
 
 	    messages_input($nam, $vis, $msg_texts);
+	}
+
+	if (isset($_POST['get_id']) && isset($_POST['coment']))
+	{
+			$post_id = $_POST['get_id'];
+			$coment = $_POST['coment'];
+
+	    coments_add($post_id, $coment);
+	}
+
+	if (isset($_POST['id']))
+	{
+			$id = $_POST['id'];
+
+	    coments_out($id);
 	}
 
 

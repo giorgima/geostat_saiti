@@ -25,6 +25,7 @@ switch ($lang) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>single page</title>
 
@@ -40,28 +41,34 @@ switch ($lang) {
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
+
 <body>
 
-<div>
-  <nav class="navbar navbar-inverse navbar-expand-sm bg-dark navbar-dark">
-      <a class="navbar-brand mr-5 ml-2" title="Websaite Name" href="sait.php"><h4>Websaite Name</h4></a>
+  <div>
+    <nav class="navbar navbar-inverse navbar-expand-sm bg-dark navbar-dark">
+      <a class="navbar-brand mr-5 ml-2" title="Websaite Name" href="sait.php">
+        <h4>Websaite Name</h4>
+      </a>
 
       <!-- Links -->
       <ul id="navbar_left" class="nav navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" title="Home" href="#"><i class="fas fa-home fa-lg pr-1"></i> <?php echo $lang['mtavari']; ?> </a>
+          <a class="nav-link" title="Home" href="#"><i class="fas fa-home fa-lg pr-1"></i>
+            <?php echo $lang['mtavari']; ?> </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" title="Blog" href="#"><i class="fas fa-feather-alt fa-lg pr-1"></i> <?php echo $lang['blogi']; ?> </a>
+          <a class="nav-link" title="Blog" href="#"><i class="fas fa-feather-alt fa-lg pr-1"></i>
+            <?php echo $lang['blogi']; ?> </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" title="Contact" href="#"><i class="far fa-envelope fa-lg pr-1"></i> <?php echo $lang['kontaktebi']; ?> </a>
+          <a class="nav-link" title="Contact" href="#"><i class="far fa-envelope fa-lg pr-1"></i>
+            <?php echo $lang['kontaktebi']; ?> </a>
         </li>
       </ul>
 
       <ul id="navbar_right" class="nav navbar-nav navbar-right text-right pr-5">
 
-      <?php
+        <?php
         if(isset($_SESSION['is_logged']) && $_SESSION['is_logged']==true)
         {
 
@@ -99,13 +106,13 @@ switch ($lang) {
         </li>
 
       </ul>
-  </nav>
-</div>
+    </nav>
+  </div>
 
-<div class="container-fluid">
-  <div class="row">
+  <div class="container-fluid">
+    <div class="row">
 
-<?php
+      <?php
 
 $con = connect_sql();
 
@@ -126,36 +133,42 @@ if ($stmt_result->num_rows > 0)
   $data = $stmt_result->fetch_assoc();
 
   ?>
-    <div class="col-9 pl-5 pt-3">
-      <h3> <?php echo $lang['kategoria']; ?> : &nbsp;<?php echo $data["categoris"]; ?> </h3>
+      <div class="col-9 pl-5 pt-3">
+        <h3> <?php echo $lang['kategoria']; ?> : &nbsp;<?php echo $data["categoris"]; ?> </h3>
 
-      <h1> <?php echo $lang['satauri']; ?> : &nbsp;<?php echo $data["title"]; ?> </h1>
+        <h1> <?php echo $lang['satauri']; ?> : &nbsp;<?php echo $data["title"]; ?> </h1>
 
-      <p id="demo" class="pt-2 pb-2" style="color: #A6AAB5"></p>
-      <script>
-      var date = new Date();
-      var Month = date.getMonth() + 1;
-      document.getElementById("demo").innerHTML = "<?php echo $lang['gamoqveynebis_tarigi']; ?> : &nbsp;" + date.getDate() + "/" + Month + "/" + date.getFullYear() ;
-      </script>
+        <p id="demo" class="pt-2 pb-2" style="color: #A6AAB5"></p>
+        <script>
+        var date = new Date();
+        var Month = date.getMonth() + 1;
+        document.getElementById("demo").innerHTML = "<?php echo $lang['gamoqveynebis_tarigi']; ?> : &nbsp;" + date
+          .getDate() + "/" + Month + "/" + date.getFullYear();
+        </script>
 
-      <p> <?php echo $lang['texsti']; ?> : &nbsp;<?php echo $data["texts"]; ?> </p>
+        <p> <?php echo $lang['texsti']; ?> : &nbsp;<?php echo $data["texts"]; ?> </p>
 
-      <img src='<?php echo "FOTO/".$data["foto_name"] ?>'style="width: 500px;" ><br>
+        <img src='<?php echo "FOTO/".$data["foto_name"] ?>' style="width: 500px;"><br>
 
-    </div>
+        <div id="com"></div>
 
-<?php
+        <textarea name="coment" id="coment" class="form-control mt-4"></textarea>
+        <input type="submit" value="coment" id="click" class="mt-2">
+
+      </div>
+
+      <?php
 }
 ?>
 
 
-    <div class="col-3">
+      <div class="col-3">
         <nav class="navbar">
 
 
-        <ul id="navb" class="nav flex-column pt-2">
-          <h5><b><?php echo $lang['kategoriebi']; ?></b></h5>
-<?php
+          <ul id="navb" class="nav flex-column pt-2">
+            <h5><b><?php echo $lang['kategoriebi']; ?></b></h5>
+            <?php
          echo '<li class="nav-item">
             <a class="nav-link" href="category.php?name=axali_ambebi&lang='.$_SESSION['lang'].'">'.$lang['axali_ambebi'].'</a>
           </li>
@@ -173,34 +186,34 @@ if ($stmt_result->num_rows > 0)
           </li>
         </ul>';
 ?>
-        <div class="card mt-3">
-          <div class="card-header"><b> <?php echo $lang['card_header']; ?> </b>
-            <i class="far fa-file fa-lg" style="margin-left: 70px;"></i>
-          </div>
-          <div class="card-body"><b> <?php echo $lang['card_satauri']; ?> </b>
-          <p class="pt-2"> <?php echo $lang['card_texsti']; ?> </p>
-          </div>
-        </div>
+            <div class="card mt-3">
+              <div class="card-header"><b> <?php echo $lang['card_header']; ?> </b>
+                <i class="far fa-file fa-lg" style="margin-left: 70px;"></i>
+              </div>
+              <div class="card-body"><b> <?php echo $lang['card_satauri']; ?> </b>
+                <p class="pt-2"> <?php echo $lang['card_texsti']; ?> </p>
+              </div>
+            </div>
 
-         <div class="card mt-3">
-          <div class="card-header"><b> <?php echo $lang['card_header']; ?> </b>
-            <i class="far fa-file fa-lg" style="margin-left: 70px;"></i>
-          </div>
-          <div class="card-body"><b> <?php echo $lang['card_satauri']; ?> </b>
-          <p class="pt-2"> <?php echo $lang['card_texsti']; ?> </p>
-          </div>
-        </div>
+            <div class="card mt-3">
+              <div class="card-header"><b> <?php echo $lang['card_header']; ?> </b>
+                <i class="far fa-file fa-lg" style="margin-left: 70px;"></i>
+              </div>
+              <div class="card-body"><b> <?php echo $lang['card_satauri']; ?> </b>
+                <p class="pt-2"> <?php echo $lang['card_texsti']; ?> </p>
+              </div>
+            </div>
 
 
-      </nav>
+        </nav>
 
+      </div>
     </div>
   </div>
-</div>
 
-<footer>
-  <div class="container-fluid bg-dark mt-4 pl-5 pt-4">
-    <div class="row">
+  <footer>
+    <div class="container-fluid bg-dark mt-4 pl-5 pt-4">
+      <div class="row">
         <div class="footer-col col-4">
           <h4><?php echo $lang['compania']; ?></h4>
           <ul>
@@ -228,13 +241,61 @@ if ($stmt_result->num_rows > 0)
           </div>
         </div>
       </div>
-  </div>
-</footer>
+    </div>
+  </footer>
 
-    <script src="JS\skript_Js.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <?php
+    $output = $_GET['id'];
+?>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+  const selectData = (id) => {
+    $.ajax({
+        url: "skript_php.php",
+        type: "POST",
+        data: {
+          id: id,
+        }
+      })
+      .done(function(data, textStatus, jqXHR) {
+        document.getElementById("com").innerHTML = data;
+      })
+      .fail(function(jqXHR, textStatus, errorThrown) {
+        // alert("Error");
+      });
+
+  }
+  window.onload = function exampleFunction() {
+    var btn = document.getElementById("click");
+    var id = '<?php echo $output; ?>';
+
+    selectData(id);
+    btn.onclick = function() {
+      const coment = document.getElementById('coment').value;
+      var output = '<?php echo $output; ?>';
+
+      $.ajax({
+          url: "skript_php.php",
+          type: "POST",
+          data: {
+            get_id: output,
+            coment: coment
+          }
+        })
+        .done(function(data, textStatus, jqXHR) {
+          console.log("inserted");
+          selectData(id);
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {
+          // alert("Error");
+        });
+    }
+  }
+  </script>
+  <script src="JS\skript_Js.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
+
 </html>
