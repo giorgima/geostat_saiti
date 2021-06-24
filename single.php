@@ -153,7 +153,7 @@ if ($stmt_result->num_rows > 0)
         <div id="com"></div>
 
         <textarea name="coment" id="coment" class="form-control mt-4"></textarea>
-        <input type="submit" value="coment" id="click" class="mt-2">
+        <input type="submit" value="coment" id="click" class="mt-2" onClick="clearTextArea();">
 
       </div>
 
@@ -249,6 +249,13 @@ if ($stmt_result->num_rows > 0)
 ?>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script>
+
+  $(document).ready(function(){
+        $('#click').click(function(){        
+            $('#coment').val('');
+        });
+      });
+
   const selectData = (id) => {
     $.ajax({
         url: "skript_php.php",

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Июн 22 2021 г., 14:08
+-- Время создания: Июн 24 2021 г., 05:23
 -- Версия сервера: 10.4.18-MariaDB
 -- Версия PHP: 8.0.3
 
@@ -34,19 +34,20 @@ CREATE TABLE `article` (
   `title_en` varchar(50) NOT NULL,
   `texts_en` varchar(200) NOT NULL,
   `foto_name` varchar(200) NOT NULL,
-  `categoris` text NOT NULL
+  `categoris` text NOT NULL,
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `article`
 --
 
-INSERT INTO `article` (`id`, `title_ka`, `texts_ka`, `title_en`, `texts_en`, `foto_name`, `categoris`) VALUES
-(40, 'სტატია', 'სტატიას', 'statia', 'statias', 'Capture.PNG', 'axali_ambebi'),
-(41, 'ფფფ', 'ასფ', 'dasd', 'dasd', 'Capture4.PNG', 'axali_ambebi'),
-(42, 'სადასდ', 'სდასდას', 'hfdofas', 'asohdashdol', 'Capture4.PNG', 'axali_ambebi'),
-(43, 'ასოფჰაოსჰფოაჰ', 'სფდლსჯფკსფჯ', 'slkfjdsfkjsdn', 'sdjflksdfks', 'quiz.PNG', 'dizaini'),
-(45, 'dasd', 'asda', 'dsad', 'sad', 'Capture11.PNG', 'dizaini');
+INSERT INTO `article` (`id`, `title_ka`, `texts_ka`, `title_en`, `texts_en`, `foto_name`, `categoris`, `user_id`) VALUES
+(40, 'სტატია', 'სტატიას', 'statia', 'statias', 'Capture.PNG', 'axali_ambebi', 1),
+(41, 'ფფფ', 'ასფ', 'dasd', 'dasd', 'Capture4.PNG', 'axali_ambebi', 2),
+(42, 'სადასდ', 'სდასდას', 'hfdofas', 'asohdashdol', 'Capture4.PNG', 'axali_ambebi', 1),
+(43, 'ასოფჰაოსჰფოაჰ', 'სფდლსჯფკსფჯ', 'slkfjdsfkjsdn', 'sdjflksdfks', 'quiz.PNG', 'dizaini', 2),
+(45, 'dasd', 'asda', 'dsad', 'sad', 'Capture11.PNG', 'dizaini', 1);
 
 -- --------------------------------------------------------
 
@@ -59,6 +60,17 @@ CREATE TABLE `coments` (
   `post_id` int(11) NOT NULL,
   `coment` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Дамп данных таблицы `coments`
+--
+
+INSERT INTO `coments` (`id`, `post_id`, `coment`) VALUES
+(1, 45, 'za'),
+(2, 45, 'ad'),
+(3, 45, 'asdasd'),
+(4, 45, 'dd'),
+(5, 45, 'la');
 
 -- --------------------------------------------------------
 
@@ -104,8 +116,8 @@ CREATE TABLE `registracion` (
 --
 
 INSERT INTO `registracion` (`id`, `username`, `date_of_birth`, `gender`, `email`, `pass`) VALUES
-(22, 'g', '06/11/1920', 'მამრობითი', 'g@l.ru', '202cb962ac59075b964b07152d234b70'),
-(23, 'gio', '1586', 'მამრობითი', 'gio@l.ru', 'caf1a3dfb505ffed0d024130f58c5cfa');
+(1, 'g', '06/11/1920', 'მამრობითი', 'g@l.ru', '202cb962ac59075b964b07152d234b70'),
+(2, 'gio', '1586', 'მამრობითი', 'gio@l.ru', 'caf1a3dfb505ffed0d024130f58c5cfa');
 
 --
 -- Индексы сохранённых таблиц
@@ -149,7 +161,7 @@ ALTER TABLE `article`
 -- AUTO_INCREMENT для таблицы `coments`
 --
 ALTER TABLE `coments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT для таблицы `letters`

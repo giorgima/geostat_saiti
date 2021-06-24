@@ -48,7 +48,7 @@ error_reporting(E_ALL);
 
 function connect_sql(){
 
-	$con = new mysqli('localhost','root','123456','test1');
+	$con = new mysqli('localhost','root','','test1');
 	$con->set_charset("utf8");
 
 	if ($con->connect_error)
@@ -341,7 +341,7 @@ function coments_out($post_id){
 	        echo '<div class="container mt-1">
 					  <div class="media border p-1">
 					    <div class="media-body">
-					      <h4>'.$row['id'].'<small> Posted on February 19, 2016</small></h4>
+					      <h4>'.coments_user().'<small> Posted on February 19, 2016</small></h4>
 					      <p>'.$row['coment'].'</p>
 					    </div>
 					  </div>
@@ -353,6 +353,20 @@ function coments_out($post_id){
 	}
 
 	$con->close();
+}
+
+function coments_user(){
+
+	$con = connect_sql();
+	$sql = "SELECT * FROM registracion LEFT JOIN article ON registracion.id = article.user_id";
+
+	$result = $con-> query($sql);
+    $row = $result-> fetch_assoc();
+    
+    echo $row['username'];
+    
+	$con->close();
+	
 }
 
 
